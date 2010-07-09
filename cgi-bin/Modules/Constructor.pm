@@ -398,7 +398,7 @@ CREATE TABLE `structure` (
 `domain` varchar(255)  NOT NULL ,
 `params` text default '',
  PRIMARY KEY ( `id_n` ),
- UNIQUE KEY `id` (`id`)
+ UNIQUE KEY `id_domain` (`id`,`domain`)
 ) 
  ]; 
  my $create=$dbh->do($sql);

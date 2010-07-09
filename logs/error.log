@@ -614,3 +614,42 @@
 [Fri Jul 09 17:12:11 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/document/main.html
 [Fri Jul 09 17:12:11 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
 [Fri Jul 09 17:12:14 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:09 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:10 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:13 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:14 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681313&l=1
+[Fri Jul 09 17:15:15 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681313&l=1
+[Fri Jul 09 17:15:15 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681313&l=1
+[Fri Jul 09 17:15:15 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:19 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] Empty compile time value given to use lib at ..//Modules/Constructor_view.pm line 10, referer: http://site2.local/cgi-bin/mod/razdels.cgi
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681328&l=1&rnd=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681328&l=1&rnd=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681328&l=1&rnd=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681328
+[Fri Jul 09 17:15:28 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681328
+[Fri Jul 09 17:15:33 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:15:36 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681336&l=1
+[Fri Jul 09 17:15:36 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681336&l=1
+[Fri Jul 09 17:15:36 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681336&l=1
+[Fri Jul 09 17:15:38 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:18:23 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] Empty compile time value given to use lib at ..//Modules/Constructor_view.pm line 10, referer: http://site2.local/cgi-bin/mod/razdels.cgi
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] File does not exist: /Users/andreyd22/work/Alphaweb-CMS/html/favicon.ico
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681507&l=1&rnd=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681507&l=1&rnd=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/admin.cgi, referer: http://site2.local/cgi-bin/mod/menu.cgi?sid=1278681507&l=1&rnd=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681507
+[Fri Jul 09 17:18:27 2010] [error] [client 127.0.0.1] script not found or unable to stat: /Users/andreyd22/work/Alphaweb-CMS/cgi-bin/view/images.cgi, referer: http://site2.local/cgi-bin/view/document.cgi?id=main&sid=1278681507
