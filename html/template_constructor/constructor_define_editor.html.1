@@ -1,0 +1,30 @@
+<!--Работа с документом-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+ <td align=center><a href="/cgi-bin/mod/template.cgi?sid=${SID}&l=${LANG}">Настройка шаблонов</a> ::<a href="/cgi-bin/mod/template.cgi?sid=${SID}&l=${LANG}&a=list_templates">Редактор шаблонов</a> ::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<tr><td>${TITLE}</td></tr>
+<tr>
+<td>
+
+<form action="/cgi-bin/mod/template.cgi" method="post" id="edit" name="edit">
+<b>Main text:</b></br>
+<textarea name="text" rows="24" cols="80">${DATA}</textarea>
+<input type="submit" name="ok" value="  Сохранить  " class=b1 />
+<input type="hidden" name="a" value="save_template" />
+<input type="hidden" name="sid" value="${SID}" />
+<input type="hidden" name="name" value="${NAME}" />
+<input type="hidden" name="l" value="${LANG}" />
+</form>
+
+</td>
+</tr>
+</table>
+<!--Работа с документом-->

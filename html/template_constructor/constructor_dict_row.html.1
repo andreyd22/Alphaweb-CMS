@@ -1,0 +1,23 @@
+<tr>
+<td>
+<table width=100% style="border-style: solid;border-width:1px;border-color:#000000">
+ <tr>
+  <td> <table width=100%><tr bgcolor=#EFEFEF> 
+      <td><b>${WORD}</b></td>
+      <td width=90 align=center><a title='Редактировать новость' href="/cgi-bin/mod/${MOD}.cgi?a=view&id=${ID}&sid=${SID}&l=${LANG}&idr=${IDR}">[Редактировать]</a></td>
+      <td width=30 align=center><a title='Удалить новость' href="/cgi-bin/mod/${MOD}.cgi?a=del&id=${ID}&sid=${SID}&l=${LANG}&idr=${IDR}" onclick="return Delete(1,'${ZAG}')">[x]</a></td>
+     </tr></table>
+   </td>
+ </tr>
+ <tr>
+  <td>
+  <b>Определение:</b>
+  <table width=100%><tr><td>
+  ${SHORT}
+  </td></tr>
+  </table>
+  </td>
+ </tr>
+</table>
+</td>
+</tr>

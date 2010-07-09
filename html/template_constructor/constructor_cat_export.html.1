@@ -1,0 +1,54 @@
+<!--export/import excel-->
+<table>
+
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?a=edit_st&sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Добавить товар</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=export">Экспорт/импорт Excel</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Показать товары</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=users">Пользователи</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=order">Заказы</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr><td><hr></td></tr>
+
+<tr>
+<td>
+<table>
+<tr><form action="/cgi-bin/mod/upload/load.pl" method=post enctype="multipart/form-data">
+<td valign=top><b>Загрузка даных из Excel</b></td>
+<td width=75% valign=top>
+<input type='file' name='upfile' value='' class=i1> 
+<input type='submit' value='Загрузить' class=i1> 
+</td>
+</tr>
+<input type=hidden name=sid value="${SID}">
+<input type=hidden name=l value="${LANG}">
+<input type=hidden name="id" value="${ID}">
+<input type=hidden name=a value="cat_excel_export">
+</form>
+<tr><td colspan=2><hr></td></tr>
+<tr><td colspan=2><a href="/cgi-bin/mod/upload/load.pl?sid=${SID}&id=${ID}&a=cat_excel_import&l=${LANG}" target=_blank>Скачать весь каталог в excel файл</a></td></tr>
+<tr><td colspan=2><hr></td></tr>
+<tr>
+<td colspan=2><b style='color:red'>
+Загружаемый excel файл должен иметь следующую структуру: </b> <br><br>
+<b>первое поле</b> - id товара в каталоге (оставьте пустым, если добавляете новый товар)<br>
+<b>второе поле</b> - id раздела (оставьте пустым, если хотите добавить товар в текущий каталог <b>${ID}</b> )<br>
+<b>третье поле</b> - АРТИКУЛ товара<br>
+<b>четвертое поле</b> - наименование товара<br>
+<b>пятое поле</b> - короткое описание товара (анонс)<br>
+<b>шестое поле</b> - цена <br>
+<b>седьмое поле</b> - еденицы измерения <br>
+<b>восьмое поле</b> - описание товара <br>
+</b></td>
+</tr>
+</table>
+<!--export/import excel-->

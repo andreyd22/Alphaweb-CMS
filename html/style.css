@@ -1,0 +1,145 @@
+/* CSS Document */
+* {margin: 0; padding: 0;}
+body {background: #e4e8eb;font: 12px Tahoma;}
+html,body {height: 100%; }
+
+.main {  
+margin: 0 auto;
+min-height: 100%; 
+width: 1016px; 
+background: url(/images/bg.jpg) repeat-y; 
+}
+
+#logo {position: relative; left: 2px; margin: 0 auto; width: 950px; height: 200px; background: url(/images/logo.jpg) no-repeat;}
+#name {padding: 15px 0 0 300px; font: 12px Verdana, Arial, Helvetica, sans-serif; color: #fff;}
+/*addons*/
+#add {position: absolute; top: 15px; right: 0; width: 138px; height: 33px; background: url(/images/addbg.jpg) no-repeat}
+#home {position: relative; display: block; overflow:hidden; top: 2px; left: 5px; float: left; width: 11px; height: 10px; background: url(/images/home.gif) 0 0 no-repeat}
+#home:hover {background: url(/images/home.gif) 0 -10px no-repeat}
+
+#mail {position: relative; top: 3px; left: 30px; display: block; overflow:hidden; float: left; width: 11px; height: 9px; background: url(/images/mail.gif) no-repeat}
+#mail:hover {background: url(/images/mail.gif) 0 -9px no-repeat}
+
+#map {position: relative; top: 2px; left: 55px; display: block; float: left; overflow:hidden; width: 11px; height: 9px; background: url(/images/map.gif) no-repeat}
+#map:hover {background: url(/images/map.gif) 0 -9px no-repeat}
+/*end addons*/
+
+/*search*/
+#search {position: relative; top: 120px; left: 350px;  width: 200px; height: 30px; border: 0px solid #fff;}
+/*end search*/
+
+/*content*/
+#cont {margin: 70px auto 0 auto; width: 910px; height: auto; z-index: 0; font: 13px Tahoma, Verdana, Arial, Helvetica, sans-serif; color: #222;}
+#cont ul {padding: 0; margin: 0;}
+#cont li {margin: 0;}
+
+#cont ul {padding: 0; margin: 0; list-style: none;} 
+#cont li {list-style: none; background: url(/images/arrowli.jpg) no-repeat 4px 7px; margin-left: 40px; padding-left: 15px; color: #000;}
+
+#cont li a {font: 13px Tahoma, Verdana, Arial, Helvetica, sans-serif; color: #204756; text-decoration: underline;}
+#cont li a:hover { font: 13px Tahoma, Verdana, Arial, Helvetica, sans-serif; color: #598299; text-decoration: none;}
+/*end content*/
+
+/*katalog*/
+#katalog {padding: 0 0 15px 0;}
+
+#kat_bl {
+width: 130px;
+min-height: 250px;
+display: -moz-inline-stack;
+display: inline-block;
+vertical-align: top;
+margin: 5px;
+zoom: 1;
+*display: inline;
+_height: 250px;
+background: #e7e6dd;
+}
+
+#kat_bl:hover {
+width: 130px;
+min-height: 250px;
+display: -moz-inline-stack;
+display: inline-block;
+vertical-align: top;
+margin: 5px;
+zoom: 1;
+*display: inline;
+_height: 250px;
+background: #ece8d3;
+}
+
+#kat_ris {display:block; margin: 13px auto 0 auto; height: auto;}
+#kat_ris a img {display:block; margin:0 auto;padding: 6px; border: 1px solid #bcbab8; background: #fff;}
+#kat_ris a:hover img {display:block; margin:0 auto; padding: 6px; border: 1px solid #a7a49f; background: #fff;}
+#katalog_text { display: block; margin: 0 auto; padding: 5px 0 0 0; width: 112px; height: 100px; border: 0px solid #000; font: 12px Tahoma, Verdana, Arial, Helvetica, sans-serif; color: #424242}
+#katalog_text a {font: 11px Tahoma, Verdana, Arial, Helvetica, sans-serif; color: #8f3d00; text-decoration: underline;}
+#katalog_text a:hover {font: 11px Tahoma, Verdana, Arial, Helvetica, sans-serif; color: #d55e05; text-decoration: underline;}
+#katalog_cena {display: block; margin: 0 auto; padding: 3px 0 0 0; width: 112px; height: 20px; background: #4b626f url(/images/riscena.jpg) no-repeat; color: #fff; text-align: center; font-weight: bold;}
+/*end katalog*/
+
+
+/*tovar*/
+#tovar_ris {
+width: 200px;
+min-height: 250px;
+display: -moz-inline-stack;
+display: inline-block;
+vertical-align: top;
+margin: 5px;
+zoom: 1;
+*display: inline;
+_height: 250px;
+}
+
+#tovar_ris img {display: block; margin: 0 auto; padding: 6px; border: 1px solid #bcbab8;}
+#tovar_ris a img { display: block; margin: 0 auto; padding: 6px; border: 1px solid #bcbab8;}
+#tovar_ris a:hover img { display: block; margin: 0 auto; padding: 6px; border: 1px solid #a7a49f;}
+
+#tovar_cena {display: block; margin: 0 0 5px 0; padding: 5px 0 0 0; width: 200px; height: 28px; background: #e7e6dd url(/images/riscenat.jpg) repeat-y; color: #4b626f; font-size: 19px; text-align: center; font-weight: bold;}
+
+#tovar_info {
+width: 600px;
+min-height: 250px;
+display: -moz-inline-stack;
+display: inline-block;
+vertical-align: top;
+margin: 5px;
+zoom: 1;
+*display: inline;
+_height: 250px;
+}
+/*end tovar*/
+
+
+* html .main { height: 100%;}
+.hFooter {height: 120px; }
+
+
+.footer { 
+margin: 0 auto;
+width: 1016px;
+background: url(/images/bg.jpg) repeat-y; 
+color: #fff;
+height: 120px;
+margin-top: -120px; 
+}
+
+#foocompany {position: relative; top: 39px; left: 70px; width: 400px; height: 80px; border: 0px solid #000; background: #e7e6dd url(/images/fooris.jpg) bottom right no-repeat;}
+#foocompany_txt  {position: relative; top: 5px; left: 15px; color: red; font: 12px Verdana, Arial, Helvetica, sans-serif; color: #000;}
+#foocompany_color {position: relative; top: 5px; color: #204756;}
+#foocompany_colorone {position: relative; top: 10px; color: #204756;}
+#foocopyright {position: relative; top: 15px; left: 500px; width: 480px; height: 20px; border: 0px solid coral; font: 11px Tahoma, Verdana, Arial, Helvetica, sans-serif; color: #999;}
+#foocopyright a {color: #848273; text-decoration: underline;}
+
+/*visualization*/
+a:focus {outline: none;}
+a {color: #cc6214; text-decoration: underline;}
+a:hover {color: #598299; text-decoration: none;}
+
+H1 {font-size: 28px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #4b687b; font-weight: normal; margin: 0; padding: 0 0 20px 0; text-align: left; }
+H2 {font-size: 16px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #2843b4; margin: 0; padding: 0;}
+H3 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #70767a; margin: 0; padding: 15px 0 15px 45px; background: url(/images/arrowhtwo.jpg) 30px 19px no-repeat; z-index: -1;}
+H4 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #2843b4; margin: 0; padding: 0;}
+H5 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #2843b4; margin: 0; padding: 0;}
+H6 {font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #2843b4; margin: 0; padding: 0;}

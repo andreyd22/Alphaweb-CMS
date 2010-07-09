@@ -1,0 +1,103 @@
+<!--add/edit gallery-->
+<table width="100%">
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Добавить фото</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Показать галлерею</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr><td><hr></td></tr>
+
+<tr>
+<td>
+<table width="100%">
+<tr><td colspan="2">${IMG_CAT}<br>
+</td></tr>
+<tr><form action="/cgi-bin/mod/upload/load.pl" method=post enctype="multipart/form-data" id=edit name=edit>
+<td valign=top><b>Главная Картинка <br><small>Автоматически будут создаваться маленькая картинки<br>ширину указывайте ниже</small></b></td>
+<td width=85% valign=top>
+<input type='file' name='upfile' value='' class=i1> <br>
+Ширина уменьшеной копии (применяется для всех картинок):<br>
+<select name=width class=i1>
+<option value=50>50px
+<option value=100>100px
+<option value=130 selected>130px
+<option value=150>150px
+<option value=200>200px
+<option value=250>250px
+<option value=300>300px
+</select> <br>
+</td>
+</tr>
+
+
+<tr><td colspan=2><hr></td></tr>
+<tr>
+<td><b>Название: </b></td><td width=85%><input name='name' value='${NAME}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Ссылка: </b></td><td width=85%><input name='url' value='${URL}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Автор: </b></td><td width=85%><input name='author' value='${AUTHOR}' class=i1 style="width:300px"></td>
+</tr>
+<!--tr>
+<td><b>Автор из базы: </b></td><td width=85%>${SEL_USERS}</td>
+</tr>
+<tr>
+<td><b>Номер конкурса: </b></td><td width=85%>${SEL_KONKURS}</td>
+</tr-->
+<tr>
+<td><b>Сортировка: </b></td><td width=85%><input name='sort' value='${SORT}' class=i1 style="width:50px"></td>
+</tr>
+<tr>
+<td colspan=2><b>Описание<br> <small>Полное описание</small></b></td>
+</tr>
+<tr>
+<td colspan=2>
+	<link href="/fckeditor/_samples/sample.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
+
+<script type="text/javascript">
+<!--
+// Automatically calculates the editor base path based on the _samples directory.
+// This is usefull only for these samples. A real application should use something like this:
+// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+//var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
+
+var oFCKeditor = new FCKeditor( 'ta' ) ;
+oFCKeditor.BasePath	= /fckeditor/ ;
+oFCKeditor.Height	= 300;
+oFCKeditor.Value	= '${OPIS}' ;
+oFCKeditor.Create() ;
+//-->
+</script>
+
+
+</td>
+</tr>
+<tr>
+<td colspan=2><input type=submit value="сохранить"  class=b1>
+</td>
+<input type=hidden name=sid value="${SID}">
+<input type=hidden name=l value="${LANG}">
+<input type=hidden name="id_cat" value="${ID_CAT}">
+<input type=hidden name="id" value="${ID}">
+<input type=hidden name=a value="edit_gallery">
+<input type=hidden name="PageIn" value="${PAGEIN}">
+<input type=hidden name="p_n" value="${PN}">
+</form>
+</tr>
+<tr><td colspan=2><hr></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<!--add/edit gallery-->

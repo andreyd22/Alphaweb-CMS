@@ -1,0 +1,189 @@
+[%IF a==''%]
+<table>
+[%FOREACH data IN ar_data %]
+<tr><td>[%IF data.img_cat%] <a href="/catalog/[%id%]/[%data.id%].html" title="[%data.name%]"><img src="/base/cat_image/[%data.id%]-150.[%data.img_end%]" border="0" align="left" class="img_cat"></a> [%END%]
+</td>
+
+<td valign='top'>
+<table>
+<tr><td>
+        <a href="/catalog/[%id%]/[%data.id%].html" class="td123"><b>[%data.name%]</b></a>
+	</td>
+	</tr>
+
+<tr><td>Цена - [%data.cost%] руб</td></tr>
+<tr><td>[%data.short%]</td><tr>
+<tr><td><a href="/catalog/[%id%]/[%data.id%].html">Подробнее >>></a></td></tr>
+
+</table>
+
+</td></tr>
+       
+
+[%END%]
+</table>
+[%perehod%]
+
+[%END%]
+
+
+[%IF a == 'full'%]
+</style>
+
+<script src="/javascripts/prototype.js" type="text/javascript"></script>
+<script src="/javascripts/scriptaculous.js?load=effects" type="text/javascript"></script>
+
+<script type="text/javascript" src="/javascripts/lightbox.js"></script>
+<link rel="stylesheet" href="/javascripts/lightbox.css" type="text/css" media="screen" />
+
+[%IF  mess == 'error_field'%]<b style="color:red">Поля, помеченные знаком *, обязательны для заполненя!</b>[%END%]
+[%IF  mess == 'ok'%]<b style="color:green">Спасибо! Ваша заявка принята. Менеджер свяжется с вами в ближайшее время!</b>[%END%]
+<h1>[%data.short%]</h1>
+<table>
+	<tr>
+		<td valign="top">
+[%IF img_cat%] <a href="/base/cat_image/[%data.id%].[%data.img_end%]" title="[%data.name%]" rel="lightbox[roadtrip]"><img src="/base/cat_image/[%data.id%]-150.[%data.img_end%]" border="0" align="left" class="img_cat"></a> [%END%]
+</td><td valign="top" class="td123" style="padding-top:10px">		
+	[%data.opis%]
+
+
+		</td>
+	
+</tr><tr>
+<td colspan="2" class="td123">
+		Цена: [%data.cost||"звоните, чтобы уточнить стоимость"%] [%IF data.cost%]рублей[%END%]<br/>
+		Гост: [%data.gost%]
+		<br>
+		<br> <p align="right"><a href="/catalog/[%id%].html">Другие товары</a></p>
+
+</td>
+
+</tr>
+</table>
+
+<!--a name="zakaz"></a>
+<h3>Форма заказа</h3>
+[%IF cook.users_cook.value%]
+<form action="/catalog/[%id%]/[%id_cat%].html" method=post name="form_zakaz">
+ <table>
+   <tr>
+    <td class="td123">Кол-во*:</td><td><input name=col value="[%col%]" id="col"></td>
+   </tr>
+   <tr>
+    <td class="td123">Удобный способ оплаты:</td><td><input name=oplata value="[%oplata%]"></td>
+   </tr>
+   <tr>
+    <td valign=top class="td123">Комментарий:</td><td><textarea name=comments cols=34 rows=5>[%comments%]</textarea></td>
+   </tr>
+   <tr>
+    <td colspan=2 align=center><input type=submit value="Отправить заказ"></td>
+   </tr>
+ </table>
+<input type=hidden name=a value="send">
+<input type=hidden name=id_cat value="[%id_cat%]">
+<input type=hidden name=id value="[%id%]">
+</form>
+[%ELSE%]
+Для того чтобы сделать заказ, Вам необходимо пройти <a href="/users/users.html?a=forma">регистраци</a>.<br><br>Если вы уже зарегистрированы в системе, введите ваш логин и пароль в форме ниже.
+
+[%IF mess=='error'%]<br><br><b style="color:red">Пользователь с такими данеными не зарегистрирован</b>[%END%]
+<table>
+<form action="/users/users.html" method="post">
+<tr>
+<td class="td123">Логин:</td> <td><input type="text" name="login"></td>
+</tr><tr>
+<td class="td123">Пароль:</td> <td><input name="pass" type="password"></td>
+</tr>
+<tr><td></td><td><input type="submit" value="Войти и продолжить заказ"></td><tr>
+<input type="hidden" name="old_referrer" value="[%location%]">
+<input type="hidden" name="a" value="auth_user">
+</form>		
+</table-->
+[%END%]
+[%END%]
+
+
+[%IF a == 'form_order'%]
+<script>
+
+function OpenClose(name,act){
+	var tek = document.getElementById(name).style.display;
+	if(tek == 'block' || act == 'close'){
+		document.getElementById(name).style.display='none';
+	}
+	if(tek == 'none' || act== 'open'){
+		document.getElementById(name).style.display='block';
+	}
+}
+
+</script>
+<style>
+.hdiv {
+display:none;
+position:absolute; 
+}
+</style>
+[%IF cook.users_cook.value%]
+<form action="/catalog/prod_milk.html" method=post name="form_zakaz">
+<table cellspacing="0">
+[%inc=0%]
+[%FOREACH data_r IN ar_r %]
+<tr><td class=td123><b><a href="#" onclick="OpenClose('cat[%inc%]','');return false;">+</a> [%data_r.name%]</b></td></tr>
+<tr><td>
+<table width="100%" cellspacing="0" cellpadding="2" id="cat[%inc%]" style="display:none;position:relative">
+<tr>
+    <td class="td123"><b>Наименование</b></td>
+    <td class="td123"><b>Штрих код<b></td>
+    <td class="td123"><b>ГОСТ<b></td>
+    <td class="td123"><b>Кол-во<b></td>
+</tr>
+[%FOREACH data IN data_r.data %]
+        <tr>
+	    <td style="border-bottom:solid 1px" class=td123><a href="/catalog/[%data.1%]/[%data.0%].html"><b>[%data.2%]</b></a></td>
+	    <td style="border-bottom:solid 1px;border-right:solid 1px;" class=td123>[%data.14||"&nbsp;"%]</td> 
+	    <td style="border-bottom:solid 1px" class=td123>[%data.15||"&nbsp;"%]</td> 
+	    <td style="border-bottom:solid 1px" width="7" class=td123><input name="col_[%data.0%]" value="0" size=1> </td>
+	</tr>
+[%END%]
+</table>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+[%inc=inc+1%]
+[%END%]
+</table>
+ <table>
+   <tr>
+    <td class=td123>Удобный способ оплаты:</td><td><input name=oplata value="[%oplata%]"></td>
+   </tr>
+   <tr>
+    <td valign=top class=td123>Комментарий:</td><td><textarea name=comments cols=34 rows=5>[%comments%]</textarea></td>
+   </tr>
+   <tr>
+    <td colspan=2 align=center><input type=submit value="Отправить заказ"></td>
+   </tr>
+ </table>
+<input type=hidden name=a value="send_order">
+</form>
+[%ELSE%]
+Для того чтобы сделать заказ, Вам необходимо пройти <a href="/users/users.html?a=forma">регистраци</a>.<br><br>Если вы уже зарегистрированы в системе, введите ваш логин и пароль в форме ниже.
+
+[%IF mess=='error'%]<br><br><b style="color:red">Пользователь с такими данеными не зарегистрирован</b>[%END%]
+<table>
+<form action="/users/users.html" method="post">
+<tr>
+<td class=td123>Логин:</td> <td><input type="text" name="login"></td>
+</tr><tr>
+<td class=td123>Пароль:</td> <td><input name="pass" type="password"></td>
+</tr>
+<tr><td></td><td><input type="submit" value="Войти и продолжить заказ"></td><tr>
+<input type="hidden" name="old_referrer" value="[%location%]">
+<input type="hidden" name="a" value="auth_user">
+</form>		
+</table>
+[%END%]
+
+[%END%]
+
+[%IF a == 'send_order'%]
+Ваша заявка принята! Мы свяжемся с вами в ближайшее время!
+[%END%]

@@ -1,0 +1,52 @@
+<!--Добавление/редактирование новости-->
+<table>
+
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR_NEWS}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/banners.cgi?a=view&sid=${SID}&l=${LANG}&idr=${IDR_NEWS}">Добавить баннер</a>::</td>
+<td>::<a href="/cgi-bin/mod/banners.cgi?sid=${SID}&l=${LANG}&id=${IDR_NEWS}">Все баннеры</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR_NEWS}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr><td><hr></td></tr>
+
+<tr>
+<td>
+<table><form action="/cgi-bin/mod/banners.cgi" method=post enctype="multipart/form-data"  id="edit" name="edit">
+<tr>
+<td><b>Место: </b></td><td width=85%>${PLACE}</td>
+</tr>
+
+<tr>
+<td><b>Ссылка: </b></td><td width=85%><input name=link value='${LINK}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Баннер: </b></td><td width=85%><input type=file name=upfile  class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td colspan=2>${BANNER}</td>
+</tr>
+
+<tr>
+<td colspan=2><input type=submit value="  Сохранить  " class=b1>
+</td>
+</tr>
+</table>
+<input type=hidden name=sec value="${SEC}">
+<input type=hidden name=sid value="${SID}">
+<input type=hidden name=file value="${FILE}">
+<input type=hidden name=l value="${LANG}">
+<input type=hidden name="id" value="${ID}">
+<input type=hidden name="idr" value="banners">
+<input type=hidden name=a value="save_news">
+</form>
+</td>
+</tr>
+</table>
+<!--Добавление/редактирование новости-->

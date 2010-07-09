@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<title>[%IF zag||name_zag_site%][%zag||name_zag_site%] | [%END%] Азнакай киемнэре </title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link href="/images/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+<div id="name">Швейнная фабрика ОАО &laquo;Азнакай киемнэре&raquo;</div>
+<div id="add">
+<div id="map"><a href="/tree/map.html">карта сайта</a></div>
+<div id="mail"><a href="/document/contacts.html">e-mail</a></div>
+<div id="home"><a href="/">главная</a></div>
+</div>
+<div id="contact">тел/факс: +7 (85592) 7-79-79,<br />
+тел: +7 (85592) 7-74-84<br /><br />
+адрес: 423332, РТ г. Азнакаево,<br />
+ул. Хасаншиной, д 16</div>
+</div>
+<div id="menu">
+<div id="menu_container">
+ <ul id="menu_items">
+[%FOREACH sub_menu IN main_menu_1('main') %]
+
+	[%IF sub_menu.name != "" && sub_menu.visible=='tree1=1,menu1=1'%]
+	<li><a href="[%IF sub_menu.link%][%sub_menu.link%][%ELSE%]/[%sub_menu.module%]/[%sub_menu.id%].html[%END%]">[%sub_menu.name%]</a>
+           
+	
+	</li>
+	[%END%]
+
+[%END%]
+
+ 
+ </ul>
+</div>
+</div>
+</div>
+<div class="main">
+<div id="zag"><div id="zag_txt"><h1>[%zag||name_zag_site%]</h1></div><div id="leftzag"></div></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+<td width="230" valign="top">
+<div class="leftColumn">
+<div id="topkatalog">
+<div id="namekatalog">Каталог</div>
+</div>
+<div id="bgkatalog">
+ <ul>
+[%FOREACH sub_menu IN main_menu_1('catalog') %]
+
+<li><a href="[%IF sub_menu.link%][%sub_menu.link%][%ELSE%]/[%sub_menu.module%]/[%sub_menu.id%].html[%END%]">[%sub_menu.name%]</a></li>
+
+[%END%]
+  
+ </ul>
+</div>
+<div id="nizkatalog"></div>
+</div></td>
+<td width="510" valign="top">
+<div class="content_txt">
+  [%PROCESS $tpl_%]
+
+
+   
+
+   
+
+  </div>
+</td>
+<td width="215" valign="top">
+<div id="rightColumn">
+<img src="/images/levris_1.jpg" /><br /><br />
+<img src="/images/levris_2.jpg" /><br /><br />
+<img src="/images/levris_3.jpg" />
+</div>
+<div id="rightbottom">
+</div>
+</td></tr></table>
+
+<div class="hFooter"></div>
+</div>
+<div class="footer">
+<div id="leftbg"><div id="risfooter"></div><div id="rightbg"></div><div id="copyright"><br />www.specfabrika.ru<br />Швейная фабрика ОАО «Азнакай киемнэре» Пошив и ремонт одежды Казань © 2009<br /><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='http://counter.yadro.ru/hit?t54.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число просмотров и"+
+" посетителей за 24 часа' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><!--/LiveInternet--><p id="copyalpha"><a href="http://www.alphaweb.ru">Создание сайта</a>, поддержка, реклама в интернет, <a href="http://www.2530360.ru">раскрутка сайта</a> - Умные интернет решения AlphaWeb</p>
+</div></div>
+</div>
+</body>
+</html>

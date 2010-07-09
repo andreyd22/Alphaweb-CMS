@@ -1,0 +1,31 @@
+<!--¬ывод дерева разделов дл€ переопределени€ родительского раздела -->
+<table>
+<tr><td>
+¬ыберите родительский раздел. ”казанный раздел будет прикреплен к родительскому вместе с подразделами
+</td></tr>
+<form action="/cgi-bin/mod/razdels.cgi">
+<tr><td> 
+<b>$NAME_R</b> <br>переместить в<br>
+<select name=idp>
+<option value='0'>√лавный раздел
+${SELECT}
+</select> 
+<br><input type=submit class=b1 value='—охранить'>
+</td></tr>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name='id' value='${ID_CHILED}'>
+<input type=hidden name=a value='change_parent'>
+
+
+<tr><td><hr>$NAME_R</td></tr>
+<tr><td>
+<table width=100%>
+<tr>
+$CONSTRUCTOR_MENU
+</tr>
+</table>
+</form>
+</td></tr>
+</table>
+<!--¬ывод дерева разделов дл€ переопределени€ родительского раздела -->

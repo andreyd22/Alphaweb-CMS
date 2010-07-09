@@ -1,0 +1,46 @@
+<!--Вывод одной регистрационной записи-->
+
+<tr>
+
+<td>
+
+<table style="border-style: solid;border-width:1px;border-color:#000000" width=100%>
+
+ <tr>
+
+  <td>
+
+    <table width=100%><tr bgcolor=#EFEFEF> 
+
+      <td width=150><b>${DATA}</b></td>
+      <td><a href="/cgi-bin/mod/reg.cgi?a=del&sid=${SID}&l=${LANG}&id=${IDR_REG}&id_del=${ID_DEL}">[x]</a></td>
+      <td align=right>
+
+<a title='Блокировать ip-адрес ${IP}' href="javascript:void(0)"
+onclick="document.block_form.block_ip.value=document.block_form.block_ip.value+'${IP}';document.block_form.block_ip.focus()"
+>[${IP}]</a></td>
+     </tr></table>
+
+   </td>
+
+ </tr>
+
+ <tr><td>
+
+  <table width=100%>
+
+  ${CELLS}
+
+  </table>
+
+  </td>
+
+ </tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<!--Вывод одной регистрационной записи-->

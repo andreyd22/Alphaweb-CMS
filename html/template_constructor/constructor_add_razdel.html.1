@@ -1,0 +1,186 @@
+<!--Редактируем / добавляем раздел-->
+<table width=90% align=center><form action="/cgi-bin/mod/razdels.cgi" method=post>
+<tr><td colspan=2 align=center height=50><b>Добавление/редактирование раздела</b> <b style="color:red">${NAME}</b></td></tr>
+
+<tr>
+<td width=150><b>Путь:</b><br>
+<small>положение в сруктуре сайта</small></td><td valign=top>${LINK_PATH}</td>
+</tr>
+<tr>
+<td width=150><b>Название:</b><br>
+<small>Например: "Мои фотографии". Отображается как раздел в меню</small></td><td valign=top><input name=name value="${NAME}" class=i1></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+<tr>
+<td width=150><b>Название латинскими буквами</b><br><small>Отображается в адресе вашего сайта, например: "about_me".
+<br>Вы можете оставить это поле без изменений</small></td><td valign=top><input name=id value="${ID}" class=i1></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+<tr>
+<td width=150><b>Выберите шаблон для раздела:</b><br>
+<small>
+Выберите нужный пункт из списка
+</small>
+</td><td valign=top><select name=index_tpl  style="width:150px">${OPTION_LINK_TPL}</select></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+<tr>
+<td width=150><b>Выберите язык раздел:</b><br>
+<small>
+Выберите нужный язык раздела из списка<br>
+Во избежания путаницы структурируйте языковые версии
+</small>
+</td><td valign=top><select name=lang_tpl  style="width:150px">${OPTION_LANG_TPL}</select></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+
+<tr>
+<td width=150><b>Ссылка на другой сайт</b>
+<small>Например: <b>http://sbn.bz</b> .<br> Ссылка будет открываться в текущем окне</small>
+</td><td valign=top><input name=link value="${LINK}" class=i1></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+<tr>
+<td width=150><b>Заголовок страницы</b><br>
+<small>
+Отображается в заголовке окна (title страницы).
+Здесь вы можете написать полное название раздела.
+ Оптимальная длина всех слов 40-80 символов.
+</small></td><td valign=top><input name=zag value="${ZAG}" class=i1></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+<tr>
+<td width=150><b>Ключевые слова</b><br>
+<small>
+Для поисковых машин.<br>
+Слова пишите через пробел.
+</small>
+
+</td><td valign=top><input name=keywords value="${KEYWORDS}" class=i1></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+<tr>
+<td width=150><b>Описание раздела</b><br>
+<small>
+Для поисковых машин.<br>
+Опишите вкратце этот раздел
+</small>
+</td><td valign=top><input name=description value="${DESCRIPTION}" class=i1></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+<tr>
+<td width=150><b>Где отображать раздел</b>
+<br><small>Выберите где будет отображаться ваш раздел</small>
+</td><td valign=top>${CHECK_VISIBLE}</td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+
+<tr>
+<td width=150><b style="color:red">Тип раздела</b>
+<br><small>
+<b>Выберите тип создаваемого раздела</b>
+</small>
+</td><td valign=top><select name=mod $CONFIRM style="width:150px">${OPTION_MOD}</select></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+<tr>
+<td width=150><b style="color:red">Уровень доступа</b>
+<br><small>
+<b>Выберите администратора данного раздела:</b>
+</small>
+</td><td valign=top><select name=admin_groups style="width:250px">${ADMIN_GROUPS}
+</select></td>
+</tr>
+<tr><td colspan=2><hr width=250 align=left></td></tr>
+<tr>
+<td width=150><b>Отображать ссылки на:</b><br>
+<small>
+Выберите нужный пункт из списка, если вы хотите чтобы на странице были дополнительные ссылки на смежные, 
+дочерние или родительский разделы
+</small>
+</td><td valign=top><select name=link_view  style="width:150px">${OPTION_LINK}</select></td>
+</tr>
+
+<tr>
+<td colspan=2><hr></td>
+</tr>
+
+<tr>
+<td colspan=2 align=center><b>Включения из других разделов</b></td>
+</tr>
+
+<tr>
+<td colspan=2>
+<small style='font-size:11px;'>Включения - это ссылки на другие разделы с описаниями из поля "<b>Описание раздела</b>".<br>
+Выберите из какого раздела сделать включения на страницу этого раздела.<br>
+В поле <b>кол.</b> введите максимальное количество включений из выбранного раздела.</small><br>
+В поле <b>номер</b> введите номер шаблона включения (1-9).<br>
+файлы шаблонов называются includesN.tpl, где N - номер<br>
+переменная включений - ${INCLUDES_ROWn} где n - номер<br>
+<br>
+</td>
+</tr>
+
+<tr>
+<td width=150>Создать включение из раздела</td><td>
+<select name=id_inc0 class=i1>
+<option value=''>Выберите включение
+${SELECT0}</select> кол.:<input name=col_inc0 value="${COL_INC0}" class=i1 style="width:30px">
+номер.:<input name=num_inc0 value="${NUM_INC0}" class=i1 style="width:30px">
+</td>
+</tr>
+
+<tr>
+<td width=150>Создать включение из раздела</td><td>
+<select name=id_inc1 class=i1>
+<option value=''>Выберите включение
+${SELECT1}</select> кол.:<input name=col_inc1 value="${COL_INC1}" class=i1 style="width:30px">
+номер.:<input name=num_inc1 value="${NUM_INC1}" class=i1 style="width:30px">
+</td>
+</tr>
+
+<tr>
+<td width=150>Создать включение из раздела</td><td>
+<select name=id_inc2 class=i1>
+<option value=''>Выберите включение
+${SELECT2}</select> кол.:<input name=col_inc2 value="${COL_INC2}" class=i1 style="width:30px">
+номер.:<input name=num_inc2 value="${NUM_INC2}" class=i1 style="width:30px">
+</td>
+</tr>
+
+<tr>
+<td width=150>Создать включение из раздела</td><td>
+<select name=id_inc3 class=i1>
+<option value=''>Выберите включение
+${SELECT3}</select> кол.:<input name=col_inc3 value="${COL_INC3}" class=i1 style="width:30px">
+номер.:<input name=num_inc3 value="${NUM_INC3}" class=i1 style="width:30px">
+</td>
+</tr>
+
+<tr>
+<td width=150>Создать включение из раздела</td><td>
+<select name=id_inc4 class=i1>
+<option value=''>Выберите включение
+${SELECT4}</select> кол.:<input name=col_inc4 value="${COL_INC4}" class=i1 style="width:30px">
+номер.:<input name=num_inc4 value="${NUM_INC4}" class=i1 style="width:30px">
+</td>
+</tr>
+
+<tr>
+<td colspan=2 align=center><input type=submit value="Сохранить" class=b1></td>
+<input type=hidden name=l value="${LANG}">
+<input type=hidden name=sort value="${SORT}">
+<input type=hidden name=idp value="${IDP}">
+<input type=hidden name=id_old value="${ID_OLD}">
+<input type=hidden name=sid value="${SID}">
+<input type=hidden name=a value="save">
+</tr></form>
+</table>
+<!--Редактируем / добавляем раздел-->

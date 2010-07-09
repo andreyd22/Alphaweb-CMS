@@ -1,0 +1,44 @@
+<table>
+<tr><td><a href="/cgi-bin/_admin/template.cgi">Шаблоны</a> :: <a href="/cgi-bin/_admin/users.cgi">Пользователи</a></td></tr>
+<tr><td><form action="/cgi-bin/_admin/users.cgi">
+<b>Всего $COL пользователей</b><br>
+<b>Логин:</b> <input class=i1 name=login> <br>
+<input type=submit value='Искать'>
+</td></tr></form>
+<tr><td>
+<table>
+ <tr bgcolor=#EEEEEE>
+ <td>id</td><td>дата</td><td>логин</td><td>домен</td><td>пароль</td><td>имя</td><td>email</td><td>размер</td><td>Удалить</td>
+ </tr>
+${ROW_U}
+</table>
+</td></tr>
+<tr><td align=right>
+${PEREHOD}
+</td></tr>
+<tr>
+ <td><a name="form"></a>
+ <table align=center border=0> <form action="/cgi-bin/_admin/users.cgi" method=post>
+ <tr><td>Дата регистрации</td><td>$DATE_U</td></tr>
+ <tr><td>Дата окончания хостинга<br>для интернет магазина</td><td><input type=text name='time_end' value="${TIME_END_U}" class=i1> ${TIME_END_PR_U}</td></tr>
+ <tr><td>Login</td><td><input type=hidden name='login' value="${LOGIN_U}" class=i1><b><a target=_blank href="http://${LOGIN_U}.${DOMEN_U}" title="Открыть в новом окне">${LOGIN_U}.${DOMEN_U}</a></b></td></tr>
+ <tr><td>Пароль</td><td><input type=text name='pass' value="${PASS_U}" class=i1></td></tr>
+ <tr><td>Имя</td><td><input type=text name='name' value="${NAME_U}" class=i1></td></tr>
+ <tr><td>E-mail</td><td><input type=text name='email' value="${EMAIL_U}" class=i1></td></tr>
+ <tr><td>Номер</td><td><input type=text name='id' value="${ID_U}" class=i1></td></tr>
+ <tr><td>Статус</td><td><input type=text name='id' value="${STATUS_U}" class=i1></td></tr>
+ <tr><td>Размер</td><td><input type=text name='size' value="${SIZE_U}" class=i1></td></tr>
+ <tr><td>Код</td><td><input type=text name='kod' value="${KOD_U}" class=i1></td></tr>
+ <tr><td>Имя сайта</td><td><input type=text name='name_site' value="${NAME_SITE_U}" class=i1></td></tr>
+ <tr><td>Раздел сайта</td><td>${SEL_IDR_U}</td></tr>
+ <tr><td>Описание сайта</td><td></td></tr>
+ <tr><td colspan=2 align=center>
+<textarea name=about cols=45 rows=5>${ABOUT_U}</textarea>
+</td></tr>
+ <tr><td colspan=2 align=center><input type=submit value="Сохранить" class=b1></td></tr>
+ <input type=hidden name=a value='insert'>
+ </table>
+</form>
+ </td>
+</tr>
+</table>

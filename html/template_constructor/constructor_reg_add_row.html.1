@@ -1,0 +1,61 @@
+<!-- -->
+
+<form action="/cgi-bin/mod/reg.cgi" method="post" name="edit_field_${NAME_FIELD_LAT}">
+
+<tr>
+	<td style="border-style: solid;border-width:1px;border-color:#000000"><a name="to_${NAME_FIELD_LAT}"></a>
+		<table cellspacing=2 cellpadding=2>
+		<tr>
+			<td><b>Имя поля:</b><br>
+				<small>Например: Ваше имя</small>
+			</td>
+			<td><input name=name_field class=i1 value="${NAME_FIELD}"></td>
+		</tr>
+		<tr>
+			<td><b>Имя поля (лат):</b><br><small>Например: your_name</small></td>
+			<td><input name=name_field_lat class=i1 value="${NAME_FIELD_LAT}"></td>
+		</tr>
+		<tr>
+			<td><b>Тип поля:</b></td>
+			<td><select id="sel_${NAME_FIELD_LAT}" name="type_field" class="i1" onchange="view_params('${NAME_FIELD_LAT}',this.value);">
+				<option value='text'>Простое</option>
+				<option value='textarea'>Расширенное</option>
+				<option value='select'>Список</option>
+				<option value='checkbox'>Выбор вариантов (checkbox)</option>
+				<option value='radio'>Выбор одного варианта (radio)</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><div id="params_${NAME_FIELD_LAT}">${FIELD_PARAMS}</div></td>
+		</tr>
+		<tr>
+			<td align=left><input type=submit value='Save' class=b1 onclick="this.submit()">
+					<input name="a" type=hidden value='edit_field'>
+			<input type="hidden" name=name_lat_old value="${NAME_FIELD_LAT_OLD}">
+			<input name="pos" type="hidden" value="${POS}">
+			<input name="sid" type=hidden value='${SID}'>
+			<input name="id" type=hidden value='${IDR_REG}'>
+			<input name="save" type=hidden value='ok'>
+			<input name="l" type=hidden value='${LANG}'>
+		</form>
+			</td>
+
+			<form action="/cgi-bin/mod/reg.cgi" method="post" name="del_field_${NAME_FIELD_LAT}">
+			<td align=left><input type="submit" value='Удалить' class=b1>
+<input name="pos" type=hidden value="${POS}">
+<input name="name_field_lat" type=hidden value="${NAME_FIELD_LAT}">
+<input name="a" type=hidden value='del_field'>
+<input name=sid type=hidden value='${SID}'>
+<input name=id type=hidden value='${IDR_REG}'>
+<input name=l type=hidden value='${LANG}'>
+</form>
+			</td>
+		</tr>
+	</table>
+	</td>
+</tr>
+<script>
+${SEL_ITEM}
+</script>
+<!-- -->

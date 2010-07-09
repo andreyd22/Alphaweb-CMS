@@ -1,0 +1,31 @@
+<!--Добавляем редактируем нового пользователя-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=edit_st&sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=view&sid=${SID}&l=${LANG}&id=${ID}">Добавить пользователя</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Все пользователи</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=make_letter">Разослать письмо</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<tr><td>В базе доступных ${COUNT} ${NAME_STATUS}</td></tr>
+<td>
+<table align=center><form action="/cgi-bin/mod/${MOD}.cgi" method=post>
+<tr><td><b>Тема</b></td><td><input name='subject' value=""></td></tr>
+<tr><td colspan=2><b>Текст письма</b></td></tr>
+<tr><td colspan=2><textarea name=message cols=25 rows=5 style="border-style:solid;border-width:1px;">${DOP}</textarea></td></tr>
+<tr><td align=center colspan=2><input type=submit value="Отправить"></td></tr>
+<input type=hidden name=a value='send_letter'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+<input type=hidden name=id_user value='${ID_USER}'>
+</form>
+</table>
+</td></form>

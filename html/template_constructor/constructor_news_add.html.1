@@ -1,0 +1,115 @@
+<table width="100%">
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=view&sid=${SID}&l=${LANG}&idr=${IDR}">Добавить новость/статью</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${IDR}">Все новости/статьи</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr><td><hr></td></tr>
+
+<tr>
+<td>
+<table width="100%"><form action="/cgi-bin/mod/${MOD}.cgi" method=post  id="edit" name="edit">
+<tr>
+<td><b>Дата: </b></td>
+<td>
+ <table><tr>
+ <td>день <input name=day value="${DAY}" class=i1 style="width:22px"></td>
+ <td>месяц <input name=month value="${MONTH}" class=i1 style="width:22px"></td>
+ <td>год <input name=year value="${YEAR}" class=i1 style="width:42px"></td>
+ <td>часы <input name=hour value="${HOUR}" class=i1 style="width:22px"></td>
+ <td>минуты <input name=min value="${MIN}" class=i1 style="width:22px"></td>
+ </tr></table>
+</td>
+</tr>
+<tr>
+<td><b>Заголовок: </b></td><td width=85%><input name=zag value='${ZAG_NEWS}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Title: </b></td><td width=85%><input name="title" value='${TITLE_NEWS}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Ключевые слова: </b></td><td width=85%><input name=keywords value='${KEYWORDS_NEWS}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Description: </b></td><td width=85%><input name=description value='${DESCRIPTION_NEWS}' class=i1 style="width:400px"></td>
+</tr>
+	<link href="/fckeditor/_samples/sample.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
+<tr>
+<td colspan=2><b>Анонс Новости/Статьи</b> 
+</td>
+</tr>
+<tr>
+<td colspan=2>
+<script type="text/javascript">
+<!--
+// Automatically calculates the editor base path based on the _samples directory.
+// This is usefull only for these samples. A real application should use something like this:
+// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+//var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
+
+var oFCKeditor = new FCKeditor( 'short' ) ;
+oFCKeditor.BasePath	= '/fckeditor/' ;
+oFCKeditor.Height	= 250 ;
+oFCKeditor.Value	= '${SHORT}' ;
+oFCKeditor.Create() ;
+//-->
+</script>
+
+
+</td>
+</tr>
+<tr>
+<td colspan=2><b>Новость/Статья полностью</b></td>
+</tr>
+<tr>
+<td colspan=2>
+
+
+<script type="text/javascript">
+<!--
+// Automatically calculates the editor base path based on the _samples directory.
+// This is usefull only for these samples. A real application should use something like this:
+// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+//var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
+
+var oFCKeditor4 = new FCKeditor( 'full_news' ) ;
+oFCKeditor4.BasePath	= '/fckeditor/' ;
+oFCKeditor4.Height	= 300 ;
+oFCKeditor4.Value	= '${FULL_NEWS}';
+oFCKeditor4.Create() ;
+
+//-->
+</script>
+
+
+</td>
+</tr>
+<tr>
+<td colspan=2>
+
+
+<input type="submit" value="  Сохранить  " class="b1">
+</td>
+</tr>
+</table>
+<input type=hidden name=sec value="${SEC}">
+<input type=hidden name=sid value="${SID}">
+<input type=hidden name=l value="${LANG}">
+<input type=hidden name="id" value="${ID}">
+<input type=hidden name="idr" value="${IDR}">
+<input type=hidden name="id_news" value="${ID_NEWS}">
+<input type=hidden name=a value="save_news">
+</form>
+</td>
+</tr>
+</table>
+<!--Добавление/редактирование новости-->

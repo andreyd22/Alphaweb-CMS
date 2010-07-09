@@ -1,0 +1,26 @@
+<table width=100%>
+<tr>
+<td align=center>
+<b style="color:red">${MES}</b>
+</td>
+</tr>
+<tr>
+<td align=center>
+<b>Авторизация</b>
+</td>
+</tr>
+<tr>
+<td align=center>
+<table><form action="/cgi-bin/auth.pl" method=post>
+<tr><td align=right><b>Домен:</b></td><td><input name='login' class=i2 value="${LOGIN_NAME}">.${HOST_NAME}</td></tr>
+<tr><td align=right><b>Пароль:</b></td><td><input type=password name='pass' class=i2></td></tr>
+<tr><td colspan=2 align=center><input type=submit value="Вход" class=b1></td></tr>
+<tr><td colspan=2 align=center>
+<a href="/cgi-bin/lost_pwd.pl?sid=${SID}&l=${LANG}">Забыли пароль?</a> :: <a href="/cgi-bin/reg.pl?sid=${SID}&l=${LANG}">Регистрация</a>
+</td></tr>
+<input type=hidden name=l value="${LANG}">
+</form>
+</table>
+</td>
+</tr>
+</table>

@@ -1,0 +1,134 @@
+<style>
+.gal {
+float:left;
+width: 130px;
+height:150px;
+padding:5px;
+}
+
+.gal2 {
+float:left;
+width: 250px;
+padding:10px;
+padding-left:30px;
+}
+
+.gal4 {
+width: 150px;
+padding: 10px;
+}
+
+#line_vert {
+float:left;
+width: 1px;
+background-color:#666;
+height: 300px;
+}
+
+.gal3 {
+float:left;
+width: 100px;
+padding:10px;
+}
+
+.main_left_gal {
+width: 500px;
+padding: 10px;
+}
+
+</style>
+[%IF a=="" %]
+<table width="100%"><tr><td>
+[%IF $tpl_top != ''%]
+[%PROCESS $tpl_top%]
+[%END%]
+</td></tr></table>
+<script src="/javascripts/prototype.js" type="text/javascript"></script>
+<script src="/javascripts/scriptaculous.js?load=effects" type="text/javascript"></script>
+
+<script type="text/javascript" src="/javascripts/lightbox.js"></script>
+<link rel="stylesheet" href="/javascripts/lightbox.css" type="text/css" media="screen" />
+
+[%i=0%]
+[%IF perehod%]
+<p align="center"><small>Страницы: </small>[%perehod%]</p>
+[%END%]
+
+<table align="center"><tr><td>
+[%FOREACH ref_data IN ar_data %]
+    [%i=i+1%]
+      <div class="gal" align="center">
+    <a href="/gallery/[%ref_data.idr%]/[%ref_data.id%].html"><img src="/base/gallery_image/[%ref_data.id%]-s.jpg" border="1"></a><br>
+    [%ref_data.name_r%]
+    </div>
+
+[%END%]
+</td></tr></table>
+[%IF perehod%]
+<p align="center"><small>Страницы: </small>[%perehod%]</p>
+[%END%]
+
+
+[%END%]
+
+
+[%IF a=="full"%]
+[%IF mess=='ok'%]<center><b style="color:green">Ваш комментарий успешно добавлен</b></center>[%END%]
+<script src="/javascripts/prototype.js" type="text/javascript"></script>
+<script src="/javascripts/scriptaculous.js?load=effects" type="text/javascript"></script>
+
+<script type="text/javascript" src="/javascripts/lightbox.js"></script>
+<link rel="stylesheet" href="/javascripts/lightbox.css" type="text/css" media="screen" />
+  <div align="center">
+  <a href="/base/gallery_image/[%ref_data.id%].jpg" rel="lightbox[roadtrip]"><img src="/base/gallery_image/[%ref_data.id%]-m.jpg"></a>
+  </div>
+<h2>Комментарии</h2><p align="right"><a href="#add_comment">Оставить комментарий</a>&nbsp;&nbsp;</p>
+
+    <table width="100%" border="0" cellspacing="2" cellpadding="2">
+
+[%FOREACH data IN ar_data %]
+      <tr>
+        <td class="news-date">[%data.data_print%]</td>
+        <td width="100%" class="news-zag">[%data.subject%]</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="news-text">
+        [%data.record%]<br>
+	 <small>Отправитель: [%data.name%]</small>
+	</td>
+     </tr>
+[%IF data.answer%]
+      <tr>
+	<td>&nbsp;</td>
+        <td class="news-text">
+        [%data.answer%]
+	 <p align="right">Администратор</p>
+	</td>
+     </tr>
+[%END%]
+<tr><td colspan="2" style="border-bottom:solid black 1px">&nbsp;</td></tr>
+[%END%]
+
+    </table>
+
+[%perehod%]
+<br><br>
+<a name="add_comment"></a>
+<h2>Добавить комментарий</h2>
+<TABLE align=center border=0><FORM ACTION="/cgi-bin/view/guest.cgi" method=post>
+<TR><TD width=100><b>Ваше имя*:</b></TD><TD width=250><INPUT TYPE=TEXT NAME=name style="width:250"></TD></TR>
+<TR><TD width=100><b>Ваш E-mail*:</b></TD><TD width=250><INPUT TYPE=TEXT NAME=email style="width:250"></TD></TR>
+<TR><TD width=100><b>Тема/заголовок*:</b></TD><TD width=250><INPUT TYPE=TEXT NAME=subject style="width:250"></TD></TR>
+<TR><TD colspan=2><b>Текст*:</b></TD></TR>
+<TR><TD colspan=2><TEXTAREA NAME=record rows=5 cols=45 style="width:350"></TEXTAREA></TD></TR>
+<tr><td><b>Введите число</b></td><td><input type=text name=pass value=""></td><td>[%INSERT captcha.html%]</td></tr>
+<INPUT TYPE=HIDDEN name=id value="[%id%]">
+<INPUT TYPE=HIDDEN name=id_gallery value="[%ref_data.id%]">
+<INPUT TYPE=HIDDEN name="return_url" value="[%location%]">
+<INPUT TYPE=HIDDEN name=a value="insert">
+<TR><TD align=center><input type=submit value="отправить"></TD>
+<TD align=center><input type=reset value="очистить"></TD></TR>
+</TABLE> </form>
+
+    
+[%END%]

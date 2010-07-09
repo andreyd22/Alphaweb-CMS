@@ -1,0 +1,73 @@
+<!--e-Shop-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Добавить организацию</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Показать организации</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><b>${TITLE}</b></td></tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<form action="/cgi-bin/mod/${MOD}.cgi" method=post>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+<table>
+<tr bgcolor=#EFEFEF>
+<td>Выводить по</td><td><input name=col_records class=i2 value="${COL_RECORDS}"> записей на странице </td>
+</tr>
+
+
+<tr><td colspan=2>
+<input type=submit value='Сохранить' class=b1>
+</td></tr></table>
+</td></tr>
+<input name=a type=hidden value='save_data'>
+<input name=sid type=hidden value='${SID}'>
+<input name=id type=hidden value='${ID}'>
+<input name=l type=hidden value='${LANG}'>
+<input name=PageIn type=hidden value='${PAGEIN}'>
+<input name=p_n type=hidden value='${PN}'>
+</form>
+</tr><form action="/cgi-bin/mod/${MOD}.cgi" method=get>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+<b>Поиск организаций:</b> <input name=slovo value='${SLOVO}' class=i2> <input type=submit value='Поиск'></td></tr>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+</form>
+<tr><td><b>Список организаций</b> (найдено <b>${COUNT}</b>)</td></tr><form action="/cgi-bin/mod/${MOD}.cgi" method=post>
+<tr><td align=right>
+<input type=submit value="Обновить статус" name="upd_status">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="Поменять разделы/сортировку" name="upd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="Удалить отмеченные" name="del"></td></tr>
+<td>
+<table width=100%>
+<tr>
+<td><b>Название</b></td>
+<td><b>Раздел</b></td>
+<td><b>Сорт.</b></td>
+<td><b>email</b></td>
+<td><b>пароль</b></td>
+<td><b>Удалить</b></td>
+</tr>
+${ROW_CAT}
+</table>
+</td>
+</tr>
+<tr><td align=right>
+<input type=submit value="Обновить статус" name="upd_status">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="Поменять разделы/сортировку" name="upd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="Удалить отмеченные" name="del"></td></tr>
+<input type=hidden name=a value='del_cat'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+</form>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>
+<!--e-Shop-->

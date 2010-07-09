@@ -1,0 +1,38 @@
+BODY,TD {font-size:9pt;font-family:tahoma;color:#000000;}
+
+input {font-size:8pt;font-family:verdana,tahoma;}
+select {font-size:10px;font-family:verdana,tahoma;}
+#desktop {font-size:9px;color:#000000}
+#topbox { font-size:9px;color:#000000}
+
+.i1{border-style:groove}
+.i2{width:100px;border-style:groove}
+.i11{width:100px;border-style:groove}
+.b1{border-style:groove;background:#FFFFFF}
+
+
+a:link {color:#FF6300;text-decoration:none;font-size:9pt;font-family:Verdana;}
+a:visited {color:#FF6300;text-decoration:none;font-size:9pt;font-family:Verdana;}
+a:hover {text-decoration:underline}
+
+/*
+a:link {color:#0099CC;text-decoration:none;font-size:9pt;font-family:Verdana;}
+a:visited {color:#0099CC;text-decoration:none;font-size:9pt;font-family:Verdana;}
+a:hover {text-decoration:underline}
+*/
+
+a.s:hover {text-decoration:none}
+
+.td_ygol_r {background:#F3F3F3 border-style: solid; border-width:1px;border-color:#B1B1B1; background-repeat:no-repeat; background-position: right top}
+.td_ygol_l {background:#F3F3F3 border-style: solid; border-width:1px;border-color:#B1B1B1; background-repeat:no-repeat; background-position: left top}
+.td_simple {background:#F3F3F3;border-style: solid; border-width:1px;border-color:#B1B1B1;}
+
+b.y {color:#F66001}
+b {color:#7F7F7F}
+b.b {color:#000000}
+.td_y {background:#F66001;width:5px;height:30px}
+.tr_y {background:#F66001;height:3px}
+
+/*Линия*/
+hr {height:1px;shade:no;color:#000000}
+/*Линия*/

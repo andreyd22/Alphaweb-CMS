@@ -1,0 +1,57 @@
+<!--e-Shop-->
+<html><head>
+<title>Заказ # ${ID_ZAKAZ}</title></head><body>
+<table width=100%>
+<tr><td><center><b style="color:red">Заказ # ${ID_ZAKAZ} от ${DATA}</b></center></td></tr>
+<tr><td><b>Пользователь:</b></td></tr>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+email: <a href="mailto:${EMAIL_U}">${EMAIL_U}</a><br>
+ФИО: <i>${FIO_U}</i></td></tr>
+<tr><td><b>Адрес доставки:</b></td></tr>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">${ADRES}</td></tr>
+<tr><td><hr size=1></td></tr>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+ <table>
+  <tr>
+    <td><b>Способ доставки:</b></td> <td>${DOSTAVKA}</td>
+  </tr>
+  <tr>
+    <td><b>Оплата:</b></td> <td>${OPLATA}</td>
+  </tr>
+  <tr>
+    <td><b>Телефон:</b></td> <td>${PHONE}</td>
+  </tr>
+  <tr>
+    <td><b>Дополнительно:</b></td> <td>${DOP}</td>
+  </tr>
+ </table>
+</td></tr>
+<tr><td><hr size=1></td></tr>
+<tr><td><b>Товары:</b></td></tr>
+<tr><td>
+<table width=100%>
+<tr>
+<td><b><i>Наименование</i></b></td>
+<td><b><i>Кол-во</i></b></td>
+<td><b><i>Сумма</i></b></td>
+</tr>
+${ROW_CAT_BASKET}
+</table>
+</td>
+</tr>
+<tr>
+<td><hr size=1></td>
+</tr>
+<tr><td align=right>
+  <table>
+  <tr>
+    <td>Скидка</td><td>${SKIDKA} %</td>
+  </tr>
+  <tr>
+    <td><b>ИТОГО</b></td><td>${ALL_COST} ${CURENCY}</td>
+  </tr>
+  </table>
+</td></tr>
+</table>
+</body></html>
+<!--e-Shop-->

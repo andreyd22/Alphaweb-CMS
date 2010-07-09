@@ -1,0 +1,4 @@
+AuthName "Member's Area"
+AuthType Basic
+AuthUserFile /home/u15712/beavervending.ru/www/.myhtpasswd
+require user beaver

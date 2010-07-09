@@ -1,0 +1,4 @@
+AuthName "Member's Area, For Registered Users Only"
+AuthType Basic
+AuthUserFile /home/u8926/e-vending.ru/www/.myhtpasswd
+require valid-user

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<title>[%IF data.name%][%data.name%] | [%END%][%IF zag||name_zag_site%][%zag||name_zag_site%] | [%END%] Канцелярские товары "Группа компаний Мэтр"</title>
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/menu/dropmnu.js"></script>
+<link href="/menu/dropmnu.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="main">
+<!--header-->
+<div id="logo">
+<div id="name">ООО Группа Компаний «Мэтр»</div>
+
+<div id="add">
+<a href="/" id="home"></a>
+<a href="/reg/contacts.html" id="mail"></a>
+<a href="/tree/map.html" id="map"></a>
+</div>
+
+<div id="search">
+<form action="/cgi-bin/view/catalog.cgi" method="get">
+<input name="slovo" type="text" value="Поиск по каталогу..." onfocus="if(this.value=='Поиск по каталогу...')value=''" onblur="if(this.value=='')value='Поиск по каталогу...';" style="color: #666;width:150px"/>
+<input name="" type="image" src="/images/butsearch.jpg" width="32" height="17" align="top" style="margin: 3px 0 0 0; cursor: pointer;" />
+</div></form>
+
+<div id="menu">
+<ul id="nav">
+
+[%FOREACH sub_menu IN main_menu_1('main') %]
+	[%IF sub_menu.name != "" && sub_menu.visible=='tree1=1,menu1=1'%]
+	<li><a href="[%IF sub_menu.link%][%sub_menu.link%][%ELSE%]/[%sub_menu.module%]/[%sub_menu.id%].html[%END%]" title="[%sub_menu.zag%]">[%sub_menu.name%]</a>
+	    [%inc=0%]
+	    [%FOREACH sub_menu2 IN main_menu_1(sub_menu.id) %]
+		[%inc=inc+1%]
+		[%IF inc == 1%]
+		    <ul>
+		[%END%]
+		    <li><a href="[%IF sub_menu2.link%][%sub_menu2.link%][%ELSE%]/[%sub_menu2.module%]/[%sub_menu2.id%].html[%END%]" title="[%sub_menu2.zag%]">[%sub_menu2.name%]</a></li>
+	    [%END%]
+		[%IF inc >= 1%]
+		    </ul>
+		[%END%]
+	</li>
+	[%END%]
+
+[%END%]
+
+
+</ul>
+</div>
+
+</div>
+<!--end header-->
+
+<!--content-->
+<div id="cont">
+[%IF a == 'full'%]
+<h2 align="right">[%zag||name_zag_site%]</h2>
+[%ELSE%]
+<h1>[%zag||name_zag_site%]</h1>
+[%END%]
+<div style="width:250px;float:left;margin-left:25px;margin-right:25px;margin-top:10px">
+    [%inc=0%]
+    [%FOREACH sub_link IN sub_links(id) %]
+	[%IF sub_link.name != ""%]
+	    [%inc=inc+1%]
+[%IF inc>1%]<br> [%END%]<a href="[%IF sub_link.link%][%sub_link.link%][%ELSE%]/[%sub_link.module%]/[%sub_link.id%].html[%END%]">[%sub_link.zag||sub_link.name%]</a>
+	    [%END%]
+    [%END%]
+    [%IF inc>0%]<p>&nbsp;</p>[%END%]
+</div>
+
+[%IF $tpl_top%]
+[%PROCESS $tpl_top%]
+[%END%]
+
+[%PROCESS $tpl_%]
+
+[%IF id == 'main'%]
+<br><br>
+<h1>Новости и события</h1>
+<div class="text">
+
+    [%FOREACH data_news IN include_news('action','3') %]
+        <b>[%data_news.data_d%] [%data_news.data_month%] 20[%data_news.data_y%]</b><br>
+	<b>[%data_news.zag%]</b><br/>
+	<p>[%data_news.short%] [%IF data_news.full_news%]<a href="/news/action/[%data_news.id%].html" id="noline">[Подробнее]</a>[%END%]</p>
+    [%END%]
+		    
+		    
+	<a href="/news/action.html" id="noline">Архив</a>
+    </div>
+<br>
+[%END%]
+[%IF 1 == 2%]
+<h1>Наша продукция</h1>
+
+<div id="katalog">
+[%FOREACH data IN get_sql("SELECT * from catalog_  order by RAND() limit 10") %]
+
+<div id="kat_bl">
+<div id="kat_ris">[%IF data.img_end%]<a href="/catalog/[%data.idr%]/[%data.id%].html" title="[%data.name%]"><img src="/base/cat_image/[%data.id%]-s.[%data.img_end%]"></a>[%END%]</div>
+<div id="katalog_text">[%data.name%]<br /><a href="/catalog/[%data.idr%]/[%data.id%].html">подробнее</a></div>
+<div id="katalog_cena">[%data.cost%] руб</div>
+</div>
+
+[%END%]
+</div>
+
+[%END%]
+
+</div>
+<!--end content-->
+</div>
+
+
+<div class="hFooter"></div>
+</div>
+
+<div class="footer">
+<div id="foocompany">
+<div id="foocompany_txt">Адрес: г. Москва, Дмитровское ш. д.100, стр.2<br /><span id="foocompany_color">тел: 967-99-63, 778-75-41  (многоканальный)</span><br />
+<span id="foocompany_colorone">email: info@meetr.ru</span></div>
+</div>
+<div id="foocopyright"><a href="http://www.alphaweb.ru">Создание сайта</a>, поддержка, реклама в интернет, <a href="http://www.2530360.ru">раскрутка сайта</a> - AlphaWeb</div>
+</div>
+</body>
+</html>

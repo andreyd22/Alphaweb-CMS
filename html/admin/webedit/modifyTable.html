@@ -1,0 +1,458 @@
+<HTML>
+<TITLE>WebEdit - modify table</TITLE>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link rel="stylesheet" href="webedit.css" type="text/css">
+</HEAD>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<script language=javascript>
+var myTable = window.opener;
+
+window.onload = setValues;
+
+var tableBgColor = myTable.selectedTable.bgColor;
+var tableSpacing = myTable.selectedTable.cellSpacing;
+var tablePadding = myTable.selectedTable.cellPadding;
+var tableBorder = myTable.selectedTable.border;
+var tableWidth = myTable.selectedTable.width;
+
+function setValues() {
+
+    if (tableSpacing == "") tableSpacing = 2;
+    if (tablePadding == "") tablePadding = 1;
+    if (tableBorder == "") tableBorder = 0;
+
+    // tableForm.table_bgcolor.value = tableBgColor;
+    tableForm.table_padding.value = tablePadding;
+    tableForm.table_spacing.value = tableSpacing;
+    tableForm.table_border.value = tableBorder;
+    tableForm.table_width.value = tableWidth;
+    this.focus();
+}
+
+function doModify() {
+
+    var error = 0;
+    if (isNaN(tableForm.table_padding.value) || tableForm.table_padding.value < 0 || tableForm.table_padding.value == "") {
+        alert("Cell Padding must contain a valid, positive number")
+        error = 1
+        tableForm.table_padding.select()
+        tableForm.table_padding.focus()
+    } else if (isNaN(tableForm.table_spacing.value) || tableForm.table_spacing.value < 0 || tableForm.table_spacing.value == "") {
+        alert("Cell Spacing must contain a valid, positive number")
+        error = 1
+        tableForm.table_spacing.select()
+        tableForm.table_spacing.focus()
+    } else if (isNaN(tableForm.table_border.value) || tableForm.table_border.value < 0 || tableForm.table_border.value == "") {
+        alert("Border must contain a valid, positive number")
+        error = 1
+        tableForm.table_border.select()
+        tableForm.table_border.focus()
+    }
+
+    if (error != 1) {
+            myTable.selectedTable.cellPadding = tableForm.table_padding.value
+            myTable.selectedTable.cellSpacing = tableForm.table_spacing.value
+            myTable.selectedTable.border = tableForm.table_border.value
+            myTable.selectedTable.width = tableForm.table_width.value
+            if (tableForm.bgColor[tableForm.bgColor.selectedIndex].text != "None") {
+                myTable.selectedTable.bgColor = tableForm.bgColor[tableForm.bgColor.selectedIndex].text
+            } else {
+                myTable.selectedTable.removeAttribute('bgColor',0)
+            }
+        
+            window.close()
+    }
+}
+
+function printBgColor() {
+    if ((tableBgColor != undefined) && (tableBgColor != "")) {
+        document.write('<option selected style="BACKGROUND-COLOR: ' + tableBgColor + '">' + tableBgColor)
+        document.write('<option>None')
+    } else {
+        document.write('<option selected>None')
+    }
+}
+
+document.onkeydown = function () { 
+            if (event.keyCode == 13) {  // ENTER
+                doModify()                  
+            }
+    };
+
+document.onkeypress = onkeyup = function () {
+    if (event.keyCode == 13) {  // ENTER
+        event.cancelBubble = true;
+        event.returnValue = false;
+        return false;
+    }
+};
+
+</script>
+
+<form name=tableForm>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15"><img src="_images/1x1.gif" width="15" height="1"></td>
+      <td class="heading1">Modify Table Properties</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+      <td class="body">Enter the required information and click &quot;Modify Table&quot; to modify the table properties of your table.<br>
+        Click the &quot;Cancel&quot; Button to  close this window.</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="body">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="body">
+      <table width="98%" border="0" cellspacing="0" cellpadding="0" class="bevel1">
+        <tr>
+            <td>&nbsp;&nbsp;Modify Table Properties</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="webedit_images/1x1.gif" width="1" height="10"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="body">
+          
+        <table border="0" cellspacing="0" cellpadding="5" width="98%" class="bevel2">
+        
+        
+          <tr>
+            <td class="body" width="150">Background Colour:</td>
+            <td class="body" width="200">
+              <SELECT class=text70 name=bgColor>
+                 
+                <script>printBgColor()</script>
+                <OPTION style="BACKGROUND-COLOR: #ff0000">#FF0000
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffff00">#FFFF00
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00ff00">#00FF00
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00ffff">#00FFFF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #0000ff">#0000FF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff00ff">#FF00FF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffffff">#FFFFFF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f5f5f5">#F5F5F5
+                <OPTION 
+                    style="BACKGROUND-COLOR: #dcdcdc">#DCDCDC
+                <OPTION 
+                    style="BACKGROUND-COLOR: #d3d3d3">#D3D3D3
+                <OPTION 
+                    style="BACKGROUND-COLOR: #c0c0c0">#C0C0C0
+                <OPTION 
+                    style="BACKGROUND-COLOR: #a9a9a9">#A9A9A9
+                <OPTION 
+                    style="BACKGROUND-COLOR: #808080">#808080
+                <OPTION 
+                    style="BACKGROUND-COLOR: #696969">#696969
+                <OPTION 
+                    style="BACKGROUND-COLOR: #000000">#000000
+                <OPTION 
+                    style="BACKGROUND-COLOR: #2f4f4f">#2F4F4F
+                <OPTION 
+                    style="BACKGROUND-COLOR: #708090">#708090
+                <OPTION 
+                    style="BACKGROUND-COLOR: #778899">#778899
+                <OPTION 
+                    style="BACKGROUND-COLOR: #4682b4">#4682B4
+                <OPTION 
+                    style="BACKGROUND-COLOR: #4169e1">#4169E1
+                <OPTION 
+                    style="BACKGROUND-COLOR: #6495ed">#6495ED
+                <OPTION 
+                    style="BACKGROUND-COLOR: #b0c4de">#B0C4DE
+                <OPTION 
+                    style="BACKGROUND-COLOR: #7b68ee">#7B68EE
+                <OPTION 
+                    style="BACKGROUND-COLOR: #6a5acd">#6A5ACD
+                <OPTION 
+                    style="BACKGROUND-COLOR: #483d8b">#483D8B
+                <OPTION 
+                    style="BACKGROUND-COLOR: #191970">#191970
+                <OPTION 
+                    style="BACKGROUND-COLOR: #000080">#000080
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00008b">#00008B
+                <OPTION 
+                    style="BACKGROUND-COLOR: #0000cd">#0000CD
+                <OPTION 
+                    style="BACKGROUND-COLOR: #1e90ff">#1E90FF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00bfff">#00BFFF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #87cefa">#87CEFA
+                <OPTION 
+                    style="BACKGROUND-COLOR: #87ceeb">#87CEEB
+                <OPTION 
+                    style="BACKGROUND-COLOR: #add8e6">#ADD8E6
+                <OPTION 
+                    style="BACKGROUND-COLOR: #b0e0e6">#B0E0E6
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f0ffff">#F0FFFF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #e0ffff">#E0FFFF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #afeeee">#AFEEEE
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00ced1">#00CED1
+                <OPTION 
+                    style="BACKGROUND-COLOR: #5f9ea0">#5F9EA0
+                <OPTION 
+                    style="BACKGROUND-COLOR: #48d1cc">#48D1CC
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00ffff">#00FFFF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #40e0d0">#40E0D0
+                <OPTION 
+                    style="BACKGROUND-COLOR: #20b2aa">#20B2AA
+                <OPTION 
+                    style="BACKGROUND-COLOR: #008b8b">#008B8B
+                <OPTION 
+                    style="BACKGROUND-COLOR: #008080">#008080
+                <OPTION 
+                    style="BACKGROUND-COLOR: #7fffd4">#7FFFD4
+                <OPTION 
+                    style="BACKGROUND-COLOR: #66cdaa">#66CDAA
+                <OPTION 
+                    style="BACKGROUND-COLOR: #8fbc8f">#8FBC8F
+                <OPTION 
+                    style="BACKGROUND-COLOR: #3cb371">#3CB371
+                <OPTION 
+                    style="BACKGROUND-COLOR: #2e8b57">#2E8B57
+                <OPTION 
+                    style="BACKGROUND-COLOR: #006400">#006400
+                <OPTION 
+                    style="BACKGROUND-COLOR: #008000">#008000
+                <OPTION 
+                    style="BACKGROUND-COLOR: #228b22">#228B22
+                <OPTION 
+                    style="BACKGROUND-COLOR: #32cd32">#32CD32
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00ff00">#00FF00
+                <OPTION 
+                    style="BACKGROUND-COLOR: #7fff00">#7FFF00
+                <OPTION 
+                    style="BACKGROUND-COLOR: #7cfc00">#7CFC00
+                <OPTION 
+                    style="BACKGROUND-COLOR: #adff2f">#ADFF2F
+                <OPTION 
+                    style="BACKGROUND-COLOR: #98fb98">#98FB98
+                <OPTION 
+                    style="BACKGROUND-COLOR: #90ee90">#90EE90
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00ff7f">#00FF7F
+                <OPTION 
+                    style="BACKGROUND-COLOR: #00fa9a">#00FA9A
+                <OPTION 
+                    style="BACKGROUND-COLOR: #556b2f">#556B2F
+                <OPTION 
+                    style="BACKGROUND-COLOR: #6b8e23">#6B8E23
+                <OPTION 
+                    style="BACKGROUND-COLOR: #808000">#808000
+                <OPTION 
+                    style="BACKGROUND-COLOR: #bdb76b">#BDB76B
+                <OPTION 
+                    style="BACKGROUND-COLOR: #b8860b">#B8860B
+                <OPTION 
+                    style="BACKGROUND-COLOR: #daa520">#DAA520
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffd700">#FFD700
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f0e68c">#F0E68C
+                <OPTION 
+                    style="BACKGROUND-COLOR: #eee8aa">#EEE8AA
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffebcd">#FFEBCD
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffe4b5">#FFE4B5
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f5deb3">#F5DEB3
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffdead">#FFDEAD
+                <OPTION 
+                    style="BACKGROUND-COLOR: #deb887">#DEB887
+                <OPTION 
+                    style="BACKGROUND-COLOR: #d2b48c">#D2B48C
+                <OPTION 
+                    style="BACKGROUND-COLOR: #bc8f8f">#BC8F8F
+                <OPTION 
+                    style="BACKGROUND-COLOR: #a0522d">#A0522D
+                <OPTION 
+                    style="BACKGROUND-COLOR: #8b4513">#8B4513
+                <OPTION 
+                    style="BACKGROUND-COLOR: #d2691e">#D2691E
+                <OPTION 
+                    style="BACKGROUND-COLOR: #cd853f">#CD853F
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f4a460">#F4A460
+                <OPTION 
+                    style="BACKGROUND-COLOR: #8b0000">#8B0000
+                <OPTION 
+                    style="BACKGROUND-COLOR: #800000">#800000
+                <OPTION 
+                    style="BACKGROUND-COLOR: #a52a2a">#A52A2A
+                <OPTION 
+                    style="BACKGROUND-COLOR: #b22222">#B22222
+                <OPTION 
+                    style="BACKGROUND-COLOR: #cd5c5c">#CD5C5C
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f08080">#F08080
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fa8072">#FA8072
+                <OPTION 
+                    style="BACKGROUND-COLOR: #e9967a">#E9967A
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffa07a">#FFA07A
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff7f50">#FF7F50
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff6347">#FF6347
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff8c00">#FF8C00
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffa500">#FFA500
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff4500">#FF4500
+                <OPTION 
+                    style="BACKGROUND-COLOR: #dc143c">#DC143C
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff0000">#FF0000
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff1493">#FF1493
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff00ff">#FF00FF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ff69b4">#FF69B4
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffb6c1">#FFB6C1
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffc0cb">#FFC0CB
+                <OPTION 
+                    style="BACKGROUND-COLOR: #db7093">#DB7093
+                <OPTION 
+                    style="BACKGROUND-COLOR: #c71585">#C71585
+                <OPTION 
+                    style="BACKGROUND-COLOR: #800080">#800080
+                <OPTION 
+                    style="BACKGROUND-COLOR: #8b008b">#8B008B
+                <OPTION 
+                    style="BACKGROUND-COLOR: #9370db">#9370DB
+                <OPTION 
+                    style="BACKGROUND-COLOR: #8a2be2">#8A2BE2
+                <OPTION 
+                    style="BACKGROUND-COLOR: #4b0082">#4B0082
+                <OPTION 
+                    style="BACKGROUND-COLOR: #9400d3">#9400D3
+                <OPTION 
+                    style="BACKGROUND-COLOR: #9932cc">#9932CC
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ba55d3">#BA55D3
+                <OPTION 
+                    style="BACKGROUND-COLOR: #da70d6">#DA70D6
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ee82ee">#EE82EE
+                <OPTION 
+                    style="BACKGROUND-COLOR: #dda0dd">#DDA0DD
+                <OPTION 
+                    style="BACKGROUND-COLOR: #d8bfd8">#D8BFD8
+                <OPTION 
+                    style="BACKGROUND-COLOR: #e6e6fa">#E6E6FA
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f8f8ff">#F8F8FF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f0f8ff">#F0F8FF
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f5fffa">#F5FFFA
+                <OPTION 
+                    style="BACKGROUND-COLOR: #f0fff0">#F0FFF0
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fafad2">#FAFAD2
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fffacd">#FFFACD
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fff8dc">#FFF8DC
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffffe0">#FFFFE0
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fffff0">#FFFFF0
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fffaf0">#FFFAF0
+                <OPTION 
+                    style="BACKGROUND-COLOR: #faf0e6">#FAF0E6
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fdf5e6">#FDF5E6
+                <OPTION 
+                    style="BACKGROUND-COLOR: #faebd7">#FAEBD7
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffe4c4">#FFE4C4
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffdab9">#FFDAB9
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffefd5">#FFEFD5
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fff5ee">#FFF5EE
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fff0f5">#FFF0F5
+                <OPTION 
+                    style="BACKGROUND-COLOR: #ffe4e1">#FFE4E1
+                <OPTION 
+                    style="BACKGROUND-COLOR: #fffafa">#FFFAFA</OPTION>
+              </SELECT>
+               
+            </td>
+            <td class="body" width="80">Cell Padding:</td>
+            <td class="body">
+              <input type="text" name="table_padding" size="2" class="Text50" maxlength="2">
+          </td>
+          </tr>
+          <tr>
+            <td class="body" width="80">Border:</td>
+            <td class="body">
+              <input type="text" name="table_border" size="2" class="Text50" value="1" maxlength="2">
+          </td>
+            <td class="body" width="80">Cell Spacing:</td>
+            <td class="body">
+              <input type="text" name="table_spacing" size="2" class="Text50" value="2" maxlength="2">
+          </td>
+          </tr>
+          <tr>
+            <td class="body" width="80">Width:</td>
+            <td class="body">
+              <input type="text" name="table_width" size="3" class="Text50" value="" maxlength="4">
+            </td>
+            <td class="body" width="80">&nbsp;</td>
+            <td class="body">&nbsp;</td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="webedit_images/1x1.gif" width="1" height="10"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+        <input type="button" name="modifyTable" value="Modify Table" class="Text90" onClick="javascript:doModify();">
+    <input type="button" name="Submit" value="Cancel" class="Text50" onClick="javascript:window.close()">
+    </td>
+  </tr>
+</table>
+</form>
+<br>
+</body>
+</html>

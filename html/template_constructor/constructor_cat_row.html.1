@@ -1,0 +1,20 @@
+<!--view row e-shop -->
+
+<tr bgcolor="#ECECEF"><a name=${ID_CAT}></a>
+<td>
+   <a href="/cgi-bin/mod/catalog.cgi?sid=${SID}&l=${LANG}&a=add&id=${ID}&id_cat=${ID_CAT}&PageIn=${PAGEIN}&p_n=${PN}" title='Редактировать товар ${NAME}'> ${NAME} </a>
+ </td>
+<!--td>${ZHIR}%</td-->
+<td>${SELECT}</td>
+<!--td><input name=shtrih_kod value="${SHTRIH_KOD}" size=10></td-->
+<!--td><input name=gost value="${GOST}" size=10></td-->
+<td><input name=sort_cat value="${SORT}" size=2></td>
+<td align=center>
+  ${IMG}
+ </td>
+<td><input type=hidden name=id_cat_upd value="${ID_CAT}">
+  <a href="/cgi-bin/mod/catalog.cgi?sid=${SID}&l=${LANG}&a=del_cat&del=1&&id_cat=${ID_CAT}&id=${ID}">x</a>
+<input type=checkbox value='${ID_CAT}' name=id_cat>
+ </td>
+</tr>
+<!--view row e-shop-->

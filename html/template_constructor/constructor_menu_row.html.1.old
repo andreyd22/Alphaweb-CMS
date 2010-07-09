@@ -1,0 +1,11 @@
+<!--Вывод всех ссылок в меню конструктора админ
+<tr>
+<td width=100%>$LINK</td><!--Ссылка на редактирование информации модуля
+<td><a href="http://${HOST}/view/${MOD}/${ID}" title='Просмотр' target=_blank><img src="/img/icons/browse.gif" border=0 alt='Посмотреть результат'></a></td>
+<td><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=add&idp=${ID}" title='Добавить подраздел' target=main><img src="/img/icons/icon_add.gif" border=0></a></td>
+<td><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=add&id=${ID}" title='Свойства раздела' target=main><img src="/img/icons/icon_properties.gif" border=0></a></td>
+<td><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=del&id=${ID}" title='Удалить раздел' onclick="return Delete(2,'${NAME_RAZDEL}');" target=main><img src="/img/icons/delete.gif" border=0></a></td>
+</tr>
+<!--Вывод всех ссылок в меню конструктора админ-->
+    ${LINK}
+

@@ -1,0 +1,22 @@
+<!--Вывод дерева разделов с последующей сортировкой -->
+<table width=100%> <tr><td>
+<br>
+</td></tr>
+<tr><td>
+<form action='/cgi-bin/mod/razdels.cgi' method=post>
+<input type='submit' value='Поменять сортировку'>
+<table width=100%>
+
+<tr>
+$CONSTRUCTOR_MENU
+</tr>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=a value='change_sort'>
+</table>
+<input type='submit' value='Поменять сортировку'>
+</td></tr>
+</table>
+</form>
+
+<!--Вывод дерева разделов с последующей сортировкой -->

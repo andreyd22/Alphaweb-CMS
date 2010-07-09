@@ -1,0 +1,53 @@
+<!--e-Shop-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?a=edit_st&sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Добавить товар</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=export">Экспорт/импорт Excel</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Показать товары</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=users">Пользователи</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=order">Заказы</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<form action="/cgi-bin/mod/${MOD}.cgi" method=get>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+<b>Поиск пользователя:</b> <input name=slovo value='${SLOVO}' class=i2> <input type=submit value='Поиск'>
+</td></tr>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+<input type=hidden name=a value='users'>
+</form>
+<tr><td><b>Список пользователей</b> (найдено <b>${COUNT}</b>)</td></tr><form action="/cgi-bin/mod/${MOD}.cgi" method=post>
+<tr><td align=right><input type=submit value="Обновить скидки"></td></tr>
+<td>
+<table width=100%>
+<tr>
+<td><b>Дата</b></td>
+<td><b>ФИО</b></td>
+<td><b>E-mail</b></td>
+<td><b>Пароль</b></td>
+<td><b>Заказов</b></td>
+<td><b>Скидка</b></td>
+<td><b>Удалить</b></td>
+</tr>
+${ROW_CAT_USERS}
+</table>
+</td>
+</tr>
+<tr><td align=right><input type=submit value="Обновить скидки"></td></tr>
+<input type=hidden name=a value='update_skidki'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+</form>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>
+<!--e-Shop-->

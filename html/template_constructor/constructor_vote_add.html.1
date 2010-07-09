@@ -1,0 +1,87 @@
+<!--Работа с регистрацией-->
+
+<table width=100%  cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>
+
+<table cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>::<a href="/cgi-bin/mod/document.cgi?a=edit_st&sid=${SID}&l=${LANG}&id=${IDR_REG}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/vote.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}">Показать опросы</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}&a=add">Свойства раздела</a>::</td>
+<td>::<a href="/cgi-bin/mod/vote.cgi?a=view&sid=${SID}&l=${LANG}&id=${IDR_REG}">Добавить новый опрос</a>::</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+
+<tr><td align=center><b>${TITLE}</b></td></tr>
+<tr>
+<td><b>Опрос:</b></td>
+</tr>
+<tr>
+<td>
+<form action="/cgi-bin/mod/vote.cgi">
+<table>
+<tr><td>Дата</td><td>${DATA}</td></tr>
+<tr><td>Вопрос</td><td><input name="vopros" value="${VOPROS}" size=45></td></tr>
+<tr><td>Статус <br><small>(1-активный,0-неактивный, 2-прошедший)</small></td><td><input name="status" value="${STATUS}" size=10></td></tr>
+<input type=hidden name="id_vote" value=${ID_VOTE}>
+<input type=hidden name="id" value=${IDR_REG}>
+</table>
+</td>
+</tr>
+<tr>
+<td><input type=submit value="Добавить/изменить название опроса"></td>
+<input type=hidden name="a" value=save_vote>
+</form>
+</tr>
+<tr>
+<td><b>Ответы:</b></td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td colspan=5>
+<form action="/cgi-bin/mod/vote.cgi">
+<table>
+<tr><td>Ответ</td><td><input name='otvet' value="${OTVET}" size=35></td></tr>
+<tr><td>Цвет</td><td><select name=color>${COLOR}"</select></td></tr>
+<tr><td>Ответов</td><td><input name='count' value="${COUNT}" size=10></td></tr>
+<tr><td>Сортировка</td><td><input name='sort' value="${SORT}" size=10></td></tr>
+<tr>
+<td colspan=4><input type=submit value="Добавить ответ"></td>
+<input type=hidden name="a" value=save_vote>
+</tr>
+<input type=hidden name="id" value=${IDR_REG}>
+<input type=hidden name="id_vote" value=${ID_VOTE}>
+</table></form>
+</td>
+</tr>
+
+<tr>
+<td><b>Ответ</b></td>
+<td><b>Цвет</b></td>
+<td><b>Кол-во ответов</b></td>
+<td><b>Сортировка</b></td>
+<td><b>Удалить</b></td>
+</tr>
+${ROW_OTVET}
+</table>
+</td>
+</tr>
+
+</table>
+
+<!--Работа с регистрацией-->

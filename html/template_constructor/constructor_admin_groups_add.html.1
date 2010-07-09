@@ -1,0 +1,37 @@
+<!--Добавляем редактируем нового пользователя-->
+<center><b>Добавление / редактирование пользователя системы</b></center>
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/manager.cgi?a=view&sid=${SID}&l=${LANG}&id=${ID}">Добавить пользователя</a>::</td>
+<td>::<a href="/cgi-bin/mod/manager.cgi?sid=${SID}&l=${LANG}&id=${ID}">Все пользователи</a>::</td>
+<td>::<a href="/cgi-bin/mod/backup.cgi?a=backup" target=_blank>Резервная копия структуры</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<td>
+<table align=center width=340><form action="/cgi-bin/mod/manager.cgi" method=post>
+<tr><td><b>Логин</b></td><td><input name='login' value="${LOGIN}"></td></tr>
+<tr><td><b>Пароль<br><small>Оставьте пустым, 
+если не хотите менять при редактировании профиля</small></b></td><td><input name='pass' value=""></td></tr>
+<tr><td><b>Имя (можно Ф.И.О.)<br><small>обязательное поле </small></b></td><td><input name='name' value="${NAME}"></td></tr>
+<tr><td><b>E-mail</b></td><td><input name='email' value="${EMAIL}"></td></tr>
+<tr><td><b>Статус<br><small> (1 - активный;<br>0 - запрет действий)</small></b></td><td><input name='status' value="${STATUS}"></td></tr>
+<tr bgcolor=#EFEFEF><td colspan=2><b>Привилегии <small> (1 - активный;<br>0 - запрет действий)</small></b></td></tr>
+<tr><td><b>Добавление/редактирование разделов</b></td><td><input name='add_razdel' value="${ADD_RAZDEL}"></td></tr>
+<tr><td><b>Управление дизайном</b></td><td><input name='edit_design' value="${EDIT_DESIGN}"></td></tr>
+<tr><td><b>Раздача прав пользователям <small>(может создавать новых пользователей)</small></b></td><td><input name='grant' value="${GRANT}"></td></tr>
+<tr><td colspan=2><b>Дополнительно (примечания)</b></td></tr>
+<tr><td colspan=2><textarea name=opis cols=25 rows=5 style="border-style:solid;border-width:1px;">${OPIS}</textarea></td></tr>
+<tr><td align=center colspan=2><input type=submit value="сохранить"></td></tr>
+<input type=hidden name=a value='save_user'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id_user value='${ID_USER}'>
+</form>
+</table>
+</td></form>

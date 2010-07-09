@@ -1,0 +1,14 @@
+<!--view row e-shop -->
+<tr>
+<td valign=top>${DATA}<br>
+<a href="javascript:void(0);" onclick="win('/cgi-bin/mod/catalog.cgi?a=view_order&sid=${SID}&id_zakaz=${ID_ZAKAZ}&id_user=${ID_USER}&l=1')">${ID_ZAKAZ}</a></td>
+<td>${FIO}</td>
+<td>${KOL}</td>
+<td>${COST} ${CURENCY}</td>
+<td>${SEL_STATUS}</td>
+<td><a href="/cgi-bin/mod/catalog.cgi?a=update_order&l=1&sid=${SID}&id=${ID}&id_del_zakaz=${ID_ZAKAZ}&del_order=1">[x]</a>
+<input type=checkbox name=id_del_zakaz value="${ID_ZAKAZ}"></td>
+<input type=hidden name=id_zakaz value="${ID_ZAKAZ}">
+<td></td>
+</tr>
+<!--view row e-shop-->

@@ -1,0 +1,104 @@
+<!--Работа с регистрацией-->
+
+<table width=100%  cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>
+
+<table cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/vote.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}">Показать опросы</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}&a=add">Свойства раздела</a>::</td>
+<td>::<a href="/cgi-bin/mod/vote.cgi?a=view&sid=${SID}&l=${LANG}&id=${IDR_REG}">Добавить новый опрос</a>::</td>
+
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+
+<tr><td align=center><b>${TITLE}</b></td></tr>
+
+
+
+<form action="/cgi-bin/mod/vote.cgi" method=post name=block_form>
+
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+
+<table cellspacing=0 cellpadding=0>
+
+<tr><td><b>Количество на странице</b></td><td><input name=col_records class=i2 value="${COL_RECORDS}">
+
+(Сколько опросов выводить одновременно на страницах сайта)</td>
+
+</tr>
+
+</table>
+
+</td></tr>
+
+
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000"><b>Блокировать ip-адреса:</b><br>
+
+ <textarea name=block_ip class=i1 cols=45 rows=5 style="width:250px">${BLOCK_IP}</textarea><br>
+
+ Заносите ip-адреса через пробел,<br>
+
+ Использульте маску * , чтобы заблокировать подсеть (например запись 192.168.* заблокирует все ip-адреса начинающиеся на 192.168.)<br>
+
+<input type=submit value='Сохранить' class=b1>
+
+</td></tr>
+
+<input name=a type=hidden value='block_list'>
+
+<input name=sid type=hidden value='${SID}'>
+
+<input name=id type=hidden value='${IDR_REG}'>
+
+<input name=l type=hidden value='${LANG}'>
+
+<input name=PageIn type=hidden value='${PAGEIN}'>
+
+<input name=p_n type=hidden value='${PN}'>
+
+</form>
+
+<tr>
+
+<td>
+
+<table width=100% bgcolor=#FFFFFF>
+
+<tr><td><b>Опросы:</b></td></tr>
+<tr><td>
+<table width=100%>
+<tr>
+<td align=center width=20>Дата</td>
+<td align=center>Название</td>
+<td align=center>Удалить</td>
+</tr>
+${ROW_VOTE}
+
+</table>
+</td></tr>
+</table>
+
+</td>
+
+</tr>
+
+<tr><td align=right>${PEREHOD}</td></tr>
+
+</table>
+
+<!--Работа с регистрацией-->

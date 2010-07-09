@@ -1,0 +1,112 @@
+<!--Работа с регистрацией-->
+
+<table width=100%  cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>
+
+<table cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}">Редактировать шапку</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/reg.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}">Показать записи</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}&a=add">Свойства раздела</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/reg.cgi?a=view&sid=${SID}&l=${LANG}&id=${IDR_REG}">Редактировать форму</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/reg.cgi?a=del_all&sid=${SID}&l=${LANG}&id=${IDR_REG}" onclick="return Delete(5,'')">Удалить все записи</a>::</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+
+<tr><td align=center><b>${TITLE}</b></td></tr>
+
+
+
+<form action="/cgi-bin/mod/reg.cgi" method=post name=col_records_form>
+
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+
+<table cellspacing=0 cellpadding=0>
+
+<tr><td><b>E-mail</b></td><td><input name=email_owner class=i2 value="${EMAIL_OWNER}">
+
+(Вы будете получать сообщения о новых анкетах на этот емайл адрес)</td>
+
+</tr>
+
+
+
+<tr><td colspan=2 align=left><input type=submit value='Save' class=b1></td></tr></table>
+
+</td></tr>
+
+<input name=a type=hidden value='save_email'>
+
+<input name=sid type=hidden value='${SID}'>
+
+<input name=id type=hidden value='${IDR_REG}'>
+
+<input name=l type=hidden value='${LANG}'>
+
+</form>
+
+<form action="/cgi-bin/mod/reg.cgi" method=post name=block_form>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000"><b>Блокировать ip-адреса:</b><br>
+
+ <textarea name=block_ip class=i1 cols=45 rows=5 style="width:250px">${BLOCK_IP}</textarea><br>
+
+ Заносите ip-адреса через пробел,<br>
+
+ Использульте маску * , чтобы заблокировать подсеть (например запись 192.168.* заблокирует все ip-адреса начинающиеся на 192.168.)<br>
+
+<input type=submit value='Сохранить' class=b1>
+
+</td></tr>
+
+<input name=a type=hidden value='block_list'>
+
+<input name=sid type=hidden value='${SID}'>
+
+<input name=id type=hidden value='${IDR_REG}'>
+
+<input name=l type=hidden value='${LANG}'>
+
+<input name=PageIn type=hidden value='${PAGEIN}'>
+
+<input name=p_n type=hidden value='${PN}'>
+
+</form>
+
+<tr>
+
+<td>
+
+<table width=100% bgcolor=#FFFFFF>
+
+<tr><td><b>Сообщения:</b></td></tr>
+
+${ROW_REG}
+
+</table>
+
+</td>
+
+</tr>
+
+<tr><td align=right>${PEREHOD}</td></tr>
+
+</table>
+
+<!--Работа с регистрацией-->

@@ -1,0 +1,52 @@
+8
+
+dir
+2
+svn+ssh://svn@alphaweb.ru/home/svn/alphaweb20/public_html/htmlarea/plugins/TableOperations/lang
+svn+ssh://svn@alphaweb.ru/home/svn/alphaweb20
+
+
+
+2008-02-22T05:44:13.764714Z
+2
+svn
+
+
+svn:special svn:externals svn:needs-lock
+
+fi.js
+file
+
+
+
+
+2007-08-02T13:21:28.000000Z
+e96a6fc39d723bbd41ac442527485cbd
+2008-02-22T05:44:13.764714Z
+2
+svn
+
+ro.js
+file
+
+
+
+
+2007-08-02T13:21:28.000000Z
+0954f552ff38b5039a0e963c6e2a2e58
+2008-02-22T05:44:13.764714Z
+2
+svn
+
+en.js
+file
+
+
+
+
+2007-08-02T13:21:28.000000Z
+281134202e51097913082dbffe54fa89
+2008-02-22T05:44:13.764714Z
+2
+svn
+

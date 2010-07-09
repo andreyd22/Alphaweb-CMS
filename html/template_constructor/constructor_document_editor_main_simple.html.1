@@ -1,0 +1,81 @@
+<html>
+<head>
+ <title></title>
+</head>
+<link rel="stylesheet" href="/admin/style.css" type="text/css">
+<link rel="stylesheet" href="/admin/webedit/webedit.css" type="text/css">
+<body bgcolor="#F5F5F5">
+    <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+                            <TABLE cellpadding="2" cellspacing="0" border="0" width="100%">
+                              <TR>
+                                <TD bgcolor="#ffffff" class="smallbl" align="left">
+                                  <DIV class="smallbl">
+                                                                        $USER_MENU
+                                  </DIV>
+                                </TD>
+                              </TR>
+                              <TR>
+                                <TD bgcolor="#e2e2e2" align="left" class="bl">
+                                  &nbsp;
+                                </TD>
+                                                          </TR>
+                            </TABLE>
+</td></tr>
+      <TR>
+         <TD bgcolor="#ffffff" class="miniwh" align="left">
+                  <!--ВЕРХНЯЯ ЧАСТЬ С МЕНЮ КОНЕЦ-->
+
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>:: 
+ ::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}"><b>Администрирование (спец. свойства)</b></a>:: 
+ ::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&idp=${ID}&a=add"><b>Добавить подраздел к этому разделу</b></a>::
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+</table>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+<form action="/cgi-bin/mod/document.cgi" method="post">
+<input type="hidden" name="a" value="save" />
+<input type="hidden" name="sid" value="${SID}" />
+<input type="hidden" name="id" value="${ID}" />
+<input type="hidden" name="l" value="${LANG}" />
+  
+  <TR bgcolor=#6699CC>
+    <TD vAlign=center >&nbsp;<br><br></TD>
+    <TD vAlign=center align=center  class=title><b style="color:black">${TITLE} ${NAME_ST}</b></TD></TR>
+  <TR>
+    <TD bgColor=#000000 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#ffffff colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#000000 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#ff9900 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#000000 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR></TABLE>
+
+<textarea name=content cols=75 rows=15 style="width:100%">${DATA}</textarea>
+<br><br>
+<input type=submit value="Сохранить">
+                                </TD>
+                              </TR></form>
+
+          <TR>
+        <TD height="4" class="minibl" align="center"> Copyright &copy;  <a href="http://alphaweb.ru" class=bl target=_blank>Alphaweb</a>, 2004-2005 </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

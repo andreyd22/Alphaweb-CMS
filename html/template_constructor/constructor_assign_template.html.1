@@ -1,0 +1,33 @@
+<table width=100%>
+ <tr>
+ <td align=center><a href="/cgi-bin/mod/template.cgi?sid=${SID}&l=${LANG}">Настройка шаблонов</a> ::<a href="/cgi-bin/mod/template.cgi?sid=${SID}&l=${LANG}&a=list_templates">Редактор шаблонов</a> ::</td>
+ </tr>
+ <tr>
+ <td align=center><b style="color:red">${MESSAGE}</b></td>
+ </tr>
+ <tr>
+ <td align=center>Здесь вы можете изменить параметры шаблона сайта</td>
+ </tr>
+ <tr>
+ <td align=center>
+ <table width=100% align=center>
+  <tr>
+  <td><form action="/cgi-bin/mod/template.cgi" method=post name='assign'>
+        <b>Параметры</b>
+  </td>
+  </tr>
+  ${ROW}
+ </table>
+ </td>
+ </tr>
+ <tr>
+ <td align=center><input type=submit value='Сохранить' class=b1></td>
+ </tr><input type=hidden name=a value=save>
+<input type=hidden name=sid value="${SID}"></form>
+<!-- <tr>
+<form action="/cgi-bin/mod/template.cgi" method=post name='default_assign'>
+ <td align=center><input type=submit value='Восстановить значения по умолчанию' class=b1></td>
+ </tr><input type=hidden name=a value=default_assign>
+<input type=hidden name=sid value="${SID}"></form>-->
+
+</table>

@@ -1,0 +1,32 @@
+<table><tr><td>
+<table width=100% align=center>
+<tr bgcolor=#DDDDDD>
+<td align=center><b>Тип</b></td>
+<td align=center><b>Имя</b></td>
+<td align=center><b>Размер</b></td>
+<td align=center><b>Изменен</b></td>
+<td align=center><b>Действие</b></td>
+</tr>
+<tr>
+<td align=center><a href="/cgi-bin/mod/file_viewer.pl?sid=${SID}&file=${DIR}">
+<img src="/img/icons/back.gif" border=0></a></td>
+<td><b>${DIR}</b></td>
+<td align=center></td>
+<td align=center></td>
+<td align=left><a href="/cgi-bin/mod/file_viewer.pl?sid=${SID}&file=${DIR}">
+<img src="/img/icons/back.gif" border=0></a></td>
+</tr>
+</table>
+
+<form action="/cgi-bin/mod/file_viewer.pl" method="post" id="edit" name="edit">
+</td></tr><tr><td>
+<b>Main text:</b></br>
+<textarea  name="ta" style="width:540px" rows="24" cols="80">${DATA}</textarea><hr>
+<input type="submit" name="ok" value="  Сохранить  " class=b1 />
+<input type="hidden" name="a" value="save_file" />
+<input type="hidden" name="file" value="${FILE}" />
+<input type="hidden" name="dir" value="${DIR}" />
+<input type="hidden" name="sid" value="${SID}" />
+
+</form>
+</td></tr></table>

@@ -1,0 +1,53 @@
+   <tr>
+   <td>
+  <table cellspacing=0 width=100%>
+  <tr><td class=td_y></td><td class=td_ygol_r>&nbsp;&nbsp;<b class=y>МЕНЮ</b> <b>ПОЛЬЗОВАТЕЛЯ</b></td></tr>
+  </table>
+  </td>
+  </tr>
+  <tr>
+  <td class=td_simple>
+<table width=100%>
+<tr><td>
+Здравствуйте, ${NAME_U} <br>
+Домен: <b>${HOST_NAME}</b> (<b><a href="http://${HOST_NAME}" target=_blank>Просмотр сайта</a></b>)<br>
+Доступный размер сайта: ${SIZE} Mb<br>
+Текущий размер сайта: ${USE_SIZE} Mb (${BYTE_PERSENT_USE}%)<br><br>
+     <table align=center width=100% cellspacing=0 cellpadding=0>
+     <tr>
+        <td colspan=5>
+            <table width="${BYTE_PERSENT_USE}%" bgcolor="blue" border=0>
+            <tr><td style='font-size:1px;'>&nbsp;</td></tr>
+            </table>
+        </td></tr>
+        <tr>
+        <td align=center style="font-size:4px;">|</td>
+        <td align=center style="font-size:4px;" width=50%></td>
+        <td align=center style="font-size:4px;">|</td>
+        <td align=center style="font-size:4px;" width=50%></td>
+        <td align=center style="font-size:4px;">|</td>
+        </tr>
+        <tr>
+        <td>0%</td>
+        <td width=50%></td>
+        <td>50%</td>
+        <td width=50%></td>
+        <td>100%</td>
+        </tr>
+     </table>
+</td></tr>
+<tr>
+<td><ul>
+<li><a href="/cgi-bin/mod/auth.cgi?sid=${SID}&l=1" target=_top>Вход в конструктор</a><br>
+<li><a href="/cgi-bin/mod/file_viewer.pl?sid=${SID}&l=1">Загрузка файлов</a><br>
+<li><a href="/cgi-bin/mod/about.cgi?sid=${SID}&l=1">Помощь</a><br>
+<li><a href="/index.html" target=_top>Главная страница</a><br>
+<li><a href="/cgi-bin/mod/exp_userdb.pl?sid=${SID}&l=1">Экспорт старой базы user_db</a><br>
+<li><a href="/cgi-bin/mod/save_site.cgi">Offline версия сайта</a><br>
+</ul>
+</td>
+</tr>
+<tr><td align=right><a href="/cgi-bin/view.pl?a=logout" title="Выход из системы" target=_top>[logout]</a></td></tr>
+</table>
+  </td>
+  </tr>

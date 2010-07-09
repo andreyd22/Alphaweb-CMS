@@ -1,0 +1,55 @@
+<!--Вывод одной одной записи гостевой-->
+
+<tr>
+<td>
+<table width=100% style="border-style: solid;border-width:1px;border-color:#000000">
+ <tr>
+  <td> <table width=100%><tr bgcolor=#EFEFEF> 
+      <td width=110>${DATA}</td>
+      <td><b>${SUBJECT}</b> | ${NAME} | ${EMAIL} | ${CITY} (фото ${FOTO})</td>
+      <td width=90 align=center>
+<a title='Блокировать ip-адрес ${IP}' href="javascript:void(0)"
+onclick="document.block_form.block_ip.value=document.block_form.block_ip.value+' ${IP}';document.block_form.block_ip.focus()"
+>[${IP}]</a></td>
+      <td width=30 align=center><a title='Удалить запись' href="/cgi-bin/mod/desk.cgi?a=del&id=${ID}&sid=${SID}&l=${LANG}&idr=${IDR}&PageIn=${PAGEIN}&p_n=${PN}" onclick="return Delete(4,'${SUBJECT}')">[x]</a></td>
+     </tr></table>
+   </td>
+ </tr>
+ <tr>
+  <td>
+  <b>Сообщение пользователя:</b>
+  <table width=100%><tr><td>
+  ${RECORD}
+  </td></tr>
+  </table>
+  </td>
+ </tr>
+<!--<form action="/cgi-bin/mod/desk.cgi" method=post>
+ <tr>
+  <td>
+ <b>Ваш ответ:</b>
+  <table width=100%><tr><td>
+  <textarea name=answer class=i1 cols=45 rows=5 style="width:400px">${ANSWER}</textarea>
+  </td></tr>
+  </tr><td>
+
+  <input  type=submit value='Ответить' class=b1>
+ 
+  </td></tr>
+
+  <input name=a type=hidden value='answer'>
+<input name=sid type=hidden value='${SID}'>
+<input name=idr type=hidden value='${IDR}'>
+<input name=id type=hidden value='${ID}'>
+<input name=l type=hidden value='${LANG}'>
+<input name=PageIn type=hidden value='${PAGEIN}'>
+<input name=p_n type=hidden value='${PN}'>
+</form>
+
+  </table>
+  </td>
+ </tr>-->
+</table>
+</td>
+</tr>
+<!--Вывод одной одной записи гостевой-->

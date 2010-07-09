@@ -1,0 +1,139 @@
+<!--Работа с регистрацией-->
+<script>
+function select_item (itm,value)
+{
+  var id = 'sel_'+itm
+  var op =document.getElementById(id).options
+  for (var i=0;i<op.length;i++)
+  {
+		if (op[i].value == value) {op[i].selected = true}
+	}
+}
+function AddField(itm)
+{
+	var id = 'params_'+itm
+	var d = new Date()
+	var col = d.getTime()
+	var newpar = '<span id=\"fld_'+itm+col+'\">Текст:<input name="text">&nbspЗначение:<input name="value">&nbsp<a href=\"#to_'+itm+'\" onclick=\"DelField(\''+itm+col+'\');\">Удалить</a><br></span>'
+	document.getElementById(id).innerHTML += newpar
+	col++
+};
+function DelField(num)
+{
+  document.getElementById('fld_'+num).innerHTML = ''
+};
+function view_params(itm,svalue)
+{
+	var id = 'params_'+itm
+	var newpar = '<a href=#to'+itm+' onclick=\"AddField(\'' +itm+ '\');\">Добавить варианты</a><br>'
+	switch (svalue)
+	{
+		case 'select': break;
+		case 'checkbox': break;
+		case 'radio': break;
+		default : newpar = ''
+	}
+	document.getElementById(id).innerHTML = newpar
+}
+</script>
+
+<table width=100%  cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>
+
+<table cellspacing=3 cellpadding=3>
+
+<tr>
+
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}">Редактировать шапку</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/reg.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}">Показать записи</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR_REG}&a=add">Свойства раздела</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/reg.cgi?a=view&sid=${SID}&l=${LANG}&id=${IDR_REG}">Редактировать форму</a>::</td>
+
+<td>::<a href="/cgi-bin/mod/reg.cgi?a=del_all&sid=${SID}&l=${LANG}&id=${IDR_REG}">Удалить все записи</a>::</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+
+<tr><td align=center><b>${TITLE}</b></td></tr>
+
+<form action="/cgi-bin/mod/reg.cgi" method="post" name="insert_new_input">
+
+<tr bgcolor=#EFEFEF><td><b>Добавить поле:</b></td></tr>
+
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+
+<table cellspacing=2 cellpadding=2>
+
+<tr><td><b>Имя поля:</b><br>
+
+<small>Например: Ваше имя</small>
+
+</td><td><input name="name_field" class=i1 value=""></td></tr>
+
+<tr><td><b>Имя поля (лат):</b><br>
+
+<small>Например: your_name</small>
+
+</td><td><input name="name_field_lat" class=i1 value=""></td></tr>
+
+<tr><td><b>Тип поля:</b></td><td><select name="type_field" class="i1" onchange="view_params('',this.value);">
+<option value='text'>Простое</option>
+<option value='textarea'>Расширенное</option>
+<option value='select'>Список</option>
+<option value='checkbox'>Выбор вариантов (checkbox)</option>
+<option value='radio'>Выбор одного варианта (radio)</option>
+</select></td>
+
+</tr>
+
+<tr><td colspan="2"><span id="params_">&nbsp</span></td></tr>
+
+<tr><td colspan="2" align="left"><input type="submit" value='Save' class=b1></td></tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<input name=a type=hidden value='save_reg'>
+
+<input name=sid type=hidden value='${SID}'>
+
+<input name=id type=hidden value='${IDR_REG}'>
+
+<input name=l type=hidden value='${LANG}'>
+
+</form>
+
+<tr bgcolor=#EFEFEF><td><b>Текущие поля:</b></td></tr>
+
+<tr>
+
+<td>
+
+<table width=100% bgcolor=#FFFFFF>
+
+${ROW_REG_FIELD}
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<!--Работа с регистрацией-->

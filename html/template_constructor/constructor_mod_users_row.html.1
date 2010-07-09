@@ -1,0 +1,15 @@
+<!--view row e-shop -->
+<tr>
+<td>${DATA}</td>
+<td>
+<a href="/cgi-bin/mod/users.cgi?a=view&l=1&sid=${SID}&id=${ID}&id_user=${ID_USER}">
+${FIO}</a></td>
+<td>${LOGIN}</td>
+<td><a href="mailto:${EMAIL}">${EMAIL}</a></td>
+<td>${PASS}</td>
+<td><input name=status value="${STATUS}" size=3></td>
+<input type=hidden name=id_user value="${ID_USER}">
+<td><a href="/cgi-bin/mod/users.cgi?a=del_user&l=1&sid=${SID}&id=${ID}&id_user=${ID_USER}">[x]</a></td>
+</tr>
+
+<!--view row e-shop-->

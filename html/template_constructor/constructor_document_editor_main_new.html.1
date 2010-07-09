@@ -1,0 +1,2884 @@
+<html>
+<head>
+ <title></title>
+</head>
+<link rel="stylesheet" href="/admin/style.css" type="text/css">
+<link rel="stylesheet" href="/admin/webedit/webedit.css" type="text/css">
+<body bgcolor="#F5F5F5">
+    <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+                            <TABLE cellpadding="2" cellspacing="0" border="0" width="100%">
+                              <TR>
+                                <TD bgcolor="#ffffff" class="smallbl" align="left">
+                                  <DIV class="smallbl">
+                                                                        $USER_MENU
+                                  </DIV>
+                                </TD>
+                              </TR>
+                              <TR>
+                                <TD bgcolor="#e2e2e2" align="left" class="bl">
+                                  &nbsp;
+                                </TD>
+                                                          </TR>
+                            </TABLE>
+</td></tr>
+      <TR>
+         <TD bgcolor="#ffffff" class="miniwh" align="left">
+                  <!--ВЕРХНЯЯ ЧАСТЬ С МЕНЮ КОНЕЦ-->
+
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>:: 
+ ::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}"><b>Администрирование (спец. свойства)</b></a>:: 
+ ::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&idp=${ID}&a=add"><b>Добавить подраздел к этому разделу</b></a>::
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+</table>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  
+  <TR bgcolor=#6699CC>
+    <TD vAlign=center >&nbsp;<br><br></TD>
+    <TD vAlign=center align=center  class=title><b style="color:black">${TITLE} ${NAME_ST}</b></TD></TR>
+  <TR>
+    <TD bgColor=#000000 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#ffffff colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#000000 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#ff9900 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+  <TR>
+    <TD bgColor=#000000 colSpan=2 height=1><IMG height=1 
+      src="/admin/webedit/img/1x1.gif" width=1></TD></TR></TABLE>
+<SCRIPT language=JavaScript1.2>
+<!--
+var imageWin
+    var propWin
+    var popupWin
+    var inserttableWin
+    var previewWin
+    var modifytableWin
+    var insertFormWin
+    var textFieldWin
+    var hiddenWin
+    var buttonWin
+    var checkboxWin
+    var radioWin
+    var charWin
+    var linkWin
+    var emailWin
+    var anchorWin
+    var start_load_content=false;
+    var selectedTD
+    var selectedTR
+    var selectedTBODY
+    var selectedTable
+    var selectedImage
+    var selectedForm
+    var selectedTextField
+    var selectedTextArea
+    var selectedHidden
+    var selectedbutton
+    var selectedCheckbox
+    var selectedRadio
+    var tableDefault
+    tableDefault = 1
+    var editDefault
+    editDefault = 0
+    var fileCache
+    fileCache = 0
+    var invoice
+    invoice = "myWEBEDIT"
+    var email
+    email = ""
+    var useXHTML
+    useXHTML = "1"
+    var absolutePaths
+    absolutePaths = ""
+    var statusMode = ""
+    var statusBorders = ""
+    var toggle = "off"
+    var borderShown = "yes"
+    var fooURL
+    var reloaded
+    var justSwitched = false
+    reloaded = 0
+
+    window.onload = doLoad
+    window.onresize = resizeWin
+    window.onerror = stopError
+    var loaded = false
+
+    var lcd = true;
+
+//Пошла проверка на лицензию    
+    dl = document.layers;
+    da = document.all;
+    ge = document.getElementById;
+    ws = window.sidebar;
+    var msg='';
+    function nem(){return true};
+    window.onerror = nem;
+
+
+// Start encryption
+    function startEdit() {
+
+        resizeWin()
+
+        if (editDefault != 1){
+            foo.document.designMode = 'on';
+            }
+
+        if (fileCache == 1) {
+            foo.document.location.reload(true)
+        }
+        lcd = true
+    }
+
+    function applyStyle(styleValue) {
+        if (isAllowed())
+        {
+
+        var done
+        var selectedArea = foo.document.selection.createRange()
+        if (styleValue != "") {
+            styleValue = styleValue.substring(1, styleValue.length)
+        }
+
+        if (foo.document.selection.type == "Control") {
+            applyStyleTo = selectedArea.commonParentElement()
+        }  else {
+            if (foo.document.selection.createRange().htmlText == "") {
+                applyStyleTo = selectedArea.parentElement()
+            } else {
+                if ((selectedArea.parentElement().tagName.toUpperCase() == "SPAN") || (selectedArea.parentElement().tagName.toUpperCase() == "A")) {
+                    applyStyleTo = selectedArea.parentElement()
+                    if ((styleValue == "") && (selectedArea.parentElement().tagName.toUpperCase() == "SPAN")) {
+                        applyStyleTo.removeNode(false);
+                        done = true
+                    }
+                } else {
+                    if (styleValue != "") {
+                        selectedArea.pasteHTML("<span class=" + styleValue + ">" + selectedArea.htmlText + "</span>")
+                    }
+                    done = true
+                }
+            }
+        }
+        if (done != true) {
+            applyStyleTo.className = styleValue
+        }
+
+        }
+    }
+
+    function displayUserStyles() {
+        var theStyle = new Array();
+        var theStyleText = new Array();
+        var styleExists
+        noOfSheets = top.foo.document.styleSheets.length
+        if (noOfSheets > 0) {
+            for (i=1;i<=noOfSheets;i++) {
+                noOfStyles = top.foo.document.styleSheets(noOfSheetsn1).rules.length
+                    for (x=0;x<noOfStyles;x++){
+                        styleValue = top.foo.document.styleSheets(noOfSheetsn1).rules(x).selectorText
+
+                        // stylesheet rule contains a . (ignore any styles that dont contain a . they are NOT user styles)
+                        if (styleValue.indexOf(".") >= 0) {
+
+                            // stylesheet rule doesnt contain :
+                            if (styleValue.indexOf(":") < 0) {
+
+                                // style contains a . at beginning
+                                if (styleValue.indexOf(".") == 0) {
+                                    styleText = styleValue.substring(1,styleValue.length)
+                                    theStyle[theStyle.length] = styleValue
+                                    theStyleText[theStyleText.length] = styleText
+
+                                } else {
+                                    // style contains a . not at beginning
+                                    if (styleValue.indexOf(".") > 0) {
+                                        styleText = styleValue.substring(styleValue.indexOf(".")+1,styleValue.length)
+                                        styleValue = styleValue.substring(styleValue.indexOf("."),styleValue.length)
+
+                                        theStyleText[theStyleText.length] = styleText                                   
+                                        theStyle[theStyle.length] = styleValue
+                                    }                       
+                                }
+
+                            // contains BOTH a . and a :
+                            } else {
+                                styleValue = styleValue.substring(styleValue.indexOf("."),styleValue.indexOf(":"))
+                            
+                                for (i=0;i<theStyle.length;i++) {
+                                    if (styleValue == theStyle[i]) {
+                                        styleExists = true
+                                    }
+                                }
+                            
+                                if (styleExists != true) {
+                                    theStyle[theStyle.length] = styleValue
+
+                                    styleText = styleValue.substring(styleValue.indexOf(".")+1,styleValue.length)
+                                    theStyleText[theStyleText.length] = styleText
+                                }
+
+                                styleExists = false
+                            }
+
+                        }
+
+                    } // End for
+
+                    for (z=0; z <= theStyle.lengthn1; z++) {                        
+                        newOption = document.createElement("option");
+                        newOption.value = theStyle[z];
+                        newOption.text = theStyleText[z];
+                        sStyles.add(newOption)
+                    } 
+
+            } // End For
+        } // End if
+    } // End function
+
+    function InsertRowAbove() {
+    
+        if (isCursorInTableCell()){
+            var numCols = 0
+
+            allCells = selectedTR.cells
+            for (var i=0;i<allCells.length;i++) {
+                numCols = numCols + allCells[i].getAttribute('colSpan')
+            }
+
+            var newTR = selectedTable.insertRow(selectedTR.rowIndex)
+    
+            for (i = 0; i < numCols; i++) {
+                newTD = newTR.insertCell()
+                newTD.innerHTML = "&nbsp;"
+
+                if (borderShown == "yes") {
+                    newTD.style.border = "1px dotted #BFBFBF"
+                }
+            }
+        }   
+        
+    } // End function
+
+    function InsertRowBelow() {
+
+        if (isCursorInTableCell()){
+        
+            var numCols = 0
+
+            allCells = selectedTR.cells
+            for (var i=0;i<allCells.length;i++) {
+                numCols = numCols + allCells[i].getAttribute('colSpan')
+            }
+
+            var newTR = selectedTable.insertRow(selectedTR.rowIndex+1)
+
+            for (i = 0; i < numCols; i++) {
+                newTD = newTR.insertCell()
+                newTD.innerHTML = "&nbsp;"
+
+                if (borderShown == "yes") {
+                    newTD.style.border = "1px dotted #BFBFBF"
+                }
+            }
+        }
+
+    } // End function
+
+    function IncreaseColspan() {
+        if (isCursorInTableCell()) {
+
+            var colSpanTD = selectedTD.getAttribute('colSpan')
+            allCells = selectedTR.cells
+
+            if (selectedTD.cellIndex + 1 != selectedTR.cells.length) {
+                var addColspan = allCells[selectedTD.cellIndex+1].getAttribute('colSpan')
+                selectedTD.colSpan = colSpanTD + addColspan
+                selectedTR.deleteCell(selectedTD.cellIndex+1)
+            }   
+        }
+
+    } // End function
+
+    function IncreaseRowspan() {
+        if (isCursorInTableCell()) {
+
+            var rowSpanTD = selectedTD.getAttribute('rowSpan')
+            allRows = selectedTable.rows
+            if (selectedTR.rowIndex +1 != allRows.length) {
+
+                var allCellsInNextRow = allRows[selectedTR.rowIndex+selectedTD.rowSpan].cells
+                var addRowSpan = allCellsInNextRow[selectedTD.cellIndex].getAttribute('rowSpan')
+                var moveTo = selectedTD.rowSpan
+
+                if (!addRowSpan) addRowSpan = 1;
+
+                selectedTD.rowSpan = selectedTD.rowSpan + addRowSpan
+                allRows[selectedTR.rowIndex + moveTo].deleteCell(selectedTD.cellIndex)
+            }
+        }
+
+    } // End function
+
+    function DecreaseColspan() {
+
+        if (isCursorInTableCell()) {
+            if (selectedTD.colSpan != 1) {
+                selectedTR.insertCell(selectedTD.cellIndex+1)
+                selectedTD.colSpan = selectedTD.colSpan - 1 
+            }
+        }
+
+    } // End function
+
+    function DeleteRow() {
+        if (isCursorInTableCell()) {
+            selectedTable.deleteRow(selectedTR.rowIndex)
+        }
+    }
+
+    function DeleteCol() {
+
+            if (isCursorInTableCell()) {
+            moveFromEnd = (selectedTR.cells.length-1) - (selectedTD.cellIndex)
+            allRows = selectedTable.rows
+            for (var i=0;i<allRows.length;i++) {
+                endOfRow = allRows[i].cells.length - 1
+                position = endOfRow - moveFromEnd
+                if (position < 0) {
+                    position = 0
+                } // End If
+            
+                allCellsInRow = allRows[i].cells
+
+                if (allCellsInRow[position].colSpan > 1) {
+                    allCellsInRow[position].colSpan = allCellsInRow[position].colSpan - 1
+                } else { 
+                    allRows[i].deleteCell(position)
+                }
+
+            } // End For    
+
+            } // End If
+
+    } // End Function
+
+    function InsertColAfter() {
+            if (isCursorInTableCell()) {
+            moveFromEnd = (selectedTR.cells.length-1) - (selectedTD.cellIndex)
+            allRows = selectedTable.rows
+            for (i=0;i<allRows.length;i++) {
+            rowCount = allRows[i].cells.length - 1
+            position = rowCount - moveFromEnd
+            if (position < 0) {
+                position = 0
+            }
+                newCell = allRows[i].insertCell(position+1)
+                newCell.innerHTML = "&nbsp;"
+
+                if (borderShown == "yes") {
+                    newCell.style.border = "1px dotted #BFBFBF"
+                }
+            }   
+            }
+    } // End Function
+
+
+    function InsertColBefore() {
+            if (isCursorInTableCell()) {
+            moveFromEnd = (selectedTR.cells.length-1) - (selectedTD.cellIndex)
+            allRows = selectedTable.rows
+            for (i=0;i<allRows.length;i++) {
+                rowCount = allRows[i].cells.length - 1
+                position = rowCount - moveFromEnd
+                if (position < 0) {
+                    position = 0
+                }
+                newCell = allRows[i].insertCell(position)
+                newCell.innerHTML = "&nbsp;"
+
+                if (borderShown == "yes") {
+                    newCell.style.border = "1px dotted #BFBFBF"
+                }
+            }   
+            }
+    }
+
+    function doToolbar() {
+        
+        if (foo.document.selection.type != "Control") {
+
+            fontName = foo.document.queryCommandValue('FontName')
+            if ((fontName == null) || (fontName == "")) {
+                fontName = "Font"
+            }
+
+            fontSize = foo.document.queryCommandValue('FontSize')
+            if ((fontSize == null) || (fontSize == "0")) {
+                fontSize = "Size"
+            }
+
+            fontFormat = foo.document.queryCommandValue('formatBlock')
+            if ((fontFormat == null) || (fontFormat == "")) {
+                fontFormat = "Format"
+            }
+
+            var commandList = Array('Bold','Underline','Italic','InsertOrderedList','InsertUnorderedList','InsertUnorderedList','SuperScript','SubScript','JustifyLeft','JustifyCenter','JustifyRight','JustifyFull');
+            for (i=0; i < commandList.length; i++) {
+                if (foo.document.queryCommandState(commandList[i]) == true) {
+                    button_down(eval("font" + commandList[i]))
+                } else {
+                    button_out(eval("font" + commandList[i]))
+                }
+            }
+            
+            elem = foo.document.selection.createRange()
+            elem.moveEnd()
+            elem = elem.parentElement()
+            while (elem.className == "") {
+                elem = elem.parentElement
+                if (elem == null)
+                    break
+            }
+            
+            if (elem) {
+                sStyles.options[0].text = elem.className
+            } else {
+                sStyles.options[0].text  = "Style";
+            }
+
+            fontDrop.options[0].text = fontName
+            sizeDrop.options[0].text = fontSize
+            formatDrop.options[0].text = fontFormat
+
+        } else {
+            fontDrop.options[0].text  = "Font";
+            sizeDrop.options[0].text = "Size";
+            formatDrop.options[0].text = "Format";
+
+            elem = foo.document.selection.createRange()(0)
+            if ((elem.className == null) || (elem.className == ""))
+            {
+                sStyles.options[0].text  = "Style";
+            } else {
+                sStyles.options[0].text  = elem.className
+            }
+        }
+        
+        fontDrop.selectedIndex = 0;
+        sizeDrop.selectedIndex = 0; 
+        formatDrop.selectedIndex = 0;
+        sStyles.selectedIndex = 0;
+    }
+
+    function doCleanCode(code) {    
+
+        code = code.replace(/<([\w]+) LANG=([^ |>]*)([^>]*)/gi, "<$1$3")
+
+                
+         //Убиваем фонты
+        code = code.replace(/<font([^>])*>(&nbsp;)*\s*<\/font>/gi," ")
+        code = code.replace(/<font([^>])*>/gi, "")
+        code = code.replace(/<\/font>/gi, "")
+        // removes all empty span tags
+        code = code.replace(/<span([^>])*>(&nbsp;)*\s*<\/span>/gi," ")
+        // removes all empty <p> tags
+        code = code.replace(/<p([^>])*>(&nbsp;)*\s*<\/p>/gi," ")
+        // removes all Class attributes on a tag eg. '<p class=asdasd>xxx</p>' returns '<p>xxx</p>'
+        code = code.replace(/<([\w]+) class=([^ |>]*)([^>]*)/gi, "<$1$3")
+        // removes all style attributes eg. '<tag style="asd asdfa aasdfasdf" something else>' returns '<tag something else>'
+        code = code.replace(/<([\w]+) style="([^"]*)"([^>]*)/gi, "<$1$3")  
+        
+        // gets rid of all xml stuff... <xml>,<\xml>,
+        code = code.replace(/<\\?\??xml[^>]>/gi, "")
+        // get rid of ugly colon tags <a:b> or </a:b>
+        code = code.replace(/<\/?\w+:[^>]*>/gi, "")
+        // get rid of silly space tags
+        code = code.replace(/&nbsp;/gi, " ")
+
+/////////////////////////////////////////////////Удаляем все из <td>//////////////////////////////////////////////////////////////
+        code = code.replace(/<td+([^>]*)(?:(valign|align|width|height)|(colspan|rowspan))=([^>]*)/gi, " <td $3=$4")
+        return code
+    }
+
+    function initFoo() {
+        var iframes = document.all.tags("IFRAME");
+        el = iframes[0];
+
+        el.frameWindow = document.frames[el.id];
+
+        el.frameWindow.document.onclick = function () {
+                if (el.frameWindow.event.srcElement.tagName.toUpperCase() == "A")
+                {   
+                    el.frameWindow.event.cancelBubble = true; 
+                    el.frameWindow.event.returnValue = false;
+                }
+            }
+       
+        el.frameWindow.document.oncontextmenu = function () {
+            if (!el.frameWindow.event.ctrlKey){
+                showContextMenu(el.frameWindow.event)
+                return false;
+            }
+        }
+
+        el.frame.indow.document.onerror = function () {
+            return true;
+        }
+
+        el.frameWindow.document.onselectionchange = function () {
+            doToolbar();
+        }
+    
+        el.frame.indow.document.onkeydown = function () {
+            // alert(el.frameWindow.event.keyCode)
+
+            if(el.frame.indow.event.ctrlKey) {
+                // 83 = S
+                if(el.frameWindow.event.keyCode == 83) {
+                  SaveHTMLPage(1)
+                  return false;
+                // 75 = K
+                } else if(el.frameWindow.event.keyCode == 75) {
+                  doLink()
+                  return false;
+                // 87 = .
+                } else if (el.frameWindow.event.keyCode == 87) {
+                  cancelSave();
+                  return false;
+                // 9 = Tab
+                } else if (el.frameWindow.event.keyCode == 9) {
+                  SwitchMode();
+                  return false;
+                // 77 = M
+                } else if (el.frame.indow.event.keyCode == 77) {
+                  doImage();
+                  return false;
+                // 84 = T
+                } else if (el.frameWindow.event.keyCode == 84) {
+                  ShowInsertTable()
+                  return false;
+                // 123 = F12
+                } else if (el.frameWindow.event.keyCode == 123) {
+                  ShowPreview(2)
+                  return false;
+                // 76 = L
+                } else if (el.frameWindow.event.keyCode == 76) {
+                  doCommand("JustifyLeft");
+                  return false;
+                // 69 = E
+                } else if (el.frame.indow.event.keyCode == 69) {
+                  doCommand("JustifyCenter");
+                  return false;
+                // 82 = R
+                } else if (el.frameWindow.event.keyCode == 82) {
+                  doCommand("JustifyRight");
+                  return false;
+                // 74 = J
+                } else if (el.frameWindow.event.keyCode == 74) {
+                  doCommand("JustifyFull");
+                  return false;
+                }
+
+            }
+        }
+          
+    }
+
+var oPopup = window.createPopup();
+    function showMenu(menu, width, height)
+    {
+    
+    var lefter = event.clientX;
+    var leftoff = event.offsetX
+    var topper = event.clientY;
+    var topoff = event.offsetY;
+    var moveMe = 0
+    var oPopBody = oPopup.document.body;
+
+    if (menu == "saveMenu" || menu == "previewMenu")
+    {
+        moveMe = 22
+    }
+
+    if (menu == "colorMenu") {
+        colorType = "0"
+    }
+
+    if (menu == "colorMenu2") {
+        colorType = "2"
+        menu = "colorMenu"
+    }
+
+    if (menu == "formMenu")
+    {
+        if (isCursorInForm()) {
+            document.getElementById("modifyForm1").disabled = false
+        } else {
+            document.getElementById("modifyForm1").disabled = true
+        }
+    }
+
+    if (menu == "tableMenu")
+    {
+    
+        if (isCursorInTableCell() || isTableSelected()) {
+            document.getElementById("modifyTable").disabled = false
+        } else {
+            document.getElementById("modifyTable").disabled = true
+        }
+
+        if (isCursorInTableCell())
+        {
+            document.getElementById("modifyCell").disabled = false
+            document.getElementById("rowAbove").disabled = false
+            document.getElementById("rowBelow").disabled = false
+            document.getElementById("deleteRow").disabled = false
+            document.getElementById("colAfter").disabled = false
+            document.getElementById("colBefore").disabled = false
+            document.getElementById("deleteCol").disabled = false
+            document.getElementById("increaseSpan").disabled = false
+            document.getElementById("decreaseSpan").disabled = false
+        } else {
+            document.getElementById("modifyCell").disabled = true
+            document.getElementById("rowAbove").disabled = true
+            document.getElementById("rowBelow").disabled = true
+            document.getElementById("deleteRow").disabled = true
+            document.getElementById("colAfter").disabled = true
+            document.getElementById("colBefore").disabled = true
+            document.getElementById("deleteCol").disabled = true
+            document.getElementById("increaseSpan").disabled = true
+            document.getElementById("decreaseSpan").disabled = true
+        }
+    }
+
+    var HTMLContent = eval(menu).innerHTML
+    oPopBody.innerHTML = HTMLContent
+    oPopup.show(lefter - leftoff - 2 - moveMe, topper - topoff + 22, width, height, document.body);
+
+    return false;
+    }
+
+    var oPopup2 = window.createPopup();
+    function showContextMenu(event)
+    {
+    
+        menu = "contextMenu"
+        width = "162"
+        height = "67"
+
+        var lefter = event.clientX;
+        var topper = event.clientY;
+    
+        var oPopBody = oPopup2.document.body;
+
+        height = parseInt(height)
+
+        var HTMLContent = "<table style='BORDER-LEFT: threedface 1px solid; BORDER-TOP: threedface 1px solid; BORDER-RIGHT: #404040 1px solid; BORDER-BOTTOM: #404040 1px solid;' cellpadding=0 cellspacing=0><tr><td>"
+        HTMLContent = HTMLContent + eval(menu).innerHTML
+
+        if (isImageSelected())
+        {
+            HTMLContent = HTMLContent + eval("cmImageMenu").innerHTML
+            HTMLContent = HTMLContent + eval("cmLinkMenu").innerHTML
+            height = height + 46
+        }
+
+        if (isTextSelected() && (Mode != "2"))
+        {
+            HTMLContent = HTMLContent + eval("cmLinkMenu").innerHTML
+            height = height + 23
+        }
+
+        if (isTableSelected() || isCursorInTableCell())
+        {
+            HTMLContent = HTMLContent + eval("cmTableMenu").innerHTML
+            height = height + 23
+        }
+        
+        if (isCursorInTableCell())
+        {
+            HTMLContent = HTMLContent + eval("cmTableFunctions").innerHTML
+            height = height + 199
+        }
+
+        HTMLContent = HTMLContent + "</td></tr></table>"
+        oPopBody.innerHTML = HTMLContent
+        
+        oPopup2.show(lefter + 2,topper + 2, width, height, foo.document.body)
+    }
+
+function stopError() {
+        return true;
+    }
+
+    function doLoad() {
+        startEdit()
+    }
+
+    function fooLoad() {
+        
+        if (!justSwitched)
+        {
+        if ((fileCache != 1) && (editDefault == 1)) {
+            loaded = true
+        }
+
+        if (loaded == true) {
+
+            if (tableDefault != 0) {
+                toggleBorders()
+            }
+            displayUserStyles()
+
+            fooURL = foo.location.href
+            initFoo()
+        }
+
+        if (editDefault == 1) {
+            makeEditable()
+        }
+        SwitchMode()
+        loaded = true
+
+        }
+    }
+
+    function makeEditable() {
+        allElem =  foo.document.getElementsByName("webedit")
+        for (a=0; a < allElem.length; a++) {
+            allElem[a].contentEditable = "true"
+            if (allElem[a].comment != null)
+            {
+                allElem[a].title = "Comment: " + allElem[a].comment
+            }
+        }
+    }
+
+    function revertEditable() {
+        allElem =  foo.document.getElementsByName("webedit")
+        for (a=0; a < allElem.length; a++) {
+            allElem[a].removeAttribute("contentEditable")
+            if (allElem[a].comment != "")
+            {
+                allElem[a].removeAttribute("title")
+            }
+        }
+    }
+
+
+    function showColor(oBox,oColor) {
+        oBox.innerHTML = oColor.style.backgroundColor.toUpperCase();
+        oBox.style.backgroundColor = oColor.style.backgroundColor
+    }
+
+    function doColor(oColor) {
+        if (colorType == 2) {
+            myCommand = 'BackColor'
+        } else {
+            myCommand = 'ForeColor'
+        }
+
+        if (isAllowed())
+        {
+            foo.document.execCommand(myCommand,false,oColor.innerHTML);
+        }
+        oPopup.hide()
+    }
+
+    function doCommand(cmd) {
+        if (isAllowed())
+        {
+            document.execCommand(cmd)
+        }
+        doToolbar()
+    }
+
+    function doFont(oFont) {
+        if (isAllowed() && isTextSelected())
+        {
+            foo.document.execCommand('FontName',false,oFont)
+        }
+        foo.focus()
+    }
+
+    function doSize(oSize) {
+        if (isAllowed() && isTextSelected())
+        {
+            foo.document.execCommand('FontSize',false,oSize)
+        }
+        foo.focus()
+    }
+    
+    function doFormat(oFormat) {
+        if (isAllowed() && isTextSelected())
+        {
+            foo.document.execCommand('formatBlock',false,oFormat)
+        }
+        foo.focus()
+    }
+
+    function insertChar(oChar) {
+        if (isAllowed())
+        {
+            var sel = foo.document.selection;
+            var rng = sel.createRange();
+            rng.pasteHTML(oChar.innerHTML)
+        }
+        oPopup.hide()
+    }
+
+    function isTextSelected() {
+            if (foo.document.selection.type == "Text") {
+                return true;
+            } else {
+                return false;
+            }
+    }
+
+    function replaceIncludes(code) {
+        var re = /<WEP\:INC\s*(.*?)>((\n|.)*?)<\/WEP\:INC>/igm
+        code = code.replace(re,"\n<WEP:INC $1>\n<!--#include $1-->\n</WEP:INC>\n")
+        return code
+    }
+
+    
+    function cleanCode() {
+        if (confirm("Are you sure you want to clean HTML code?")){
+
+            var borderwason
+
+            if (borderShown == "yes") {
+                toggleBorders()
+                borderwason = true
+            }
+
+            if (editDefault == 1) {
+                allElem =  foo.document.getElementsByName("webedit")
+                for (a=0; a < allElem.length; a++) {
+                    allElem[a].innerHTML = doCleanCode(allElem[a].innerHTML)
+                }
+            } else {
+                foo.document.body.innerHTML = doCleanCode(foo.document.body.innerHTML)
+            }
+
+            if (borderwason) {
+                toggleBorders()
+            }
+        }
+    }
+
+    function pasteWord() {
+            foo.focus()
+            var oSel = foo.document.selection.createRange()
+            if(oSel.parentElement)
+            {
+                myTempArea.focus()
+                myTempArea.document.execCommand("SelectAll")
+                myTempArea.document.execCommand("Paste")
+                code = doCleanCode(myTempArea.innerHTML)
+                oSel.pasteHTML(doCleanCode(myTempArea.innerHTML))
+            }
+    }
+
+    function isAllowed() {
+        var sel
+        var obj
+        if (editDefault != 1) {
+            return true
+        } else {
+            
+            sel = foo.document.selection
+            
+            if (sel.type != "Control")
+            {
+                obj = sel.createRange().parentElement()
+            } else {
+                obj = sel.createRange()(0)
+            }
+            
+            if (obj.isContentEditable) {
+                return true
+            } else {
+                return false
+            }
+            
+        }
+    }
+
+    function scrollUp() {
+        //top.foo.scrollBy(0,0);
+    }
+
+
+    function resizeWin() {
+        height = 252
+        if (Mode == 2)
+        { height = 221
+        }
+        document.all.foo.height = document.body.clientHeight-height + "px"
+        document.all.foo.focus();
+    }
+
+    function setHeight() {
+        height = 230
+        if (Mode == 2)
+        { height = 221
+        }
+        //alert(document.body.clientHeight)
+        return (document.body.clientHeight-height)
+    }
+
+    function toggleBorders() {
+        var allForms = foo.document.body.getElementsByTagName("FORM");
+        var allInputs = foo.document.body.getElementsByTagName("INPUT");
+        var allTables = foo.document.body.getElementsByTagName("TABLE");
+        var allLinks = foo.document.body.getElementsByTagName("A");
+        
+        if (borderShown == "no") {
+            toggle = "off" 
+        } else { 
+            toggle = "on" 
+        }
+
+        // Do forms
+        for (a=0; a < allForms.length; a++) {
+            if (toggle == "off") {
+                allForms[a].style.border = "1px dotted #FF0000"
+            } else {
+                allForms[a].removeAttribute("style")
+            }
+        }
+        
+        // Do hidden fields
+        for (b=0; b < allInputs.length; b++) {
+            if (toggle == "off") {
+                if (allInputs[b].type.toUpperCase() == "HIDDEN") {
+                    allInputs[b].style.border = "1px dashed #000000"
+                    allInputs[b].style.width = "15px"
+                    allInputs[b].style.height = "15px"
+                    allInputs[b].style.backgroundColor = "#FDADAD"
+                    allInputs[b].style.color = "#FDADAD"
+                }
+            } else {
+                if (allInputs[b].type.toUpperCase() == "HIDDEN")
+                    allInputs[b].removeAttribute("style")
+            }
+        }
+
+     
+        // Do tables
+        for (i=0; i < allTables.length; i++) {
+                if (toggle == "off") {
+                    allTables[i].style.border = "1px dotted #BFBFBF"
+                } else {
+                    allTables[i].removeAttribute("style")
+                }
+                allRows = allTables[i].rows
+                for (y=0; y < allRows.length; y++) {
+                    allCellsInRow = allRows[y].cells
+                        for (x=0; x < allCellsInRow.length; x++) {
+                            if (toggle == "off") {
+                                allCellsInRow[x].style.border = "1px dotted #BFBFBF"
+                            } else {
+                                allCellsInRow[x].removeAttribute("style")
+                            }
+                        }
+                }
+        }
+
+        // Do anchors
+        for (a=0; a < allLinks.length; a++) {
+            if (toggle == "off") {
+                if (allLinks[a].href.toUpperCase() == "") {
+                    allLinks[a].style.border = "1px dashed #000000"
+                    allLinks[a].style.width = "20px"
+                    allLinks[a].style.height = "16px"
+                    allLinks[a].style.backgroundColor = "#FFFFCC"
+                    allLinks[a].style.color = "#FFFFCC"                 
+                }
+            } else {
+                allLinks[a].removeAttribute("style")
+            }
+        }
+ 
+        // Do Editable Content
+        if (editDefault == 1)
+        {
+            allElem =  foo.document.getElementsByName("webedit")
+            for (a=0; a < allElem.length; a++) {
+                if (toggle == "off") {
+                    allElem[a].style.backgroundColor = "#FFF4FF"
+                } else {
+                    allElem[a].removeAttribute("style")
+                }
+            }
+        }
+
+        if (toggle == "off") {
+            button_down(tBorders)
+            borderShown = "yes"
+        } else {
+            button_out(tBorders)
+            borderShown = "no"
+            Mode=2
+        }
+        
+        foo.document.body.innerHTML = foo.document.body.innerHTML
+        //scrollUp()
+        resizeWin()
+        Mode=1
+    
+    }
+
+    function isImageSelected() {
+        if (foo.document.selection.type == "Control") {
+            var oControlRange = foo.document.selection.createRange();
+            if (oControlRange(0).tagName.toUpperCase() == "IMG") {
+                selectedImage = foo.document.selection.createRange()(0);
+                return true;
+            }   
+        }
+    }
+
+    function isTableSelected() {
+        if (foo.document.selection.type == "Control") {
+            var oControlRange = foo.document.selection.createRange();
+            if (oControlRange(0).tagName.toUpperCase() == "TABLE") {
+                selectedTable = foo.document.selection.createRange()(0);
+                return true;
+            }   
+        }
+    } // End Function
+
+    function isCursorInTableCell() {
+        if (document.selection.type != "Control") {
+                          var elem = document.selection.createRange().parentElement()
+                          while (elem.tagName.toUpperCase() != "TD" && elem.tagName.toUpperCase() != "TH")
+                          {
+                            elem = elem.parentElement
+                            if (elem == null)
+                              break
+                          }
+                if (elem) {
+                    selectedTD = elem
+                    selectedTR = selectedTD.parentElement
+                    selectedTBODY =  selectedTR.parentElement
+                    selectedTable = selectedTBODY.parentElement
+                    return true
+                }
+        }
+    } // End function
+
+    function isCursorInForm() {
+        if (document.selection.type != "Control") {
+                          var elem = document.selection.createRange().parentElement()
+                          while (elem.tagName != "FORM")
+                          {
+                            elem = elem.parentElement
+                            if (elem == null)
+                              break
+                          }
+                if (elem) {
+                    selectedForm = elem
+                    return true
+                }
+        }
+    } // End function
+
+    function InsertParagraph() {
+        if (document.selection.type != "Control") {
+            var sel = document.selection.createRange()
+            sel.pasteHTML("<p>")
+            foo.focus()
+        }
+    }   
+
+    var Mode = "1";
+
+    var toggleWasOn
+    var fontChange
+
+
+    function SwitchMode() {
+        
+         if (Mode == "1") {
+
+            if (borderShown == "yes") {
+                toggleBorders()
+                toggleWasOn = "yes"
+            } else {
+                toggleWasOn = "no"
+            }
+
+            toolbar_full.className = "hide";
+            toolbar_code.className = "bevel3";
+
+            // get details to replace back when done
+            // alert(foo.document.body.innerHTML)
+            fontFamily = foo.document.body.style.fontFamily
+            fontSize = foo.document.body.style.fontSize
+
+            text = foo.document.body.text
+            bgColor = foo.document.body.bgcolor
+            background = foo.document.body.background
+
+            if (useXHTML == "1")
+            {
+                code = getXHTML(document.frames('foo').document)
+            } else {
+                code = foo.document.documentElement.outerHTML
+            }
+            re = /&amp;/g
+            code = code.replace(re,'&')
+    
+                re2 = /href="http:\/\/$HTTP_HOST/g
+                re3 = /src="http:\/\/$HTTP_HOST/g
+
+//            alert('$HTTP_HOST')
+            replaceHref = 'href="'
+            replaceImage = 'src="'
+
+/////убрать комментарий при подключении
+            code = code.replace(re2,replaceHref)
+            code = code.replace(re3,replaceImage)
+/////убрать комментарий при подключении end
+
+            
+
+
+            foo.document.body.innerText = cleanHTML(code)
+
+            // nice looking source editor
+            foo.document.body.style.background = "";
+            foo.document.body.style.color = "#000000";
+            foo.document.body.style.textAlign = "Left";
+            foo.document.body.style.fontFamily = "Courier"
+            foo.document.body.style.fontSize = "10pt"
+            foo.document.body.bgColor = '#FFFFFF';
+            foo.document.body.text = '#000000';
+            foo.document.body.background = '';
+            fontChange = true   
+            
+            button_down(mode2);
+
+            Mode = "2";
+            foo.focus()
+        } else {
+
+            loaded = false;
+            justSwitched = true
+
+            foo.document.write(foo.document.body.innerText);
+            foo.document.close()
+
+            toolbar_full.className = "bevel3";
+            toolbar_code.className = "hide";
+
+            Mode = "1";
+
+            if (toggleWasOn == "yes") {
+                toggleBorders()
+                toggleWasOn = "no"
+            }
+        }
+
+        initFoo()
+
+        resizeWin()
+                    
+        foo.focus()
+    }
+
+    function revert() {
+        var saveFile = confirm("Are you sure you want to discard changes and revert to last saved file?");
+        if (saveFile) {
+                if (Mode == "2") { 
+                    SwitchMode()
+                }
+        
+                if (borderShown == "yes") {
+                    toggleBorders()
+                }
+        
+                if (editDefault == 1) {
+                    revertEditable()
+                }
+        
+                foo.document.location.reload(true)
+//Выыодим сново контент сайта перед изменнениями
+          start_load_content=false 
+
+        }
+    }
+
+
+//Зачистка от тегов (DOCTYPE,html,head,title,body,meta )
+    function cleanHTML(code)
+    {    
+         code = code.replace(/<!DOCTYPE([^>])*>/gi, "")
+         code = code.replace(/<html([^>])*>/gi, "")
+         code = code.replace(/<\/html>/gi, "")
+         code = code.replace(/<head([^>])*>/gi, "")
+         code = code.replace(/<\/head>/gi, "")
+         code = code.replace(/<title([^>])*>/gi, "")
+         code = code.replace(/<\/title>/gi, "")
+         code = code.replace(/<body([^>])*>/gi, "")
+         code = code.replace(/<\/body>/gi, "")
+         code = code.replace(/<meta([^>])*>/gi, "")
+      return code
+     } // end func
+
+    function SaveHTMLPage(saveType) {
+     
+        if (Mode == "2") { 
+            SwitchMode()
+        }
+    
+        if (borderShown == "yes") {
+            toggleBorders()
+        }
+        if (editDefault == 1)
+        {
+            revertEditable()
+        }
+
+        // else save the entire doc
+        if (useXHTML == "1")
+        {
+            document.EditorForm.content.value = cleanHTML(getXHTML(document.frames('foo').document))
+            //alert(document.EditorForm.content.value);
+        } else {
+            document.EditorForm.content.value = cleanHTML(foo.document.documentElement.outerHTML);
+        }
+
+
+            re = /&amp;/g
+            document.EditorForm.content.value = document.EditorForm.content.value.replace(re,'&')
+                    re2 = /href="http:\/\/$HTTP_HOST/g
+                    re3 = /src="http:\/\/$HTTP_HOST/g
+
+
+
+            replaceHref = 'href="'
+            replaceImage = 'src="'
+/////убрать комментарий при подключении
+            document.EditorForm.content.value = document.EditorForm.content.value.replace(re2,replaceHref)
+            document.EditorForm.content.value = document.EditorForm.content.value.replace(re3,replaceImage)
+/////убрать комментарий при подключении end
+/*      
+        if (absolutePaths == "1") {
+            re2 = /href="http:\/\/www.xxxxxx.com/g
+            re3 = /src="http:\/\/www.xxxxxx.com/g
+
+            replaceHref = 'href="'
+            replaceImage = 'src="'
+
+            document.EditorForm.content.value = document.EditorForm.content.value.replace(re2,replaceHref)
+            document.EditorForm.content.value = document.EditorForm.content.value.replace(re3,replaceImage)
+        }
+*/
+        document.EditorForm.content.value = replaceIncludes(document.EditorForm.content.value)
+        document.EditorForm.SaveType.value = saveType;
+        document.EditorForm.submit(); 
+        closePopups()
+    }
+
+
+     function help()
+    {
+            var helpWin;
+            var leftPos = (screen.availWidth-500) / 2
+            var topPos = (screen.availHeight-400) / 2 
+                helpWin =window.open('/admin/webedit/help.htm','','width=500,height=430,scrollbars=yes,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+    } 
+    
+
+    function cleanLink()
+    {
+        var code;
+        alert(foo.document.documentElement.outerHTML)
+        code=foo.document.documentElement.outerHTML;
+        code = code.replace(/<[Aa]([^#]+)(#([^\"\\]+){0,1})([^>]+)>/gi, "$2");
+        //<[Aa]([^#]+)(#([^\"'\\]+){0,1})([^>]+)>","<a href=\\\"\\2\\\">
+        foo.document.documentElement.outerHTML=code;
+        alert(code);
+    } 
+
+    function doLink() {
+        if (isAllowed())
+        {
+            if (isSelection()) { 
+                var leftPos = (screen.availWidth-700) / 2
+                var topPos = (screen.availHeight-500) / 2 
+                linkWin = window.open('/admin/webedit/link.shtml?${ID}','','width=700,height=500,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+            } else
+                return
+        }
+    }
+/////////////////////////////////////////POP_UP///////////////////////////////////////////////////////////////////////////////
+    function doPopUp() {
+        if (isAllowed())
+        {
+            if (isSelection()) { 
+                var leftPos = (screen.availWidth-700) / 2
+                var topPos = (screen.availHeight-500) / 2 
+                popupWin = window.open('/admin/webedit/pop_up.shtml?${ID}','','width=700,height=500,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+            } else
+                return
+        }
+    }
+    function  popUP(url,w,h)
+    {
+        var leftPos = (screen.availWidth-700) / 2
+        var topPos = (screen.availHeight-550) / 2 
+        window.open( url ,'bigImg','width=' + w + ',height=' + h + ',scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+    } 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function doImage() {
+        if (isAllowed())
+        {
+
+        if (isImageSelected()) {     
+            var leftPos = (screen.availWidth-500) / 2
+            var topPos = (screen.availHeight-400) / 2 
+            imageWin = window.open('/admin/webedit/modifyImage.html','','width=500,height=430,scrollbars=no,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+        } else {
+            var leftPos = (screen.availWidth-700) / 2
+            var topPos = (screen.availHeight-500) / 2 
+            imageWin = window.open('/cgi-bin/mod/img_viewer.pl?ToDo=InsertImage','','width=700,height=500,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+        }
+
+        }
+    }
+
+    function selectImage(image) {
+            document.execCommand("InsertImage",false,image);
+    }
+
+
+function selectFile(file,size,ext){
+
+    foo.focus();
+    var sel = foo.document.selection.createRange();
+    var htmlstr;
+    var temp_sel;
+    temp_sel=sel.htmlText;
+ 
+    if((ext=="mpeg" || ext=="avi") && !isSelection()) htmlstr = '&nbsp;<a href="'+file+'">Cкачать видео-ролик</a>&nbsp;['+ size +' Kb]&nbsp;';
+
+    if((ext=="mpeg" || ext=="avi") && isSelection())htmlstr = '&nbsp;<a href="'+file+'">'+temp_sel+'</a>&nbsp;['+ size +' Kb]&nbsp;';
+
+    if(!isSelection()) htmlstr = '&nbsp;<a href="'+file+'">Cкачать файл</a>&nbsp;['+ size +' Kb]&nbsp;';
+    if(isSelection()) htmlstr = '&nbsp;<a href="'+file+'">'+temp_sel+'</a>&nbsp;['+ size +' Kb]&nbsp;';
+    //sel.execCommand("CreateLink",false,file)
+    sel.pasteHTML( htmlstr );
+
+
+   }
+
+    function setBackgd(image) {
+            foo.document.body.background = image
+    }
+
+    function ModifyProperties() {
+        var leftPos = (screen.availWidth-500) / 2
+        var topPos = (screen.availHeight-550) / 2 
+        propWin = window.open('/admin/webedit/page.html','','width=500,height=550,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+    }
+
+    function ShowInsertTable() {
+        if (isAllowed())
+        {
+
+        var leftPos = (screen.availWidth-500) / 2
+        var topPos = (screen.availHeight-400) / 2 
+        inserttableWin = inserttableWin = window.open('/admin/webedit/insertTable.html?ToDo=InsertTable','','width=500,height=400,scrollbars=no,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+        }
+    }
+
+    function ShowPreview(type) {
+
+        baseRef = foo.location.href
+        ax=baseRef.lastIndexOf('\/')+1;
+        if(ax!=-1) baseRef=baseRef.substring(0,ax);
+
+        if (borderShown == "yes") {
+            toggleBorders()
+            toggleWasOn = "yes"
+        } else {
+            toggleWasOn = "no"
+        }
+
+        if (editDefault ==1)
+        {
+            revertEditable()
+        }
+
+        var previewHTML
+        if (Mode == "2")
+        {
+            previewHTML = foo.document.body.innerText
+        } else {
+            previewHTML = foo.document.documentElement.outerHTML
+        }
+
+        if (editDefault ==1)
+        {
+            makeEditable()
+        }
+        
+        if (toggleWasOn == "yes") {
+            toggleBorders()
+            toggleWasOn = "no"
+        }
+
+        if (type == "1") {
+            width = 640
+            height = 480
+        } else if (type == "2") {
+            width = 800
+            height = 600
+        } else
+        {
+            width = 1024
+            height = 768
+        }
+
+        height = height - 165
+        width = width - 12
+
+        var leftPos = (screen.availWidth-width) / 2
+        var topPos = (screen.availHeight-height) / 2 - 82
+        previewWin = window.open('','','width=' + width + ',height=' + height + ',toolbar=yes,location=yes,status=yes,menubar=yes,scrollbars=yes,resizable=yes,titlebar=1,top=' + topPos + ',left=' + leftPos);
+
+//        previewWin.document.write("<Base href=" + baseRef + ">")
+        previewWin.document.write(previewHTML)
+        previewWin.document.close()
+        
+    }
+
+    function ModifyTable() {
+        if (isAllowed())
+        {
+
+        if (isTableSelected() || isCursorInTableCell()) {
+            var leftPos = (screen.availWidth-500) / 2
+            var topPos = (screen.availHeight-400) / 2 
+            modifytableWin = window.open('/admin/webedit/modifyTable.html?ToDo=ModifyTable','','width=500,height=400,scrollbars=no,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+        }
+
+        }
+    }
+
+    function ModifyCell() {
+        if (isAllowed())
+        {
+
+        if (isCursorInTableCell()) {
+            var leftPos = (screen.availWidth-500) / 2
+            var topPos = (screen.availHeight-400) / 2 
+            modifytableWin = window.open('/admin/webedit/modifyCell.html?ToDo=ModifyCell','','width=500,height=400,scrollbars=no,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+        }
+
+        }
+    }
+
+
+
+    function doAnchor() {
+            if (isAllowed())
+            {
+
+            var leftPos = (screen.availWidth-500) / 2
+            var topPos = (screen.availHeight-400) / 2 
+        
+            if ((foo.document.selection.type == "Control") && (foo.document.selection.createRange()(0).tagName == "A") && (foo.document.selection.createRange()(0).href == ""))
+            {
+                anchorWin = window.open('/admin/webedit/modifyAnchor.html?ToDo=ModifyAnchor','','width=500,height=250,scrollbars=no,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+            } else {
+                anchorWin = window.open('/admin/webedit/insertAnchor.html?ToDo=InsertAnchor','','width=500,height=250,scrollbars=no,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+            }
+
+            }
+    }
+
+    function isSelection() {
+            if ((foo.document.selection.type == "Text") || (foo.document.selection.type == "Control")) {
+                return true;
+            } else {
+                return false;
+            }
+    }
+
+    function doEmail() {
+        if (isAllowed())
+        {
+            if (isSelection()) { 
+                var leftPos = (screen.availWidth-500) / 2
+                var topPos = (screen.availHeight-400) / 2 
+                emailWin = window.open('/admin/webedit/email.html','','width=500,height=400,scrollbars=no,resizable=no,titlebar=0,top=' + topPos + ',left=' + leftPos);
+            } else
+                return
+        }
+    }
+
+
+
+    
+    
+
+    
+    function button_over(eButton){
+        if (eButton.style.borderBottom != "buttonhighlight 1px solid")
+        {
+        eButton.style.borderBottom = "buttonshadow solid 1px";
+        eButton.style.borderLeft = "buttonhighlight solid 1px";
+        eButton.style.borderRight = "buttonshadow solid 1px";
+        eButton.style.borderTop = "buttonhighlight solid 1px";
+        }
+    }
+                
+    function button_out2(eButton){
+        if (eButton.style.borderBottom != "buttonhighlight 1px solid")
+        {
+        eButton.style.borderColor = "threedface";
+        }
+    }
+
+    function button_out(eButton){
+        eButton.style.borderColor = "threedface";
+    }
+
+    function char_out(eButton){
+        eButton.style.borderColor = "#666666";
+    }
+
+    function button_down(eButton){
+        eButton.style.borderBottom = "buttonhighlight solid 1px";
+        eButton.style.borderLeft = "buttonshadow solid 1px";
+        eButton.style.borderRight = "buttonhighlight solid 1px";
+        eButton.style.borderTop = "buttonshadow solid 1px";
+    }
+
+    function button_up(eButton){
+        eButton.style.borderBottom = "buttonshadow solid 1px";
+        eButton.style.borderLeft = "buttonhighlight solid 1px";
+        eButton.style.borderRight = "buttonshadow solid 1px";
+        eButton.style.borderTop = "buttonhighlight solid 1px";
+        eButton = null; 
+    }
+
+    function contextHilite(menu){
+        menu.runtimeStyle.backgroundColor = "Highlight";
+        if (menu.state){
+            menu.runtimeStyle.color = "GrayText";
+        } else {
+            menu.runtimeStyle.color = "HighlightText";
+        }
+    }
+
+    function contextDelite(menu){
+        menu.runtimeStyle.backgroundColor = "";
+        menu.runtimeStyle.color = "";
+    }
+
+    function cancelSave() {
+        var saveFile = confirm("Are you sure you want to cancel without saving changes?");
+        if (saveFile) {
+            window.parent.load.location.href='?'
+        }
+        closePopups()
+    }
+
+    function closePopups() {
+        if (imageWin) imageWin.close()
+        if (propWin) propWin.close()
+        if (inserttableWin) inserttableWin.close()
+        if (previewWin) previewWin.close()
+        if (modifytableWin) modifytableWin.close()
+        if (insertFormWin) insertFormWin.close()
+        if (textFieldWin) textFieldWin.close()
+        if (hiddenWin) hiddenWin.close()
+        if (buttonWin) buttonWin.close()
+        if (checkboxWin) checkboxWin.close()
+        if (radioWin) radioWin.close()
+        if (charWin) charWin.close()
+        if (linkWin) linkWin.close()
+        if (emailWin) emailWin.close()
+        if (anchorWin) anchorWin.close()
+    }   
+
+function InsertBr(){
+    foo.focus();
+    var sel = document.selection.createRange();
+    var htmlstr = '<br>';
+    sel.pasteHTML( htmlstr );
+    document.all.btnBr.focus();
+}
+
+
+/**
+    Увеличение или уменьшение размера фрейма
+*/
+function plusMinusHeight(type)
+{
+    if(type == 'plus'){
+        //alert(document.getElementById('foo').style.height);
+        var height_frema=document.getElementById('foo').style.height;
+             height_frema= height_frema.replace(/px/gi,"");
+                height_frema=parseInt(height_frema);
+             document.getElementById('foo').style.height=height_frema +50;
+    }
+    else if(type == 'minus'){
+
+        var height_frema=document.getElementById('foo').style.height;
+             height_frema= height_frema.replace(/px/gi,"");
+             height_frema=parseInt(height_frema);
+             if(height_frema - 50>220)document.getElementById('foo').style.height=height_frema -50;
+    }
+} // end func
+/*
+function InsertNbsp(){
+    foo.focus();
+    var sel = document.selection.createRange();
+    var htmlstr = '&nbsp;';
+    sel.pasteHTML( htmlstr );
+    document.all.btnBr.focus();
+}
+*/
+//-->
+</SCRIPT>
+<SCRIPT language=JavaScript src="/admin/webedit/img/ro_attributes.js" type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript src="/admin/webedit/img/ro_xml.js"  type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript src="/admin/webedit/img/ro_stringbuilder.js"  type=text/javascript></SCRIPT>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  
+  <TR>
+    <TD class=body height=22>
+      <TABLE class=hide id=toolbar_code cellSpacing=0 cellPadding=0 width="100%"       align=center border=0>
+        
+        <TR>
+          <TD class=body height=22>
+            <TABLE cellSpacing=0 cellPadding=1 border=0>
+              
+              <TR>
+
+                <TD title=Save>
+                <INPUT class=toolbutton 
+                   onmousedown=button_down(this); id=save3 
+                   onmouseover="button_over(this); button_over(save4);" 
+                   onclick=SaveHTMLPage(1)
+                   onmouseout="button_out(this); button_out(save4);"
+                   type=image  height=20 width=21 src="/admin/webedit/img/button_save.gif" border=0 unselectable="on">
+                   <INPUT class=toolbutton 
+                   onmousedown=button_down(this); id=save4 
+                   onmouseover="button_over(this); button_over(save3)" 
+                   onclick="showMenu('saveMenu',110,62)" 
+                   onmouseout="button_out(this); button_out(save3)" type=image 
+                   height=20 width=7 src="/admin/webedit/img/button_drop_menu.gif" 
+                   border=0 unselectable="on"> 
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD>
+                  <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Cancel Without Saving (Ctrl+W)" onclick=cancelSave() 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_cancel.gif" value=Cancel border=0  unselectable="on"> 
+                </TD>
+                <TD>
+                 <INPUT class=toolbutton id=mode2 
+                   title="WYSIWYG Mode (Ctrl+Tab)" onclick=SwitchMode() 
+                   type=image height=20 width=21 src="/admin/webedit/img/button_mode.gif" 
+                   border=0 unselectable="on"> 
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+
+                <TD title=Preview>
+                 <INPUT class=toolbutton 
+                  onmousedown=button_down(this); id=preview3 
+                  onmouseover="button_over(this); button_over(preview4)" 
+                  onclick=ShowPreview(2); 
+                  onmouseout="button_out(this); button_out(preview4);" 
+                  type=image height=20 width=21 
+                  src="/admin/webedit/img/button_preview.gif" border=0 
+                  unselectable="on"><INPUT class=toolbutton 
+                  onmousedown=button_down(this); id=preview4 
+                  onmouseover="button_over(this); button_over(preview3)" 
+                  onclick="showMenu('previewMenu',150,62)" 
+                  onmouseout="button_out(this); button_out(preview3);" 
+                  type=image height=20 width=7 
+                  src="/admin/webedit/img/button_drop_menu.gif" border=0  unselectable="on">
+                </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title=Print 
+                  onclick='foo.document.execCommand("Print");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_print.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Cut (Ctrl+X)" 
+                  onclick='document.execCommand("Cut");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_cut.gif" border=0 unselectable="on"> 
+               </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Copy (Ctrl+C)" 
+                  onclick='document.execCommand("Copy");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_copy.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Paste (Ctrl+V)" 
+                  onclick='document.execCommand("Paste");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_paste.gif" border=0 unselectable="on"> 
+                </TD>
+                  <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Undo (Ctrl+Z)" 
+                  onclick='document.execCommand("Undo");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_undo.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Redo (Ctrl+Y)" 
+                  onclick='document.execCommand("Redo");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_redo.gif" border=0 unselectable="on"> 
+                </TD>
+            </TR>
+         </TABLE>
+      </TD>
+      </TR>
+      </TABLE>
+      <TABLE class=bevel3 id=toolbar_full cellSpacing=0 cellPadding=0   width="100%" align=center border=0>
+        <TR>
+          <TD class=body height=22>
+
+<!--///////////////////////////////////////////ПЕРВЫЙ УРОВЕНЬ МЕНЮ ///////////////////////////////////////////////////-->
+
+            <TABLE cellSpacing=0 cellPadding=1 border=0>
+              <TR>
+                <TD title=Save><INPUT class=toolbutton 
+                  onmousedown=button_down(this); id=save1 
+                  onmouseover="button_over(this); button_over(save2);" 
+                  onclick=SaveHTMLPage(1) 
+                  onmouseout="button_out(this); button_out(save2);" type=image 
+                  height=20 width=21 src="/admin/webedit/img/button_save.gif" border=0 
+                  unselectable="on"><INPUT class=toolbutton 
+                  onmousedown=button_down(this); id=save2 
+                  onmouseover="button_over(this); button_over(save1)" 
+                  onclick="showMenu('saveMenu',110,62)" 
+                  onmouseout="button_out(this); button_out(save1)" type=image 
+                  height=20 width=7 src="/admin/webedit/img/button_drop_menu.gif" 
+                  border=0 unselectable="on"> </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Cancel Without Saving (Ctrl+W)" onclick=cancelSave() 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_cancel.gif" value=Cancel border=0 
+                  unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="View Code (Ctrl+Tab)" 
+                  onclick=SwitchMode() onmouseout=button_out(this); type=image 
+                  height=20 width=21 src="/admin/webedit/img/button_mode.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD title=Preview><INPUT class=toolbutton 
+                  onmousedown=button_down(this); id=preview1 
+                  onmouseover="button_over(this); button_over(preview2)" 
+                  onclick=ShowPreview(2); 
+                  onmouseout="button_out(this); button_out(preview2);" 
+                  type=image height=20 width=21 
+                  src="/admin/webedit/img/button_preview.gif" border=0 
+                  unselectable="on"><INPUT class=toolbutton 
+                  onmousedown=button_down(this); id=preview2 
+                  onmouseover="button_over(this); button_over(preview1)" 
+                  onclick="showMenu('previewMenu',150,62)" 
+                  onmouseout="button_out(this); button_out(preview1);" 
+                  type=image height=20 width=7 
+                  src="/admin/webedit/img/button_drop_menu.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title=Print 
+                  onclick='foo.document.execCommand("Print");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_print.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Cut (Ctrl+X)" 
+                  onclick='doCommand("Cut");' onmouseout=button_out(this); 
+                  type=image height=20 width=21 src="/admin/webedit/img/button_cut.gif" 
+                  border=0 unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Copy (Ctrl+C)" 
+                  onclick='document.execCommand("Copy");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_copy.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Paste (Ctrl+V)" 
+                  onclick='doCommand("Paste");' onmouseout=button_out(this); 
+                  type=image height=20 width=21 
+                  src="/admin/webedit/img/button_paste.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Undo (Ctrl+Z)" 
+                  onclick='document.execCommand("Undo");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_undo.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Redo (Ctrl+Y)" 
+                  onclick='document.execCommand("Redo");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_redo.gif" border=0 unselectable="on"> 
+                </TD>
+                 <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontBold onmouseover=button_over(this); 
+                  title="Bold (Ctrl+B)" onclick='doCommand("Bold");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_bold.gif" border=0 name=up 
+                  unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontUnderline onmouseover=button_over(this); 
+                  title="Underline (Ctrl+U)" onclick='doCommand("Underline");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_underline.gif" border=0 name=up 
+                  unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontItalic onmouseover=button_over(this); 
+                  title="Italic (Ctrl+I)" onclick='doCommand("Italic");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_italic.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontInsertOrderedList onmouseover=button_over(this); 
+                  title="Insert Number List" 
+                  onclick='doCommand("InsertOrderedList");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_numbers.gif" border=0 
+                  unselectable="on">
+                 </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontInsertUnorderedList onmouseover=button_over(this); 
+                  title="Insert Bullet List" 
+                  onclick='doCommand("InsertUnorderedList");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_bullets.gif" border=0 
+                  unselectable="on">
+                 </TD>
+                <TD>
+                 <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Decrease Indent" 
+                  onclick='doCommand("Outdent");' onmouseout=button_out(this); 
+                  type=image height=20 width=21 
+                  src="/admin/webedit/img/button_decrease_indent.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Increase Indent" 
+                  onclick='doCommand("Indent");' onmouseout=button_out(this); 
+                  type=image height=20 width=21 
+                  src="/admin/webedit/img/button_increase_indent.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD>
+                 <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontSuperScript onmouseover=button_over(this); 
+                  title=Superscript onclick='doCommand("SuperScript");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_superscript.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD>
+                  <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontSubScript onmouseover=button_over(this); 
+                  title=Subscript onclick='doCommand("SubScript");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_subscript.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD>
+                 <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontJustifyLeft onmouseover=button_over(this); 
+                  title="Align Left (Ctrl+L)" 
+                  onclick='doCommand("JustifyLeft");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_align_left.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontJustifyCenter onmouseover=button_over(this); 
+                  title="Align Center (Ctrl+E)" 
+                  onclick='doCommand("JustifyCenter");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_align_center.gif" border=0 
+                  unselectable="on"> 
+               </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontJustifyRight onmouseover=button_over(this); 
+                  title="Align Right (Ctrl+R)" 
+                  onclick='doCommand("JustifyRight");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_align_right.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD>
+                 <INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=fontJustifyFull onmouseover=button_over(this); 
+                  title="Align Justify (Ctrl+J)" 
+                  onclick='doCommand("JustifyFull");' 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_align_justify.gif" border=0 
+                  unselectable="on">
+                </TD>
+                
+              </TR></TABLE></TD></TR>
+        <TR>
+          <TD class=body bgColor=#000000><IMG height=1 
+            src="/admin/webedit/img/1x1.gif" width=1></TD></TR>
+        <TR>
+          <TD class=body>
+
+<!--///////////////////////////////////////////ВТОРОЙ УРОВЕНЬ МЕНЮ ///////////////////////////////////////////////////-->
+            <TABLE cellSpacing=1 cellPadding=1 border=0>
+              
+              <TR>
+                <TD><SELECT class=Text120 id=fontDrop 
+                  onchange=doFont(this[this.selectedIndex].value) 
+                  unselectable="on"> <OPTION selected>Font</OPTION> <OPTION 
+                    value="Times New Roman">Default</OPTION> <OPTION 
+                    value=Arial>Arial</OPTION> <OPTION 
+                    value=Verdana>Verdana</OPTION> <OPTION 
+                    value=Tahoma>Tahoma</OPTION> <OPTION 
+                    value=Geneva>Geneva</OPTION> <OPTION 
+                    value=Helvetica>Helvetica</OPTION> <OPTION 
+                    value="Courier New">Courier New</OPTION> <OPTION 
+                    value=Georgia>Georgia</OPTION></SELECT> </TD>
+                <TD><SELECT class=Text50 id=sizeDrop 
+                  onchange=doSize(this[this.selectedIndex].value) 
+                  unselectable="on"> <OPTION selected>Size<OPTION 
+                    value=1>1<OPTION value=2>2<OPTION value=3>3<OPTION 
+                    value=4>4<OPTION value=5>5<OPTION value=6>6<OPTION 
+                    value=7>7</OPTION></SELECT> </TD>
+                <TD><SELECT class=Text100 id=formatDrop 
+                  onchange=doFormat(this[this.selectedIndex].value) 
+                  unselectable="on"> <OPTION selected>Format<OPTION 
+                    value="<P>">Normal<OPTION value="<H1>">Heading 1<OPTION 
+                    value="<H2>">Heading 2<OPTION value="<H3>">Heading 3<OPTION 
+                    value="<H4>">Heading 4<OPTION value="<H5>">Heading 5<OPTION 
+                    value="<H6>">Heading 6</OPTION></SELECT> </TD>
+
+                <TD>
+                 <SELECT class=Text120 id=sStyles onchange=applyStyle(this[this.selectedIndex].value);foo.focus(); this.selectedIndex=0; foo.focus();  unselectable="on">
+                  <OPTION selected>Style</OPTION>
+                  <OPTION  value="">None</OPTION>
+                  </SELECT> </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Font Color" 
+                  onclick="showMenu('colorMenu',180,291)" 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_font_color.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title=Highlight 
+                  onclick="showMenu('colorMenu2',180,291)" 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_highlight.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Table Functions" 
+                  onclick="showMenu('tableMenu',160,262)" 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_table_down.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Insert or Modify Image (Ctrl+M)" onclick=doImage() 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_image.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Insert Horizontal Line" 
+                  onclick='doCommand("InsertHorizontalRule");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_hr.gif" border=0 unselectable="on"> </TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+
+                <TD>
+                <INPUT id='btnBr' class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Мягкий перенос" 
+                  onclick='return InsertBr();' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_br.gif" border=0 unselectable="on"> </TD>
+                  <!--
+                  <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+
+                <TD>
+                <INPUT id='btnnbsp' class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Мягкий перенос" 
+                  onclick='return InsertNbsp();' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_nbsp.gif" border=0 unselectable="on"> </TD>
+                   -->
+              
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Modify Page Properties" 
+                  onclick=ModifyProperties() onmouseout=button_out(this); 
+                  type=image height=20 width=21 
+                  src="/admin/webedit/img/button_properties.gif" border=0 
+                  unselectable="on"> </TD>
+        </TR>
+        </TABLE></TD></TR>
+        <tr>
+            <td>
+
+<!--///////////////////////////////////////////ТРЕТИЙ УРОВЕНЬ МЕНЮ ///////////////////////////////////////////////////-->
+            <table cellSpacing=1 cellPadding=1 border=0>
+                <tr>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Remove Text Formatting" 
+                  onclick='doCommand("RemoveFormat");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_remove_format.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Clean HTML Code" 
+                  onclick=cleanCode() onmouseout=button_out(this); type=image 
+                  height=20 width=21 src="/admin/webedit/img/button_clean_code.gif" 
+                  border=0 unselectable="on"> </TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Paste from Microsoft Word" onclick=pasteWord(); 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_paste_word.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <td>
+                 <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Create or Modify HyperLink - Text or Image must be selected first (Ctrl+K)" 
+                  onclick="doLink();" onmouseout=button_out(this); type=image 
+                  height=20 width=21 src="/admin/webedit/img/button_link.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD>
+                  <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Insert or Modify Anchor" 
+                  onclick=doAnchor() onmouseout=button_out(this); type=image 
+                  height=20 width=21 src="/admin/webedit/img/button_anchor.gif" border=0 
+                  unselectable="on">
+                </TD>
+                <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Create Email Link (Text or Image must be selected first)" 
+                  onclick=doEmail() onmouseout=button_out(this); type=image 
+                  height=20 width=21 src="/admin/webedit/img/button_email.gif" border=0 
+                  unselectable="on">
+              </TD>
+              <td>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="POP UP окно" 
+                  onclick= doPopUp() onmouseout=button_out(this); type=image 
+                  height=20 width=21 src="/admin/webedit/img/popup.gif" border=0 
+                  unselectable="on">
+                
+                </td>
+                 <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Insert Special Characters" 
+                  onclick="showMenu('charMenu',104,111)" 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_chars.gif" border=0 unselectable="on"> 
+                </TD>
+
+
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                 <TD>
+                <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); title="Select all" 
+                  onclick='foo.focus();document.execCommand("SelectAll");' 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/icon_select_all.gif" border=0 unselectable="on"> 
+                </TD>
+                <TD align=left><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <td>
+                    <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Down" onclick=plusMinusHeight('plus'); 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/down.gif" border=0 
+                  unselectable="on">
+                    </td>
+                <td>
+                    <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="Up" onclick=plusMinusHeight('minus'); 
+                  onmouseout=button_out(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/up.gif" border=0 
+                  unselectable="on">
+                    </td>
+                <TD><IMG height=20 src="/admin/webedit/img/seperator.gif" width=2></TD>
+                <TD><INPUT class=toolbutton onmousedown=button_down(this); 
+                  id=tBorders onmouseover=button_over(this); 
+                  title="Show / Hide Guidelines" onclick=toggleBorders() 
+                  onmouseout=button_out2(this); type=image height=20 width=21 
+                  src="/admin/webedit/img/button_show_borders.gif" border=0 
+                  unselectable="on"> </TD>
+                <TD>
+                 <td valign=top> 
+                 <INPUT class=toolbutton onmousedown=button_down(this); 
+                  onmouseover=button_over(this); 
+                  title="HELP" 
+                  onclick=help() onmouseout=button_out(this); type=image 
+                  height=16 width=16 src="/admin/webedit/img/help.gif" border=0 
+                  unselectable="on"></td>
+               <td>
+                  <DIV class=pasteArea id=myTempArea contentEditable></DIV>
+<!-- ФОРМА -->
+                    <FORM name=EditorForm method=post action='/cgi-bin/mod/document.cgi'>
+                    <input type="hidden" name="a" value="save" />
+                    <input type="hidden" name="sid" value="${SID}" />
+                    <input type="hidden" name="id" value="${ID}" />
+                    <input type="hidden" name="l" value="${LANG}" />
+                    <INPUT TYPE="hidden" NAME="content">
+                    <INPUT TYPE="hidden" name="SaveType">
+                    </FORM>
+<!-- END -->
+                  </TD>
+                </tr>
+            </table>
+            </td>
+            </tr>
+        <TR>
+          <TD class=body bgColor=#000000><IMG id=lc height=1 src="/admin/webedit/img/1x1.gif" width=1></TD></TR></TABLE>
+</TD></TR></TABLE>
+
+
+
+
+
+
+
+<!-- //////////////////////////////////////////////////МЕНЮШКИ/////////////////////////////////////////////////////////// -->
+<DIV id=colorMenu style="DISPLAY: none">
+<TABLE style="BORDER-RIGHT: buttonshadow 2px solid; BORDER-TOP: buttonhighlight 1px solid; FONT-SIZE: 7px;
+   BORDER-LEFT: buttonhighlight 1px solid;  CURSOR: hand; BORDER-BOTTOM: buttonshadow 1px solid; FONT-FAMILY: Verdana" 
+   borderColor=#666666 cellSpacing=5 cellPadding=1 bgColor=buttonface border=1>
+  
+  <TR>
+    <TD id=color style="FONT-SIZE: 12px; FONT-FAMILY: verdana; HEIGHT: 20px" 
+    colSpan=10>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #ff0000" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #ffff00" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #00ff00" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #00ffff" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #0000ff" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #ff00ff" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #ffffff" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #f5f5f5" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #dcdcdc" 
+      onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="WIDTH: 12px; BACKGROUND-COLOR: #fffafa" 
+      onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #d3d3d3" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #c0c0c0" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #a9a9a9" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #808080" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #696969" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #000000" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #2f4f4f" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #708090" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #778899" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #4682b4" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #4169e1" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #6495ed" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #b0c4de" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #7b68ee" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #6a5acd" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #483d8b" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #191970" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #000080" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #00008b" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #0000cd" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #1e90ff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #00bfff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #87cefa" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #87ceeb" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #add8e6" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #b0e0e6" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f0ffff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #e0ffff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #afeeee" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #00ced1" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #5f9ea0" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #48d1cc" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #00ffff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #40e0d0" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #20b2aa" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #008b8b" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #008080" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #7fffd4" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #66cdaa" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #8fbc8f" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #3cb371" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #2e8b57" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #006400" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #008000" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #228b22" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #32cd32" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #00ff00" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #7fff00" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #7cfc00" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #adff2f" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #98fb98" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #90ee90" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #00ff7f" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #00fa9a" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #556b2f" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #6b8e23" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #808000" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #bdb76b" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #b8860b" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #daa520" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffd700" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f0e68c" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #eee8aa" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffebcd" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffe4b5" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f5deb3" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffdead" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #deb887" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #d2b48c" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #bc8f8f" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #a0522d" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #8b4513" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #d2691e" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #cd853f" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f4a460" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #8b0000" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #800000" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #a52a2a" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #b22222" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #cd5c5c" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f08080" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fa8072" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #e9967a" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffa07a" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff7f50" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff6347" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff8c00" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffa500" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff4500" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #dc143c" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff0000" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff1493" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff00ff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ff69b4" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffb6c1" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffc0cb" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #db7093" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #c71585" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #800080" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #8b008b" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #9370db" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #8a2be2" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #4b0082" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #9400d3" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #9932cc" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ba55d3" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #da70d6" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ee82ee" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #dda0dd" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #d8bfd8" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #e6e6fa" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f8f8ff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f0f8ff" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f5fffa" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #f0fff0" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fafad2" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fffacd" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fff8dc" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffffe0" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fffff0" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fffaf0" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #faf0e6" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fdf5e6" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #faebd7" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffe4c4" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffdab9" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffefd5" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fff5ee" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #fff0f5" onclick=parent.doColor(color)>&nbsp;</TD>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="BACKGROUND-COLOR: #ffe4e1" 
+  onclick=parent.doColor(color)>&nbsp;</TD></TR>
+  <TR>
+    <TD onmouseover=parent.showColor(color,this) 
+    style="FONT-SIZE: 10px; FONT-FAMILY: verdana; HEIGHT: 15px" 
+    onclick=parent.doColor(color) 
+colSpan=10>&nbsp;None</TD></TR></TABLE></DIV><!-- end color menu --><!-- Special Char Menu -->
+<DIV id=charMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: buttonshadow 2px solid; BORDER-TOP: buttonhighlight 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 14px; BORDER-LEFT: buttonhighlight 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonshadow 1px solid; FONT-FAMILY: Verdana" 
+borderColor=#666666 cellSpacing=5 cellPadding=1 bgColor=buttonface border=1>
+  
+  <TR>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>c</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>R</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>T</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>?</TD></TR>
+  <TR>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>-</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>:</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>ч</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>б</TD></TR>
+  <TR>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>?</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>?</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>"</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>"</TD></TR>
+  <TR>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);></TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);></TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) onmouseout=parent.char_out(this);>й</TD>
+    <TD onmousedown=parent.button_down(this); 
+    onmouseover=parent.button_over(this); style="WIDTH: 15px; CURSOR: hand" 
+    onclick=parent.insertChar(this) 
+  onmouseout=parent.char_out(this);>ъ</TD></TR></TABLE></DIV><!-- End Char Menu --><!-- Start Table Menu -->
+<DIV id=tableMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: buttonshadow 2px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: buttonshadow 1px solid" 
+cellSpacing=0 cellPadding=0 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick=parent.ShowInsertTable()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Insert 
+      Table...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Ctrl+T) 
+    </TD></TR>
+  <TR id=modifyTable onclick=parent.ModifyTable();>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Modify Table 
+      Properties...&nbsp;</TD></TR>
+  <TR id=modifyCell onclick=parent.ModifyCell()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Modify Cell 
+      Properties...&nbsp; </TD></TR>
+  <TR height=10>
+    <TD align=middle><IMG height=2 src="/admin/webedit/img/vertical_spacer.gif" 
+      width=140></TD></TR>
+  <TR id=colAfter onclick=parent.InsertColAfter()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Insert Column 
+      to the Right&nbsp; </TD></TR>
+  <TR id=colBefore onclick=parent.InsertColBefore()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Insert Column 
+      to the Left&nbsp; </TD></TR>
+  <TR height=10>
+    <TD align=middle><IMG height=2 src="/admin/webedit/img/vertical_spacer.gif" 
+      width=140></TD></TR>
+  <TR id=rowAbove onclick=parent.InsertRowAbove()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Insert Row 
+      Above&nbsp; </TD></TR>
+  <TR id=rowBelow title="Insert Row Below" onclick=parent.InsertRowBelow()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Insert Row 
+      Below&nbsp; </TD></TR>
+  <TR height=10>
+    <TD align=middle><IMG height=2 src="/admin/webedit/img/vertical_spacer.gif" 
+      width=140></TD></TR>
+  <TR id=deleteRow title="Delete Row" onclick=parent.DeleteRow()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Delete 
+      Row&nbsp; </TD></TR>
+  <TR id=deleteCol title="Delete Column" onclick=parent.DeleteCol()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Delete 
+      Column&nbsp; </TD></TR>
+  <TR height=10>
+    <TD align=middle><IMG hideFocus tabIndex=1 height=2 
+      src="/admin/webedit/img/vertical_spacer.gif" width=140></TD></TR>
+  <TR id=increaseSpan title="Increase Column Span" 
+  onclick=parent.IncreaseColspan()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Increase 
+      Column Span&nbsp; </TD></TR>
+  <TR id=decreaseSpan title="Decrease Column Span" 
+  onclick=parent.DecreaseColspan()>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); height=20>&nbsp;&nbsp;Decrease 
+      Column Span&nbsp; </TD></TR>
+</TABLE></DIV>
+<!-- End Table Menu -->
+
+
+
+<!-- Start Context Menu -->
+<DIV id=contextMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick='parent.document.execCommand("Cut");parent.oPopup2.hide()'>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cut&nbsp;</TD></TR>
+  <TR onclick='parent.document.execCommand("Copy");parent.oPopup2.hide()'>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy&nbsp;</TD></TR>
+  <TR onclick='parent.document.execCommand("Paste");parent.oPopup2.hide()'>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Paste&nbsp;</TD></TR>
+</TABLE></DIV>
+<!-- End Context Menu -->
+
+<!-- Start Table Context Menu -->
+<DIV id=cmTableMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick=parent.ModifyTable();>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modify 
+      Table Properties...&nbsp;</TD></TR>
+</TABLE></DIV>
+<!-- End Table Context Menu -->
+
+<!-- Start Table Functions Context Menu -->
+<DIV id=cmTableFunctions style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick=parent.ModifyCell();>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modify 
+      Cell Properties...&nbsp;</TD></TR></TABLE>
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick="parent.InsertColBefore(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insert 
+      Column to the Left&nbsp;</TD></TR>
+  <TR onclick="parent.InsertColAfter(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insert 
+      Column to the Right&nbsp;</TD></TR></TABLE>
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick="parent.InsertRowAbove(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insert 
+      Row Above&nbsp;</TD></TR>
+  <TR onclick="parent.InsertRowBelow(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insert 
+      Row Below&nbsp;</TD></TR></TABLE>
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick="parent.DeleteRow(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete 
+      Row&nbsp;</TD></TR>
+  <TR onclick="parent.DeleteCol(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete 
+      Column&nbsp;</TD></TR></TABLE>
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick="parent.IncreaseColspan(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Increase 
+      Column Span&nbsp;</TD></TR>
+  <TR onclick="parent.DecreaseColspan(); parent.oPopup2.hide();">
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Decrease 
+      Column Span&nbsp;</TD></TR></TABLE></DIV><!-- End Table Functions Context Menu --><!-- Image Context Menu -->
+<DIV id=cmImageMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick=parent.doImage();>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modify 
+      Image Properties...&nbsp;</TD></TR>
+</TABLE></DIV>
+<!-- End Image Context Menu -->
+
+<!-- Start Link Context Menu -->
+<DIV id=cmLinkMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: #808080 1px solid" 
+cellSpacing=0 cellPadding=3 width=160 bgColor=buttonface border=0>
+  
+  <TR onclick=parent.doLink();>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: default; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this);>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create 
+      or Modify Link...&nbsp;</TD></TR></TABLE></DIV>
+<!-- End Link Context Menu -->
+
+
+<!-- Start Save Menu -->
+<DIV id=saveMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: buttonshadow 2px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: buttonshadow 1px solid" 
+cellSpacing=0 cellPadding=0 width=110 bgColor=buttonface border=0>
+  
+  <TR  onclick=parent.SaveHTMLPage(1);>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); 
+      height=20>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ctrl+S 
+    </TD></TR>
+  <TR onclick=parent.SaveHTMLPage(2);>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); 
+      height=20>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save &amp; Exit&nbsp;</TD></TR>
+  <TR onclick=parent.revert();>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); 
+      height=20>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Revert&nbsp;</TD></TR></TABLE></DIV>
+<!-- End Save Menu -->
+
+
+<!-- Start Preview Menu -->
+<DIV id=previewMenu style="DISPLAY: none">
+<TABLE 
+style="BORDER-RIGHT: buttonshadow 2px solid; BORDER-TOP: buttonhighlight 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-BOTTOM: buttonshadow 1px solid" 
+cellSpacing=0 cellPadding=0 width=150 bgColor=buttonface border=0>
+  
+  <TR onclick=parent.ShowPreview(2);>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); 
+      height=20>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;800 x 
+      600&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ctrl+F12 </TD></TR>
+  <TR onclick=parent.ShowPreview(1)>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); 
+      height=20>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;640 x 480&nbsp;</TD></TR>
+  <TR onclick=parent.ShowPreview(3);>
+    <TD onmouseover=parent.contextHilite(this); 
+    style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; FONT: 8pt tahoma; BORDER-LEFT: buttonface 1px solid; CURSOR: hand; BORDER-BOTTOM: buttonface 1px solid" 
+    onmouseout=parent.contextDelite(this); 
+      height=20>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1024 x 768</TD></TR>
+</TABLE></DIV>
+<!-- End Preview Menu -->
+<script>
+//Загружаем контент раздела
+function contentLoad(){
+        var content;
+        content='${DATA}'; 
+//        content='ok'; 
+        if(start_load_content == false){                                       
+            foo.document.body.innerHTML = content; 
+                start_load_content = true;
+                resizeWin();
+            }
+}
+</script>
+<iFrame contenteditable  id=foo style="width:100%;height:expression(setHeight()); visibility:show; background-color:white; padding:0; border:0 solid #000000; scrollbar-base-color:#dddddd; overflow=auto;" onLoad="fooLoad();contentLoad();foo.focus();">
+</iFrame>
+
+                                </TD>
+                              </TR>
+
+          <TR>
+        <TD height="4" class="minibl" align="center"><iframe src="http://alphaweb.ru/cgi-bin/copyright.cgi" width="100%" scrolling="no" frameborder="0" align="center" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe></TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

@@ -1,0 +1,149 @@
+<table>
+<tr><td><a href="/cgi-bin/_admin/template.cgi">Шаблоны</a> :: <a href="/cgi-bin/_admin/users.cgi">Пользователи</a></td></tr>
+<tr><td><form action="/cgi-bin/_admin/template.cgi">
+Название шаблона: <input class=i1 name=name> <br>
+<input type=submit value='Искать'>
+</td></tr></form>
+<tr><td>
+<table>
+ <tr bgcolor=#EEEEEE>
+ <td>id</td><td>дата</td><td>Раздел</td><td>Название</td><td>Описание</td><td>Имя автора</td><td>Картинка</td><td>Удалить</td>
+ </tr>
+${ROW}
+</table>
+</td></tr>
+<tr><td align=right>
+${PEREHOD}
+</td></tr>
+<tr>
+ <td>
+ <table align=center border=0> <form action="/cgi-bin/_admin/load/load.cgi" method=post enctype="multipart/form-data">
+ <tr><td>Название (напр. Бизнес 1)</td><td><input type=text name='name' value="${NAME}" class=i1></td></tr>
+ <tr><td>Раздел (напр. История)</td><td><input type=text name='razdel' value="${RAZDEL}" class=i1></td></tr>
+ <tr><td>Описание (напр. шаблон в голубых тонах)</td><td><input type=text name='opis' value="${OPIS}" class=i1></td></tr>
+ <tr><td>Имя автора (автор шаблона)</td><td><input type=text name='author_name' value="${AUTHOR_NAME}" class=i1></td></tr>
+ <tr><td>Email автора </td><td><input type=text name='author_email' value="${AUTHOR_EMAIL}" class=i1></td></tr>
+ <tr><td>URL автора </td><td><input type=text name='author_url' value="${AUTHOR_URL}" class=i1></td></tr>
+ <tr><td>Шаблон (выберите файл .zip)</td><td><input type=file name='shablon' value="" class=i1></td></tr>
+ <tr><td>Preview (картинка сайта)</td><td><input type=file name='preview' value="" class=i1></td></tr>
+ <tr><td>Номер</td><td><input type=text name='id' value="${ID}" class=i1></td></tr>
+ <tr><td>Рейтинг шаблона</td><td><input type=text name='rating' value="${RATING_ADMIN}" class=i1></td></tr>
+ <tr><td>Язык шаблона (1 - рус.; 2 - англ.)</td><td><input type=text name='lang' value="${LANG}" class=i1></td></tr>
+ <tr><td>Статус шаблона (1 - видимый.; 0 - невидимый.)</td><td><input type=text name='status' value="${STATUS}" class=i1></td></tr>
+ <tr><td colspan=2 align=center><input type=submit value="Сохранить" class=b1></td></tr>
+ </table>
+</form>
+ </td>
+</tr>
+<tr>
+ <td>
+<center><b> Иструкция по проектированию шаблонов </b></center>
+<pre>
+Шаблоны и картинки должны быть упакованы архиватором zip
+Картинки должны лежать в папке template_img
+Далее помещаете  папку template_img и сами шаблоны с файлами ini в папку template  и архивируете (имя самого архива не имеет значения, 
+значение имеет название папки template с шаблонами и картинками)
+Все пути к картинкам в шаблонах должны иметь вид &lt;img src="/template_img/имя_файла_картинки.gif"&gt;
+
+Для шаблона index.tpl создаем файл index.ini в который включаем следующие строчки:
+(чем полнее будут описаны переменные тем понятнее будет пользователю)
+Значения в этих файлах разделяются знаком =
+Сначала идет переменна , далее какому шаблону она соответствует (сначала на русском потом на англ.), 
+далее идет тип шаблона static (статический) или dynamic (динамический)
+
+MAIN=index.tpl=Основной шаблон=Main template=static
+INCLUDES_ROW=includes.tpl=Шаблон для вывода включений в страницу=Tempplate includes=dynamic
+LINK_RAZDELS=link_razdels.tpl=Шаблон вывода ссылок на сопряженные разделы=Razdels link=dynamic
+MAIN_MENU_1=main_menu_1.tpl=Шаблон вывода меню первого уровня без вывода подразделов=Menu 1 without submenu=dynamic
+MAIN_MENU_2=main_menu_2.tpl=Шаблон вывода меню первого уровня c рекурсивным выводом всех подразделов=Menu 1 with submenu=dynamic
+SUB_MENU_2=sub_menu_2.tpl=Шаблон вывода меню второго уровня с рекурсивным выводом подразделов=Menu 2 with submenu=dynamic
+Описанные в index.ini шаблоны не должны иметь файлов *.ini (они просто не будут учитываться). 
+Это шаблоны, включенные по умолчанию в каждую страницу сайта независимо от типа раздел
+Далее для каждого раздела создаем шаблон (*.tpl) и аналогичный ему файл .ini
+
+
+Для document.tpl создаем document.ini:
+OSN=document.tpl=Шаблон для вывода текста раздела-документа=Template for print section-document=static
+
+
+Для guest.tpl создаем файл guest.ini:
+OSN=guest.tpl=Шаблон гостевой книги=Main template for guest book=static
+GUEST_ROW=guest_row.tpl=Шаблон вывода каждой записи гостевой книги=Guest row template=dynamic
+GUEST_FORM=guest_form.tpl=Шаблон формы гостевой книги=Guest book form=static
+
+________________
+Заметим что $ {OSN} в шаблоне index.ini является главным ключевым словом.
+Для всех разделов вывод будут проводиться именно в переменную $ {OSN}
+
+
+Для news.tpl создаем файл news.ini:
+OSN=news.tpl=Шаблон для вывода новостной ленты=Template for print news=static
+NEWS_ROW=news_row.tpl=Шаблон вывода эелемента новостной ленты=News row=dynamic
+
+Для news_full.tpl создаем файл news_full.ini:
+OSN=news_full.tpl=Шаблон для вывода полной новости=Template for print full news=static
+
+Для tree.tpl создаем файл tree.ini:
+OSN=tree.tpl=Шаблон карты сайта=template for site map=static
+TREE_ROW=tree_row.tpl=Вывод каждого элемента карты сайта=Template  row for site map=dynamic
+
+__________________
+Помимо определений шаблонов необходимо определить переменные, которые пользователь сможет изменять
+(например цвет таблицы, цвет, размер ссылок и т.д.)
+Файл с такими перменными называется assign.ini 
+Структура файла следующая:
+
+TITLE=Мой заголовок=Заголовок сайта=title=title=text
+KEYWORDS=Ключевые слова=Ключевые слова для поисковиков=KEYWORDS=keywords=text
+DESCRIPTION=Описание сайта=Краткое описание сайта для поисковиков=DESCRITION=description=text
+EMAIL_ORG=E-mail=Ваш e-mail адрес=EMAIL=email=text
+LOGO=/template_img/logo.gif=Название-логотип организации=/template_img/logo.gif=name-logo organization=img_viewer
+SLOGAN=/template_img/slogan.gif=Девиз организации=/template_img/slogan.gif=slogan=img_viewer
+NAME_ORG=/template_img/name_org.gif=Название моей организации=/template_img/logo.gif=Name organization=img_viewer
+COLOR_LINKS=blue=Основной цвет ссылок=blue=Color of links=color
+SIZE_LINKS=12=Основной размер ссылок=12=Size of links=size
+TYPE_HOVER_LINKS=underline=Эффект при наведении на ссылку=underline=Hover effecr=type_link
+COLOR_LINKS_MENU_1=blue=Цвет ссылок меню 1 уровня=blue=Color of links rank 1=color
+SIZE_LINKS_MENU_1=12=Размер ссылок меню 1 уровня=12=Size of links rank 1=size
+TYPE_HOVER_LINKS_1=underline=Эффект при наведении на ссылку 1 уровня=underline=Hover effecr link 1 rank=type_link
+COLOR_LINKS_MENU_2=blue=Цвет ссылок меню 2 уровня=blue=Color of links rank 2=color
+SIZE_LINKS_MENU_2=12=Размер ссылок меню 2 уровня=12=Size of links rank 2=size
+TYPE_HOVER_LINKS_2=underline=Эффект при наведении на ссылку 2 уровня=underline=Hover effecr link 2 rank=type_link
+COLOR_LINKS_MENU_3=blue=Цвет ссылок меню 3 уровня=blue=Color of links rank 3 etc.=color
+SIZE_LINKS_MENU_3=12=Размер ссылок меню 3 уровня и далее=12=Size of links rank 1 etc.=size
+TYPE_HOVER_LINKS_3=underline=Эффект при наведении на ссылку 3 уровня и далее=underline=Hover effecr link 1 rank etc.=type_link
+COLOR_MAIN_TEXT=blue=Цвет основного текста=black=Color of main text=color
+SIZE_MAIN_TEXT=12=Размер основного текста=12=Size of main text=size
+BGCOLOR_TEXT=#FFFFFF=Цвет фона основного текста=#FFFFFF=Bgcolor main text=color
+BACKGROUND_TEXT= =Фоновая картинка основного текста= =Background main text=img_viewer
+
+Разберем одну строчку детально:
+Первый элемент - переменаая, которую вы пишете где-то в шаблоне.
+Второй элемент - значение по умолчанию
+3 - описание переменной
+4 - значение на англ.
+5 - описание на англ.
+6 - тип переменной (очень важная часть, т.к. в зависимости от типа при визуальное отображение панели 
+редактирования будет различным)
+
+типы переменных:
+text = текстовое поле
+textarea = расширенное текстовое поле
+img_viewer = выбор файла
+magick = Надпись на файле
+color_link = выбор цвета ссылки
+size_link = выбор размера ссылки
+type_link = тип ссылки (underline,none,strike)
+color_text = выбор цвета текста
+size_text = выбор размера текста
+color_background = выбор цвета заливки
+
+зарезервированные стили :
+ссылки меню первого уровня link1
+ссылки меню второго уровня и т.д. link2
+ссылки меню 1 уровня и рекурсивно следующих link_full
+ссылки в дереве сайта link_tree
+</pre>
+ </td>
+</tr>
+</table>

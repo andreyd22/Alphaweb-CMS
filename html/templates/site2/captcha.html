@@ -1,0 +1,49 @@
+	<script type="text/javascript" src="/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+	<script type="text/javascript" src="/yui/build/json/json-beta-min.js"></script>
+	<script type="text/javascript" src="/yui/build/connection/connection-min.js"></script>
+	
+	<img id="captcha_img" src="/img/pics/default.png?[%time%]">&nbsp;<a href="JavaScript:reloadCaptcha();">обновить&nbsp;картинку</a><br>
+	<input type=hidden name="pass_hash" value="" id="pass_hash">
+	
+<script type="text/javascript">
+function reloadCaptcha (e) {
+    // Get the div element in which to report messages from the server
+	var cptImg = document.getElementById('captcha_img');
+	//var passHash = document.pass_hash;
+	var passHash = document.getElementById('pass_hash');
+
+    // Define the callbacks for the asyncRequest
+    var callbacks = {
+
+        success : function (o) {
+
+            // Process the JSON data returned from the server
+            var messages = [];
+            try {
+                messages = YAHOO.lang.JSON.parse(o.responseText);
+            }
+            catch (x) {
+                alert("JSON Parse failed!");
+                return;
+            }
+
+            passHash.value = messages[0].pass_hash;
+            cptImg.src= "/img/pics/"+messages[0].pass_hash+".png?[%time%]";
+        },
+
+        failure : function (o) {
+            if (!YAHOO.util.Connect.isCallInProgress(o)) {
+                alert("Ajax request filed.");
+            }
+        },
+
+        timeout : 5000
+    }
+	var postData="";
+    // Make the call to the server for JSON data
+    YAHOO.util.Connect.asyncRequest('GET',"/cgi-bin/get_captcha.cgi?t=[%time%]", callbacks);
+}
+
+reloadCaptcha();
+</script>
+	

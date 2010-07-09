@@ -1,0 +1,12 @@
+<!--Вывод всех ссылок в меню конструктора админ-->
+<tr bgcolor=#EFEFEF>
+<td nowrap>$LINK</td><!--Ссылка на редактирование информации модуля-->
+<!--td width=30 align=center><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=sort&id=${ID}&position=${KEY_UP}" title='Вверх' target=main><img src="/img/icons/icon_moveup.gif" border=0></a></td>
+<td width=30 align=center><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=sort&id=${ID}&position=${KEY_DOWN}" title='Вниз' target=main><img src="/img/icons/icon_movedown.gif" border=0></a></td-->
+<td width=30 align=center><input style='width:30px' type='text' name=sort_id value='${SORT_ID}'><input type='hidden' name=sort_id_id value='${ID}'></td>
+<td width=30 align=center><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=view_sort&id=${ID}" title='Поменять родительский раздел' target=main><img src="/img/icons/icon_acls.gif" border=0></a></td>
+<td width=30 align=center><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=add&idp=${ID}" title='Добавить подраздел' target=main><img src="/img/icons/icon_add.gif" border=0></a></td>
+<td width=30 align=center><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=add&id=${ID}" title='Свойства раздела' target=main><img src="/img/icons/icon_properties.gif" border=0></a></td>
+<td width=30 align=center><a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&a=del&id=${ID}" title='Удалить раздел' onclick="return Delete(2,'${NAME_RAZDEL}');" target=main><img src="/img/icons/delete.gif" border=0></a></td>
+</tr>
+<!--Вывод всех ссылок в меню конструктора админ-->

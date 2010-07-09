@@ -1,0 +1,51 @@
+<!-- Таблица для страницы управления файлами для картинок-->
+<table align=center width=100%>
+<tr bgcolor=#DDDDDD>
+<td align=center><b>Тип</b></td>
+<td align=center><b>Имя</b></td>
+<td align=center><b>Размер</b></td>
+<td align=center><b>Изменен</b></td>
+<td align=center><b>Действие</b></td>
+</tr>
+<tr>
+<td align=center><a href="/cgi-bin/mod/img_viewer.pl?sid=${SID}&file=${BACK_DIR}&name_form=${NAME_FORM}"><img src="/img/icons/back.gif" border=0></a></td>
+<td><b>${DIR}</b></td>
+<td align=center></td>
+<td align=center></td>
+<td align=left><a href="/cgi-bin/mod/img_viewer.pl?sid=${SID}&file=${BACK_DIR}&name_form=${NAME_FORM}"><img src="/img/icons/back.gif" border=0></a></td>
+</tr>
+${ROWS}
+<tr><td colspan=5><hr></td></tr>
+<tr><td colspan=5>
+ <table>
+ <tr><form action="/cgi-bin/mod/upload/load.pl" method=post enctype="multipart/form-data">
+ <td>Загрузить файл:</td><td><input type=file name="upfile"><input type=submit value="Загрузить" class=b1></td>
+ <input type=hidden name="sid" value="${SID}">
+ <input type=hidden name="l" value="1">
+ <input type=hidden name="dir" value="${DIR}">
+ <input type=hidden name="ok" value="image_viewer">
+ <input type=hidden name="name_form" value="${NAME_FORM}">
+ </tr>   </form>
+ <tr><form action="/cgi-bin/mod/upload/load.pl" method=post enctype="multipart/form-data">
+ <td>Загрузить zip-архив:</td><td><input type=file name="upfile"><input type=submit value="Загрузить" class=b1></td>
+ <input type=hidden name="sid" value="${SID}">
+ <input type=hidden name="dir" value="${DIR}">
+ <input type=hidden name="l" value="1">
+ <input type=hidden name="a" value="unzip">
+ <input type=hidden name="ok" value="image_viewer">
+ <input type=hidden name="name_form" value="${NAME_FORM}">
+ </tr>   </form>
+ <tr><form action="/cgi-bin/mod/img_viewer.pl">
+ <td>Создать директорию:</td><td><input name="new_dir" class=i1><input type=submit value="Создать" class=b1></td>
+ <input type=hidden name="l" value="1">
+ <input type=hidden name="sid" value="${SID}">
+ <input type=hidden name="dir" value="${DIR}">
+ <input type=hidden name="a" value="new_dir">
+ <input type=hidden name="ok" value="image_viewer">
+ <input type=hidden name="name_form" value="${NAME_FORM}">
+ </tr> </form>
+ </table>
+</td></tr>
+</table>
+<!-- Таблица для страницы управления файлами для картинок-->
+

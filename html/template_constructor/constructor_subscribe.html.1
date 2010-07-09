@@ -1,0 +1,25 @@
+<!-- -->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Список подписчиков</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=send_form">Рассылка</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=del_all">Очистить базу</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><b>${TITLE}</b></td></tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+<table width=100%>
+${SUB_ROW}
+</table>
+</td></tr>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>

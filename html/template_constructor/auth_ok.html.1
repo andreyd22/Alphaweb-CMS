@@ -1,0 +1,34 @@
+<table>
+<tr>
+<td>
+Здравствуйте, ${NAME_U}.<br>
+Ваш сайт <a href="http://${HOST_NAME}" target=_blank>${HOST_NAME}</a><br>
+Ограничение дискового пространства: ${SIZE} Kb<br>
+Используемое дисковое пространство: ${USE_SIZE} Kb (${BYTE_PERSENT_USE}%)<br><br>
+     <table align=center width=300 cellspacing=0 cellpadding=0>
+     <tr>
+        <td colspan=5>
+            <table width="${BYTE_PERSENT_USE}%" bgcolor="blue" border=0>
+            <tr><td style='font-size:1px;'>&nbsp;</td></tr>
+            </table>
+        </td></tr>
+        <tr>
+        <td align=center style="font-size:4px;">|</td>
+        <td align=center style="font-size:4px;" width=50%></td>
+        <td align=center style="font-size:4px;">|</td>
+        <td align=center style="font-size:4px;" width=50%></td>
+        <td align=center style="font-size:4px;">|</td>
+        </tr>
+        <tr>
+        <td>0%</td>
+        <td width=50%></td>
+        <td>50%</td>
+        <td width=50%></td>
+        <td>100%</td>
+        </tr>
+     </table><br><br>
+<a href="/cgi-bin/admin_/auth.cgi?sid=${SID}&l=${LANG}">Использовать конструктор для создания сайта</a><br><br>
+<a href="/cgi-bin/file_viewer.pl?sid=${SID}&l=1">Загрузка файлов на сервер</a>
+</td>
+</tr>
+</table>

@@ -1,0 +1,36 @@
+<!--Работа с новостями-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=view&sid=${SID}&l=${LANG}&idr=${IDR}">Добавить слово</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${IDR}">Весь словарь</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<form action="/cgi-bin/mod/${MOD}.cgi" method=post>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">Выводить по <input name=col_records class=i2 value="${COL_RECORDS}"> записей на странице <input type=submit value='Сохранить' class=b1></td></tr>
+<input name=a type=hidden value='change_col'>
+<input name=sid type=hidden value='${SID}'>
+<input name=id type=hidden value='${IDR}'>
+<input name=l type=hidden value='${LANG}'>
+<input name=PageIn type=hidden value='${PAGEIN}'>
+<input name=p_n type=hidden value='${PN}'>
+</form>
+<tr>
+<td>
+<table width=100%>
+<tr><td><b>Список слов</b></td></tr>   <form action="/cgi-bin/mod/dict.cgi">
+<tr><td><b><input name=key value='${KEY}'><input type="submit" value="Искать"></b></td></tr>
+${ROW_NEWS}
+</table>
+</td>
+</tr>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>
+<!--Работа с новостями-->

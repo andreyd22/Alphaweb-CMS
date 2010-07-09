@@ -1,0 +1,26 @@
+<!--Работа с новостями-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR_NEWS}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=view&sid=${SID}&l=${LANG}&idr=${IDR_NEWS}">Добавить баннер</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${IDR_NEWS}">Все баннеры</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR_NEWS}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<tr>
+<td>
+<table width=100%>
+<tr><td><b>Список баннеров</b></td></tr>
+${ROW_NEWS}
+</table>
+</td>
+</tr>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>
+<!--Работа с новостями-->

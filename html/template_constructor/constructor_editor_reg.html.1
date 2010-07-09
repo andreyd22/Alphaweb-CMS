@@ -1,0 +1,40 @@
+<!--Шапка для гостевой-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/reg.cgi?a=edit_st&sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/reg.cgi?sid=${SID}&l=${LANG}&id=${ID}">Показать записи</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+<td>::<a href="/cgi-bin/mod/reg.cgi?a=del&sid=${SID}&l=${LANG}&id=${ID}" onclick="return Delete(1,'удалить все записи из БД')">Удалить все записи</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<tr>
+<td>
+<form action="/cgi-bin/mod/${MOD}.cgi" method="post" id="edit" name="edit">
+<b>Main text:</b></br>
+<textarea id="ta" name="ta" style="width:650px" rows="24" cols="80">${DATA}</textarea>
+<input type="submit" name="ok" value="  Сохранить  " class=b1 />
+<input type="hidden" name="a" value="save" />
+<input type="hidden" name="sid" value="${SID}" />
+<input type="hidden" name="id" value="${ID}" />
+<input type="hidden" name="l" value="${LANG}" />
+<input type="button" name="ins" value="  Вставить html  " onclick="return insertHTML();"  class=b1 />
+<!--<input type="button" name="hil" value="  Подсветка текста  " onclick="return highlight();" class=b1 />-->
+<a href="javascript:mySubmit()">submit</a>
+<script type="text/javascript">
+function mySubmit() {
+// document.edit.save.value = "yes";
+document.edit.onsubmit(); // workaround browser bugs.
+document.edit.submit();
+};
+</script>
+</form>
+
+</td>
+</tr>
+</table>

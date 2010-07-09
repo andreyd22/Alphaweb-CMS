@@ -1,0 +1,144 @@
+
+<html>
+<head>
+<title> Меню администратора</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<LINK rel="stylesheet" type="text/css" href="/admin/style.css">
+<script type="text/javascript" src="/admin/scripts.js"></script>
+<script language="javascript">
+// check browsers
+var ua          = navigator.userAgent;
+var opera       = /opera [56789]|opera\/[56789]/i.test(ua);
+var ie          = !opera && /msie [56789]/i.test(ua);           // preventing opera to be identified as ie
+var moz         = !opera && /mozilla\/[56789]/i.test(ua);       // preventing opera to be identified as mz
+if (ie && window.attachEvent) {
+    window.attachEvent("onload", function () {
+        vision();
+/*      
+        var scrollBorderColor   =       "rgb(120,172,255)";
+        var scrollFaceColor             =       "rgb(234,242,255)";
+        with (document.body.style) {
+            scrollbarDarkShadowColor    =       scrollBorderColor;
+            scrollbar3dLightColor               =       scrollBorderColor;
+            scrollbarArrowColor                 =       "black";
+            scrollbarBaseColor                  =       scrollFaceColor;
+            scrollbarFaceColor                  =       scrollFaceColor;
+            scrollbarHighlightColor             =       scrollFaceColor;
+            scrollbarShadowColor                =       scrollFaceColor;
+            scrollbarTrackColor                 =       "white";
+        }
+*/
+    });
+}
+function vision() { 
+        var ns6 = (!document.all && document.getElementById);
+        var ie4 = (document.all);
+        if ( ie4 )document.all.loading.style.visibility ='hidden';
+        if(ns6)document.getElementById('loading').style.visibility = 'hidden';
+} 
+</script> 
+
+
+</head> 
+
+<!-- Подключаем меню -->
+<script src='/admin/ftiens4.js'></script>
+<script src='/admin/ua.js'></script>
+<!-- Конец -->
+<LINK id="webfx-tab-style-sheet"  href="/admin/admin.css" rel=styleSheet type=text/css>
+<script type="text/javascript" src="/admin/tabpane.js"></script>
+</head>
+
+<body bgcolor="#f6f6f6"   leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<!--<div id="loading" style="position:absolute; left:0; top:0; width:100%; height:100%; VISIBILITY:visible;"> 
+<table width="100%" height="100%" bgcolor="#F6F6F6"> 
+<tr><td align="center" valign="middle" class=mess> 
+Loading... 
+</td></tr> 
+</table> 
+</div>-->
+
+<table width=100% cellspacing=0 cellpadding=0>
+<tr>
+ <td><table><tr>
+<td valign=top><a href="/cgi-bin/mod/razdels.cgi?a=add&sid=${SID}&l=${LANG}" target=main title='Добавить главный раздел'><img src="/img/icons/icon_createfolder.gif" border=0></a></td>
+<td><a href="/cgi-bin/mod/razdels.cgi?a=add&sid=${SID}&l=${LANG}" target=main title='Добавить главный раздел'>Добавить главный раздел</a></td>
+</tr><tr>
+<td valign=top><a href="/cgi-bin/mod/razdels.cgi?a=porjadok&sid=${SID}&l=${LANG}" target=main title='Изменить порядок разделов'><img src="/img/icons/icon_sort.gif" border=0></a></td>
+<td><a href="/cgi-bin/mod/razdels.cgi?a=porjadok&sid=${SID}&l=${LANG}" target=main title='Изменить порядок разделов'>Изменить порядок разделов</a></td>
+</tr>
+<tr>
+<td valign=top><a href="/cgi-bin/mod/template.cgi?sid=${SID}&l=${LANG}" target=main title='Настройка шаблонов'><img src="/img/icons/icon_aset.gif" border=0></a></td>
+<td><a href="/cgi-bin/mod/template.cgi?sid=${SID}&l=${LANG}" target=main title='Настройка шаблонов'>Настройка внешнего вида</a></td>
+ </tr>
+<tr>
+<td valign=top><a href="/cgi-bin/mod/manager.cgi?sid=${SID}&l=${LANG}" target=main title='Пользователи системы'><img src="/img/icons/icon_manager.gif" border=0></a></td>
+<td><a href="/cgi-bin/mod/manager.cgi?sid=${SID}&l=${LANG}" target=main title='Пользователи системы'>Пользователи системы</a></td>
+ </tr>
+ </table>
+<hr>
+</td>
+</tr>
+<tr>
+<td width=100%>
+
+
+<script type="text/javascript">
+function theHref(page1,page2,action,target,frame)
+{
+
+    var a;
+    a=page1+ "?action=" +action;
+    
+    if(target!="")top.frames[target].location=a;
+    if(page2!="")top.frames['content'].location=page2;
+    
+
+    if(frame!=""){
+        if(navigator.appName=='Netscape'){
+            parent.document.getElementById('include_frameset').cols='200,*';
+        }
+        else if(navigator.appName=='Microsoft Internet Explorer' ) window.parent.document.all.tags('FRAMESET')[1].cols="200,*";
+     foldersTree = gFld("", "") 
+     SetCookie("highlightedFolderTreeLink",100000);
+     SetCookie("clickedFolder",100000);
+    }
+    else {
+        if(navigator.appName=='Netscape'){
+            parent.document.getElementById('include_frameset').cols='0,*';
+        }
+        else if(navigator.appName=='Microsoft Internet Explorer' ) window.parent.document.all.tags('FRAMESET')[1].cols="0,*";
+        }
+
+    //return a;
+
+} // end func
+
+</script>
+
+<!-- Основное меню -->
+    <br>
+    <script>
+      HIGHLIGHT=1
+      HIGHLIGHT_COLOR='#ffffff'
+      HIGHLIGHT_BG='#0000BB'
+      USETEXTLINKS = 1
+      STARTALLOPEN = 0
+      USEFRAMES = 1
+      USEICONS = 0
+      WRAPTEXT = 1
+      PERSERVESTATE = 1
+      ICONPATH='/admin/admin_img/'
+      foldersTree = gFld("<b>Разделы сайта</b>", "", "")
+      ${CONSTRUCTOR_MENU}
+    </script>
+</td></tr></table>
+    <div style='display:hiden'><a href=http://www.treeview.net/treemenu/userhelp></a></div>
+    <div align=center><script>initializeDocument();</script></div>
+    <noscript>Для работы меню следует включить поддержку Jscript</noscript>
+    <br><br>
+    <div  class=mess></div>
+</body>
+</html>
+

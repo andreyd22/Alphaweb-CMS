@@ -1,0 +1,107 @@
+<!--e-Shop-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/catalog.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Добавить товар</a>::</td>
+<td>::<a href="/cgi-bin/mod/catalog.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=export">Экспорт/импорт Excel</a>::</td>
+<td>::<a href="/cgi-bin/mod/catalog.cgi?sid=${SID}&l=${LANG}&id=${ID}">Показать товары</a>::</td>
+<!--<td>::<a href="/cgi-bin/mod/catalog.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=users">Пользователи</a>::</td>
+<td>::<a href="/cgi-bin/mod/catalog.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=order">Заказы</a>::</td>
+-->
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><b>${TITLE}</b></td></tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<form action="/cgi-bin/mod/catalog.cgi" method=post>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+<table>
+<tr bgcolor=#EFEFEF>
+<td>Выводить по</td><td><input name=col_records class=i2 value="${COL_RECORDS}"> товаров на странице </td>
+</tr>
+<tr bgcolor=#EFEFEF>
+<td>Выводить по</td><td><input name=row_records class=i2 value="${ROW_RECORDS}"> товаров в ряд</td>
+</tr>
+<tr bgcolor=#EFEFEF>
+<td>Email адрес<br> (используется для интернет-магазина): </td><td><input name=email_owner class=i2 value="${EMAIL_OWNER}"> для сообщений о заказах</td>
+</tr>
+<tr bgcolor=#EFEFEF>
+<td>Валюта каталога: </td><td><input name=curency class=i2 value="${CURENCY}"></td>
+</tr>
+
+<tr bgcolor=#EFEFEF>
+<td valign=top>Способы доставки <br>(используется для инетрнет-магазина): </td><td valign=top>
+<input type="checkbox" name=dostavka_post value="checked" ${DOSTAVKA_POST}>Товар отправляется почтой по указанному адресу
+<br>
+<input type="checkbox" name=dostavka_kurer value="checked" ${DOSTAVKA_KURER}>Доставка курьером по указаному адресу
+<br>
+<input type="checkbox" name=dostavka_ftp value="checked" ${DOSTAVKA_FTP}>Скачиваеться с FTP Сервера
+<br>
+<input type="checkbox" name=dostavka_email value="checked" ${DOSTAVKA_EMAIL}>Отправляеться по E-MAIL
+</td>
+</tr>
+
+<tr bgcolor=#EFEFEF>
+<td valign=top>Способы оплаты: </td><td valign=top>
+<input type="checkbox" name=predoplata value="checked" ${PREDOPLATA}>Предоплата
+<br>
+<input type="checkbox" name=postoplata value="checked" ${POSTOPLATA}>Оплата при получении товара
+</td>
+</tr>
+
+<tr><td colspan=2>
+<input type=submit value='Сохранить' class=b1>
+</td></tr></table>
+</td></tr>
+<input name=a type=hidden value='save_data'>
+<input name=sid type=hidden value='${SID}'>
+<input name=id type=hidden value='${ID}'>
+<input name=l type=hidden value='${LANG}'>
+<input name=PageIn type=hidden value='${PAGEIN}'>
+<input name=p_n type=hidden value='${PN}'>
+</form>
+</tr><form action="/cgi-bin/mod/catalog.cgi" method=get>
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+<b>Поиск товаров:</b> <input name=slovo value='${SLOVO}' class=i2> <input type=submit value='Поиск'></td></tr>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+</form>
+<tr><td><b>Список товаров</b> (найдено <b>${COUNT}</b>)</td></tr><form action="/cgi-bin/mod/catalog.cgi" method=post>
+<tr><td align=right>
+<!--<input type=submit value="Обновить статус товаров" name="upd_status">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<input type=submit value="Обновить данные" name="upd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="Удалить отмеченные товары" name="del"></td></tr>
+<td>
+<table width=100%>
+<tr>
+<td><b>Наименование</b></td>
+<!--td><b>Жирность</b></td-->
+<td><b>Раздел</b></td>
+<!--td><b>Штрих код</b></td-->
+<!--td><b>ГОСТ</b></td-->
+<td><b>Сорт.</b></td>
+<td><b>Картинка</b></td>
+<td><b>Удалить</b></td>
+</tr>
+${ROW_CAT}
+</table>
+</td>
+</tr>
+<tr><td align=right>
+<!--<input type=submit value="Обновить статус товаров" name="upd_status">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<input type=submit value="Обновить данные" name="upd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="Удалить отмеченные товары" name="del"></td></tr>
+<input type=hidden name=a value='del_cat'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+</form>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>
+<!--e-Shop-->

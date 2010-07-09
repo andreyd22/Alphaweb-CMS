@@ -1,0 +1,39 @@
+<!--e-Shop-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/manager.cgi?a=view&sid=${SID}&l=${LANG}&id=${ID}">Добавить пользователя</a>::</td>
+<td>::<a href="/cgi-bin/mod/manager.cgi?sid=${SID}&l=${LANG}&id=${ID}">Все пользователи</a>::</td>
+<td>::<a href="/cgi-bin/mod/backup.cgi?a=backup" target=_blank>Резервная копия структуры</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<tr><td><b>Список пользователей</b> (Всего <b>${COUNT}</b>)</td></tr>
+<td>
+<table width=100% border=0>
+<tr><td></td><td></td><td></td><td></td>
+<td colspan=3 align=center bgcolor=#EFEFEF><b>Привилегии</b></td>
+<td></td><td></td>
+</tr>
+<tr>
+<td><b>ID</b></td>
+<td><b>Логин</b></td>
+<td><b>Имя</b></td>
+<td><b>Описание</b></td>
+<td bgcolor=#EFEFEF>Добавление/правка разделов</td>
+<td bgcolor=#EFEFEF>Изменение дизайна</td>
+<td bgcolor=#EFEFEF>Раздача привилегий</td>
+<td><b>Статус</b></td>
+<td><b>Удалить</b></td>
+</tr>
+${ROW_USERS}
+</table>
+</td>
+</tr>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>
+<!--e-Shop-->

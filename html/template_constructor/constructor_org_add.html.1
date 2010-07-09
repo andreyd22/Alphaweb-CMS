@@ -1,0 +1,189 @@
+<!--add/edit catalog-->
+<style>
+.textarea{border-width:200px;border-size:1px;border-color:#000000;}
+</style>
+<table>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Добавить организацию</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Показать организации</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr><td><hr></td></tr>
+
+<tr>
+<td>
+<table>
+<tr>
+<form action="/cgi-bin/mod/${MOD}.cgi" method=post enctype="multipart/form-data" id="edit" name="edit">
+<tr>
+<td><b>Название рус: </b></td><td width=85%><input name='name_rus' value='${NAME_RUS}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Название анг: </b></td><td width=85%><input name='name_en' value='${NAME_EN}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Email: </b></td><td width=85%><input name='email' value='${EMAIL}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Пароль: </b></td><td width=85%><input name='pass' value='${PASS}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Страна: </b></td><td width=85%><input name='country' value='${COUNTRY}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Регион: </b></td><td width=85%><input name='region' value='${REGION}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Город: </b></td><td width=85%><input name='city' value='${CITY}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>URL: </b></td><td width=85%><input name='url' value='${URL}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Адрес: </b></td><td width=85%><input name='adres' value='${ADRES}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Телефон: </b></td><td width=85%><input name='phone' value='${PHONE}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Контактное лицо: </b></td><td width=85%><input name='face' value='${FACE}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Кол. мех. автоматов: </b></td><td width=85%><input name='col_meh' value='${COL_MEH}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Кол. электр. автоматов: </b></td><td width=85%><input name='col_electr' value='${COL_ELECTR}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Кол. других автоматов: </b></td><td width=85%><input name='col_other' value='${COL_OTHER}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Сортировка:</b><small>Используется для повышения позиции при выводе списка</small></td><td width=85%><input name='sort' value='${SORT}' class=i1 style="width:100px"></td>
+</tr>
+<tr>
+<td><b>Статус:</b><small>0 - неактивны, 1 - активный</small></td><td width=85%><input name='status' value='${STATUS}' class=i1 style="width:100px"></td>
+</tr>
+<tr>
+<td><b>Код:</b><small>Используется для подтверждения регистрации</small></td><td width=85%><input name='kod' value='${KOD}' class=i1 style="width:100px"></td>
+</tr>
+<tr>
+<td colspan=2><b>Дополнительно: </b></td></tr>
+<tr><td colspan=2><textarea name='other' cols=45 rows=7>${OTHER}</textarea></td>
+</tr>
+<tr><td>
+<b>Фотография:</b>
+</td><td><input type=file name="foto"> ${DEL_IMG}</td>
+
+</tr>
+<tr><td colspan=2>
+<b>Направление деятельности:</b>
+<hr></td></tr>
+<tr>
+<td valign=top><b>Выберите:</b></td>
+<td width=85%>
+<input type="checkbox" value='1' name='mech' ${MECH_CH}> Механические торговые автоматы<br>
+<input type="checkbox" value='1' name='electr' ${ELECTR_CH}> Электронные торговые автоматы<br>
+<input type="checkbox" value='1' name='locator' ${LOCATOR_CH}> Компания (предприниматель) - локатор<br>
+<input type="checkbox" value='1' name='postavka' ${POSTAVKA_CH}> Поставка торговых автоматов<br>
+<input type="checkbox" value='1' name='proizv' ${PROIZV_CH}> Производство торговых автоматов <br>
+<input type="checkbox" value='1' name='garant' ${GARANT_CH}> Гарантийное обслуживание <br>
+<input type="checkbox" value='1' name='post_garant' ${POST_GARANT_CH}> Постгарантийное обслуживание <br>
+<input type="checkbox" value='1' name='post_nap' ${POST_NAP_CH}> Поставка наполнителя <br>
+<input type="checkbox" value='1' name='proizv_nap' ${PROIZV_NAP_CH}> Производство наполнителя <br>
+<input type="checkbox" value='1' name='post_aks' ${POST_AKS_CH}> Поставка аксессуаров для торговых автоматов <br>
+<input type="checkbox" value='1' name='proizv_aks' ${PROIZV_AKS_CH}> Производство аксессуаров для торговых автоматов <br>
+</td>
+</tr>
+
+<!--
+<tr><td colspan=2>
+<b>Компания(предприниматель) - локатор: </b>
+<hr></td></tr>
+
+<tr>
+<td>Продвижение сети автоматов</td><td width=85%>
+<input type=checkbox name='prodv_meh' ${PRODV_MEH_CH}>механические 
+<input type=checkbox name='prodv_electr' ${PRODV_ELECTR_CH}>электронные 
+<input type=checkbox name='prodv_other' ${PRODV_OTHER_CH}>иные 
+</td>
+</tr>
+<tr><td colspan=2><b>Поставка торговых автоматов</b><hr></td></tr>
+
+<tr>
+<td>Механические</td><td width=85%>
+  <input type="hidden" name="id_post" value="${ID_POST1}">
+  Компания <input name=company_post value="${COMPANY_POST1}">
+  Страна <input name=city_post value="${CITY_POST1}">
+  <br>Автоматы:<br>
+  <textarea name=avto_post>${AVTO_POST2}</textarea><br>
+
+  <input type="hidden" name="id_post" value="${ID_POST2}">
+  Компания <input name=company_post value="${COMPANY_POST2}">
+  Страна <input name=city_post value="${CITY_POST2}">
+  <br>Автоматы:<br>
+  <textarea name=avto_post>${AVTO_POST2}</textarea><br>
+
+  <input type="hidden" name="id_post" value="${ID_POST3}">
+  Компания <input name=company_post value="${COMPANY_POST3}">
+  Страна <input name=city_post value="${CITY_POST3}">
+  <br>Автоматы:<br>
+  <textarea name=avto_post>${AVTO_POST3}</textarea><br>
+
+  <input type="hidden" name="id_post" value="${ID_POST4}">
+  Компания <input name=company_post value="${COMPANY_POST4}">
+  Страна <input name=city_post value="${CITY_POST4}">
+  <br>Автоматы:<br>
+  <textarea name=avto_post>${AVTO_POST4}</textarea><br>
+
+  <input type="hidden" name="id_post" value="${ID_POST5}">
+  Компания <input name=company_post value="${COMPANY_POST5}">
+  Страна <input name=city_post value="${CITY_POST5}">
+  <br>Автоматы:<br>
+  <textarea name=avto_post>${AVTO_POST5}</textarea><br>
+
+  <input type="hidden" name="id_post" value="${ID_POST6}">
+  Компания <input name=company_post value="${COMPANY_POST6}">
+  Страна <input name=city_post value="${CITY_POST6}">
+  <br>Автоматы:<br>
+  <textarea name=avto_post>${AVTO_POST6}</textarea><br>
+</td>
+</tr>
+-->
+
+<tr>
+<td colspan=2><input type=submit value="сохранить"  class=b1 >
+</td>
+<input type=hidden name=sid value="${SID}">
+<input type=hidden name=l value="${LANG}">
+<input type=hidden name="id_cat" value="${ID_CAT}">
+<input type=hidden name="id" value="${ID}">
+<input type=hidden name=a value="edit_cat">
+<input type=hidden name="PageIn" value="${PAGEIN}">
+<input type=hidden name="p_n" value="${PN}">
+</form>
+</tr>
+<tr><td colspan=2><hr></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<!--add/edit catalog-->
+ <script type="text/javascript">
+function mySubmit() {
+editor._textArea.value = editor.getHTML();
+if(editor2 != 1){
+editor2._textArea.value = editor2.getHTML();
+}
+
+document.edit.onsubmit(); // workaround browser bugs.
+document.edit.submit();
+};
+</script>

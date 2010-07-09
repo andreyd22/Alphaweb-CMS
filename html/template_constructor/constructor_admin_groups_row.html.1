@@ -1,0 +1,11 @@
+<tr bgcolor="#CCCCCC">
+<td><b>${ID_USER}</b></td>
+<td><b><a href="/cgi-bin/mod/manager.cgi?id_user=${ID_USER}&a=view" title="Редактировать профиль">${LOGIN}</a></b></td>
+<td>${NAME}</td>
+<td>${OPIS}</td>
+<td align=center bgcolor=#EFEFEF>${ADD_RAZDEL}</td>
+<td align=center bgcolor=#EFEFEF>${EDIT_DESIGN}</td>
+<td align=center bgcolor=#EFEFEF>${GRANT}</td>
+<td><b>${STATUS}</b></td>
+<td align=center><b><a title="Удалить данного пользователя ?" href="/cgi-bin/mod/manager.cgi?a=del_user&l=1&sid=${SID}&id=${ID}&id_user=${ID_USER}" onclick="return Delete(5,'удалить данного пользователя')">[x]</a></b></td>
+</tr>

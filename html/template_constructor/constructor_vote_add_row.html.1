@@ -1,0 +1,18 @@
+<!--Вывод каждого опроса-->
+<form action="/cgi-bin/mod/vote.cgi">
+<tr>
+<td><input name='otvet' value="${OTVET}" size=35></td>
+<td><select name='color'>${COLOR}"</select></td>
+<td><input name='count' value="${COUNT}" size=10></td>
+<td><input name='sort' value="${SORT}" size=10></td>
+<td><a href="/cgi-bin/mod/vote.cgi?sid=${SID}&id=${IDR_REG}&id_otvet=${ID_OTVET}&a=del_otvet" title="Удалить весь ответ">[x]</a></td>
+</tr>
+<tr>
+<td colspan=5><input type=submit value="Изменить ответ"></td>
+<input type=hidden name="a" value=save_vote>
+</tr>
+<input type=hidden name="id" value=${IDR_REG}>
+<input type=hidden name="id_vote" value=${ID_VOTE}>
+<input type=hidden name="id_otvet" value=${ID_OTVET}>
+</form>
+<!--Вывод каждого опроса-->

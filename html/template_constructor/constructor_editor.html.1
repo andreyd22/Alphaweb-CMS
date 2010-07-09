@@ -1,0 +1,41 @@
+<!--Работа с документом-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::
+<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Перейти к администрированию ${NAME}</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<tr>
+<td>
+<form action="/cgi-bin/mod/${MOD}.cgi" method="post" id="edit" name="edit">
+<b>Введите текст, который отображается в качестве основного для модуля документ и как дополнительный для остальных:</b></br>
+
+<script type="text/javascript">
+<!--
+// Automatically calculates the editor base path based on the _samples directory.
+// This is usefull only for these samples. A real application should use something like this:
+// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+//var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
+
+var oFCKeditor2 = new FCKeditor( 'ta' ) ;
+oFCKeditor2.BasePath	= /fckeditor/ ;
+oFCKeditor2.Height	= 300 ;
+oFCKeditor2.Value	= '${DATA}' ;
+oFCKeditor2.Create() ;
+//-->
+</script>
+
+
+</form>
+
+</td>
+</tr>
+<tr><td align=right>${PEREHOD}</td></tr>
+</table>
+<!--Работа с документом-->

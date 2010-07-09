@@ -1,0 +1,167 @@
+<!--Добавление/редактирование новости-->
+<script>
+ /*
+ функции чистки кода
+*/
+    function doCleanCode(code) {    
+
+        code = code.replace(/<([\w]+) LANG=([^ |>]*)([^>]*)/gi, "<$1$3")
+         //Убиваем фонты
+        code = code.replace(/<font([^>])*>(&nbsp;)*\s*<\/font>/gi," ")
+        code = code.replace(/<font([^>])*>/gi, "")
+        code = code.replace(/<\/font>/gi, "")
+        // removes all empty span tags
+        code = code.replace(/<span([^>])*>(&nbsp;)*\s*<\/span>/gi," ")
+        // removes all empty <p> tags
+        code = code.replace(/<p([^>])*>(&nbsp;)*\s*<\/p>/gi," ")
+        // removes all Class attributes on a tag eg. '<p class=asdasd>xxx</p>' returns '<p>xxx</p>'
+        code = code.replace(/<([\w]+) class=([^ |>]*)([^>]*)/gi, "<$1$3")
+        // removes all style attributes eg. '<tag style="asd asdfa aasdfasdf" something else>' returns '<tag something else>'
+        code = code.replace(/<([\w]+) style="([^"]*)"([^>]*)/gi, "<$1$3")  
+        
+        // gets rid of all xml stuff... <xml>,<\xml>,
+        code = code.replace(/<\\?\??xml[^>]>/gi, "")
+        // get rid of ugly colon tags <a:b> or </a:b>
+        code = code.replace(/<\/?\w+:[^>]*>/gi, "")
+        // get rid of silly space tags
+        code = code.replace(/&nbsp;/gi, " ")
+
+/////////////////////////////////////////////////Удаляем все из <td>//////////////////////////////////////////////////////////////
+        code = code.replace(/<td+([^>]*)(?:(valign|align|width|height)|(colspan|rowspan))=([^>]*)/gi, " <td $3=$4")
+        return code
+    }
+
+//Зачистка от тегов (DOCTYPE,html,head,title,body,meta )
+    function cleanHTML(code)
+    {    
+         code = code.replace(/<!DOCTYPE([^>])*>/gi, "")
+         code = code.replace(/<html([^>])*>/gi, "")
+         code = code.replace(/<\/html>/gi, "")
+         code = code.replace(/<head([^>])*>/gi, "")
+         code = code.replace(/<\/head>/gi, "")
+         code = code.replace(/<title([^>])*>/gi, "")
+         code = code.replace(/<\/title>/gi, "")
+         code = code.replace(/<body([^>])*>/gi, "")
+         code = code.replace(/<\/body>/gi, "")
+         code = code.replace(/<meta([^>])*>/gi, "")
+      return code
+     } // end func
+
+
+</script>
+<table>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${IDR}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=view&sid=${SID}&l=${LANG}&idr=${IDR}">Добавить запись в расписание</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${IDR}">Полное расписание</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${IDR}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr><td><hr></td></tr>
+
+<tr>
+<td>
+<table><form action="/cgi-bin/mod/${MOD}.cgi" method=post  id="edit" name="edit">
+<tr>
+<td><b>По мере набора:<br><SMALL>(0 - выводится дата, <BR>1 - выводится по мере набора, <BR>2 - ВЫВОДИТ МЕСЯЦ)</SMALL></b></td>
+<td width=85%><input name=po_mere_nabora value='${PO_MERE_NABORA}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Свободных мест:</b></td><td width=85%><input name=mest value='${MEST}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Дата: </b></td>
+<td>
+ <table><tr>
+ <td>день <input name=day value="${DAY}" class=i1 style="width:22px"></td>
+ <td>месяц <input name=month value="${MONTH}" class=i1 style="width:22px"></td>
+ <td>год <input name=year value="${YEAR}" class=i1 style="width:42px"></td>
+ <td>часы <input name=hour value="${HOUR}" class=i1 style="width:22px"></td>
+ <td>минуты <input name=min value="${MIN}" class=i1 style="width:22px"></td>
+ </tr></table>
+</td>
+</tr>
+<tr>
+<td><b>Название тренинга<br>(используется при фильтрации): </b></td><td width=85%><input name=trainings value='${TRAININGS}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Ссылка на тренинг: </b></td><td width=85%><input name=trainings_link value='${TRAININGS_LINK}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Имя тренера: </b></td><td width=85%><input name=trener value='${TRENER}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Ссылка на страницу тренера: </b></td><td width=85%><input name=trener_link value='${TRENER_LINK}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Город, страна: </b></td><td width=85%><input name=city value='${CITY}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td><b>Cсылка на город: </b></td><td width=85%><input name=city_link value='${CITY_LINK}' class=i1 style="width:300px"></td>
+</tr>
+<tr>
+<td colspan=2><b>Анонс тренинга</b> 
+(<a href="javascript:void(0)" onclick='flag=flag+1;initEditor(short);flag = 2;'><b>Включить редактор</b></a>)
+</td>
+</tr>
+<tr>
+<td colspan=2><textarea name=short id=short  style="width:610px;border-style:solid;border-width:1px;border-color:#000000" rows="14" cols="80"> ${SHORT}</textarea></td>
+</tr> 
+<tr>
+<td colspan=2><b>Полное описание тенинга</b></td>
+</tr>
+<tr>
+<td colspan=2><textarea name=ta id=ta style="width:610px" rows="24" cols="80">${FULL_TIMETABLE}</textarea></td>
+</tr> 
+<tr>
+<td colspan=2><input type=submit value="  Сохранить  " onclick="javascript:mySubmit()" class=b1>
+<input type=button value="  Очистить формат  " onclick="javascript:myClean()" class=b1>
+<!--<input type=submit value="сохранить"  class=b1>-->
+</td>
+<script type="text/javascript">
+function mySubmit() {
+editor._textArea.value = editor.getHTML();
+//alert(editor.getHTML());
+if(editor2 != 1){
+editor2._textArea.value = editor2.getHTML();
+}
+
+document.edit.onsubmit(); // workaround browser bugs.
+document.edit.submit();
+};
+
+/*
+///////
+//Вручную чистим код
+///////
+*/
+function myClean() {
+//var is_yes=confirm("Вы действительно хотите очистить форматирование ?");
+//if(is_yes == 'true'){
+editor._textArea.value=doCleanCode(editor.getHTML());
+editor._doc.body.innerHTML = editor._textArea.value;
+//}
+};
+
+</script>
+
+</tr>
+</table>
+<input type=hidden name=sec value="${SEC}">
+<input type=hidden name=sid value="${SID}">
+<input type=hidden name=l value="${LANG}">
+<input type=hidden name="id" value="${ID}">
+<input type=hidden name="idr" value="${IDR}">
+<input type=hidden name="id_timetable" value="${ID_TIMETABLE}">
+<input type=hidden name=a value="save_timetable">
+</form>
+</td>
+</tr>
+</table>
+<!--Добавление/редактирование новости-->

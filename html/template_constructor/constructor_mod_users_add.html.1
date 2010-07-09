@@ -1,0 +1,44 @@
+<!--Добавляем редактируем нового пользователя-->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=edit_st&sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?a=view&sid=${SID}&l=${LANG}&id=${ID}">Добавить пользователя</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Все пользователи</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=make_letter">Разослать письмо</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><center><b style="color:red">${MESSAGE}</b></center><hr></td></tr>
+<td>
+<table align=left><form action="/cgi-bin/mod/${MOD}.cgi" method=post>
+<tr><td align="right"><b>Фамилия</b></td><td><input name='l_name' value="${L_NAME}"></td></tr>
+<tr><td align="right"><b>Имя</b></td><td><input name='name' value="${NAME}"></td></tr>
+<tr><td align="right"><b>Отчество</b></td><td><input name='f_name' value="${F_NAME}"></td></tr>
+<tr><td align="right"><b>Район</b></td><td><input name='region' value="${REGION}"></td></tr>
+<tr><td align="right"><b>Город</b></td><td><input name='city' value="${CITY}"></td></tr>
+<tr><td align="right"><b>Адрес</b></td><td><input name='adress' value="${ADRESS}"></td></tr>
+<tr><td align="right"><b>Телефон</b></td><td><input name='phone' value="${PHONE}"></td></tr>
+<!--tr><td><b>Лицензия</b></td><td><input name='licence' value="${LICENCE}"></td></tr-->
+<!--tr><td><b>Приказ</b></td><td><input name='prikaz' value="${PRIKAZ}"></td></tr-->
+<!--tr><td><b>Рабочий статус</b></td><td><input name='status_work' value="${STATUS_WORK}"></td></tr-->
+<tr><td align="right"><b>НИК</b></td><td><input name='login' value="${LOGIN}"></td></tr>
+<tr><td align="right"><b>E-mail</b></td><td><input name='email' value="${EMAIL}"></td></tr>
+<tr><td align="right"><b>Пароль</b></td><td><input name='pass' value="${PASS}"></td></tr>
+<tr><td align="right"><b>Статус<br><small> (1 - активный, отображается в списке участников<br>
+0 - запрет любого доступа, невиден на сайте)</small></b></td><td><input name='status' value="${STATUS}"></td></tr>
+<tr><td colspan=2><b>Дополнительно (примечания)</b></td></tr>
+<tr><td colspan=2><textarea name=dop cols=45 rows=5 style="border-style:solid;border-width:1px;">${DOP}</textarea></td></tr>
+<tr><td align=center colspan=2><input type=submit value="сохранить"></td></tr>
+<input type=hidden name=a value='save_user'>
+<input type=hidden name=sid value='${SID}'>
+<input type=hidden name=l value='${LANG}'>
+<input type=hidden name=id value='${ID}'>
+<input type=hidden name=id_user value='${ID_USER}'>
+</form>
+</table>
+</td></form>

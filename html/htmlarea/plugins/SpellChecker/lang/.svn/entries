@@ -1,0 +1,40 @@
+8
+
+dir
+2
+svn+ssh://svn@alphaweb.ru/home/svn/alphaweb20/public_html/htmlarea/plugins/SpellChecker/lang
+svn+ssh://svn@alphaweb.ru/home/svn/alphaweb20
+
+
+
+2008-02-22T05:44:13.764714Z
+2
+svn
+
+
+svn:special svn:externals svn:needs-lock
+
+ro.js
+file
+
+
+
+
+2007-08-02T13:21:26.000000Z
+3dbfb81fff6efcec84445b3ccf8fa1a7
+2008-02-22T05:44:13.764714Z
+2
+svn
+
+en.js
+file
+
+
+
+
+2007-08-02T13:21:26.000000Z
+50aed335e7b2fd13fa25e9d41b91a38c
+2008-02-22T05:44:13.764714Z
+2
+svn
+

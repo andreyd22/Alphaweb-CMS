@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+  <HEAD>
+    <TITLE>
+      ${TITLE}
+    </TITLE>
+   <script type="text/javascript" src="/admin/scripts.js"></script>
+<style>
+BODY,TD {font-size:9pt;font-family:tahoma;color:#000000;}
+
+input {font-size:8pt;font-family:verdana,tahoma;}
+select {font-size:10px;font-family:verdana,tahoma;}
+#desktop {font-size:9px;color:#000000}
+#topbox { font-size:9px;color:#000000}
+
+.i1{border-style:groove}
+.i2{width:100px;border-style:groove}
+.i11{width:100px;border-style:groove}
+.b1{border-style:groove;background:#FFFFFF}
+
+a:link {color:#FF6300;text-decoration:none;font-size:9pt;font-family:Verdana;}
+a:visited {color:#FF6300;text-decoration:none;font-size:9pt;font-family:Verdana;}
+a:hover {text-decoration:underline}
+
+
+b.y {color:#F66001}
+b {color:#7F7F7F}
+b.b {color:#000000}
+.td_y {background:#F66001;width:5px;height:30px}
+.tr_y {background:#F66001;height:3px}
+
+/*Линия*/
+hr {height:1px;shade:no;color:#000000}
+/*Линия*/
+
+</style>
+<script>
+ function Delete(target) {
+ var text;
+   text='Вы уверены что хотите удалить домен: '+target+' ?'
+  if (confirm(text)) {
+   return true;  
+  }
+  else {return false;}
+ }
+</script>
+  </HEAD>
+  <BODY bgcolor="#F5F5F5">
+    <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+                            <TABLE cellpadding="2" cellspacing="0" border="0" width="100%">
+                              <TR>
+                                <TD bgcolor="#ffffff" class="smallbl" align="left">
+                                  <DIV class="smallbl">
+                                                                        $USER_MENU
+                                  </DIV>
+                                </TD>
+                              </TR>
+                              <TR>
+                                <TD bgcolor="#e2e2e2" align="left" class="bl">
+                                  &nbsp;
+                                </TD>
+                                                          </TR>
+                            </TABLE>
+</td></tr>
+      <TR>
+         <TD bgcolor="#ffffff" class="miniwh" align="center">
+                                  <DIV class="smallbl">
+                                  ${TEXT}
+
+                                  </DIV>
+                                </TD>
+                              </TR>
+
+          <TR>
+        <TD height="4" class="minibl" align="center"> Copyright &copy;  <a href="http://alphaweb.ru" class=bl target=_blank>Alphaweb</a>, 2004-2005 </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>
+

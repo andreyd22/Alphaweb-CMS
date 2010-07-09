@@ -1,0 +1,50 @@
+<!-- -->
+<table width=100%>
+<tr>
+<td>
+<table cellspacing=3 cellpadding=3>
+<tr>
+<td>::<a href="/cgi-bin/mod/document.cgi?sid=${SID}&l=${LANG}&id=${ID}">Редактировать шапку</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}">Список подписчиков</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=send_form">Рассылка</a>::</td>
+<td>::<a href="/cgi-bin/mod/${MOD}.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=del_all">Очистить базу</a>::</td>
+<td>::<a href="/cgi-bin/mod/razdels.cgi?sid=${SID}&l=${LANG}&id=${ID}&a=add">Свойства раздела</a>::</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td><b>${TITLE}</b></td></tr>
+<tr><td><center><b style="color:red">${MESS}</b></center><hr></td></tr>
+
+<tr><td style="border-style: solid;border-width:1px;border-color:#000000">
+<table width=100%>
+<form action="/cgi-bin/mod/${MOD}.cgi" enctype="multipart/form-data" method="post">
+<tr>
+<td width="30%"><b>За последние</b></td>
+<td><input name=days value="${DAYS}" size=3>&nbsp дней</td>
+</tr>
+<tr>
+<td width="30%"><b>Ваше сообщение:</b><br>
+<small>Это сообщение будет добавлено в начало письма</small></td>
+<td><textarea name=message cols=40 rows=5>${MESSAGE}</textarea></td>
+</tr>
+<tr>
+<td width="30%"><b>Прикрепить файл:</b></td>
+<td><input type=file name=attach value=${ATTACH}></td>
+</tr>
+<tr>
+<td><input type=checkbox name=test checked><b>Тестовая рассылка:</b></td>
+<td><input type=edit name=testmail value=${TESTMAIL}>&nbsp
+Укажите email на который прийдет тестовое письмо</td>
+</tr>
+<tr>
+<td colspan=2><input type=submit value="Разослать"></td>
+</tr>
+<input type=hidden name=a value=send_news>
+<input type=hidden name=sid value=${SID}>
+<input type=hidden name=id value=${ID}>
+<input type=hidden name=l value=${LANG}>
+</form>
+</table>
+</td></tr>
+</table>

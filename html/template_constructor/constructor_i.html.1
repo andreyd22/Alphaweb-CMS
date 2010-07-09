@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Transitional//EN">
+<html>
+<head>
+<TITLE>${TITLE} Web конструктор - создай свой сайт</TITLE>
+<META name="Description" content="—оздать сайт за 3 шага. —истема управлени€ контентом. Web конструктор">
+<META name="Keywords" content="—оздать сайт, конструктор, сделать сайт, система, управление, web, internet, free">
+<LINK rel="stylesheet" type="text/css" href="/admin/style.css">
+<script type="text/javascript" src="/admin/scripts.js"></script>
+
+<!-- load the main HTMLArea files -->
+
+<script type="text/javascript" src="/htmlarea/htmlarea.js"></script>
+<script type="text/javascript" src="/htmlarea/lang/en.js"></script>
+<script type="text/javascript" src="/htmlarea/dialog.js"></script>
+<!-- <script type="text/javascript" src="/htmlarea/popupdiv.js"></script> -->
+<script type="text/javascript" src="/htmlarea/popupwin.js"></script>
+<!-- load the TableOperations plugin files -->
+<script type="text/javascript" src="/htmlarea/plugins/TableOperations/table-operations.js"></script>
+<script type="text/javascript" src="/htmlarea/plugins/TableOperations/lang/en.js"></script>
+
+<style type="text/css">
+@import url(/htmlarea/htmlarea.css);
+textarea { background-color: #fff; border: 1px solid 00f; }
+</style>
+
+<script type="text/javascript">
+var editor = null;
+
+var editor2 = 1;
+
+var flag = null;
+
+function initEditor(name) {
+ if(!name){name='ta'}
+
+  // create an editor for the "ta" textbox
+//  editor = new HTMLArea("ta");
+
+ if(!flag){
+
+  editor = new HTMLArea(name);
+
+ 
+
+  // register the TableOperations plugin with our editor
+  editor.registerPlugin("TableOperations");
+  editor.generate();
+ }else{
+
+   if(flag==1){
+
+  editor2 = new HTMLArea(name);
+
+
+
+  // register the TableOperations plugin with our editor
+
+  editor2.registerPlugin("TableOperations");
+
+  editor2.generate();
+
+   
+
+   }
+
+ }
+
+  return false;
+ 
+}
+function insertHTML() {
+  var html = prompt("Enter some HTML code here");
+  if (html) {
+    editor.insertHTML(html);
+  }
+}
+function highlight() {
+  editor.surroundHTML('<span style="background-color: yellow">', '</span>');
+}
+</script>
+  </HEAD>
+<!-- use <body onload="HTMLArea.replaceAll()" if you don't care about
+     customizing the editor.  It's the easiest way! :) -->
+<body onload="initEditor();" bgcolor="#ffffff" text="#000000" topmargin=0 marginheight=0 leftmargin=0 marginwidth=0>
+    ${TEXT}
+
+</body>
+
+</html>
