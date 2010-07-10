@@ -48,7 +48,8 @@ require Exporter;
 
 BEGIN {
 }
-
+our ($ref_main);
+$ref_main = Get_Param_view;
 sub Get_Param_view {
 	my $ref=Get_Param;
 	$ref->{main_menu_1}=\&main_menu_1;
@@ -78,7 +79,7 @@ my $id=shift;
 my $ref={};
    $ref->{dbh}=dbconnect;
    $tbl_name='structure';
-   $query="select id from structure where parent='$id'";
+   $query="select id from structure where parent='$id' and domain = '$ref_main->{host_name}'";
 my ($name_fields,$ar_data,$fields_comment,$type_fields)=select_sql($ref,$tbl_name,$query,[],0);
 my @ar_data_=@$ar_data;
 my $res_ids="";
@@ -292,7 +293,7 @@ sub Main_Id { #пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     while ($ll ne $id_p)
     {
 	$last=$ll;
-      	$ll=$dbh->selectrow_array("select parent from structure where id='$last'");
+      	$ll=$dbh->selectrow_array("select parent from structure where id='$last' and domain = '$ref->{host_name}'");
 	#print qq[$ll = $last<br>];
 	if ($ll eq 'main' || !$ll){return $last;}
     };
@@ -302,11 +303,11 @@ return $ll;
 
 sub path_links { # строим хлебные крошки (путь к странице)
         my $ref=shift;
-	my $ref_link=$ref->{dbh}->selectrow_hashref("select * from structure where id='$ref->{id}' limit 1");
+	my $ref_link=$ref->{dbh}->selectrow_hashref("select * from structure where id='$ref->{id}' and domain = '$ref->{host_name}' limit 1");
 	my @ar_menu=();
 	my $inc=0;
 	while($ref_link->{parent} ne '0'){
-    	    $ref_link=$ref->{dbh}->selectrow_hashref("select * from structure where id='$ref_link->{parent}' limit 1");
+    	    $ref_link=$ref->{dbh}->selectrow_hashref("select * from structure where id='$ref_link->{parent}' and domain = '$ref->{host_name}' limit 1");
 	    unshift @ar_menu, $ref_link;
 	    $inc++;
 	    if($inc>100){return \@ar_menu}
@@ -319,7 +320,7 @@ return \@ar_menu;
 sub main_menu_1 { #пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	my $parent_id=shift || "main";
 	my $dbh=dbconnect();
-	my $sth=$dbh->prepare("select * from structure where parent='$parent_id' order by sort_id asc");
+	my $sth=$dbh->prepare("select * from structure where parent='$parent_id' and domain = '$ref_main->{host_name}' order by sort_id asc");
 #print qq[$parent_id];
 	$sth->execute;
 	my @ar_menu=();
@@ -328,7 +329,7 @@ sub main_menu_1 { #пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпї
 	    my $key=$ref_s->{id};
 	    if($ref_s->{visible}=~/menu1=1/)
 	    {
-		my $count=$dbh->selectrow_array("select count(*) from structure where parent='$key'");
+		my $count=$dbh->selectrow_array("select count(*) from structure where parent='$key' and domain = '$ref_main->{host_name}'");
 		$ref_s->{count_subs}=$count;	
 		push @ar_menu,$ref_s;
 	    }
@@ -342,7 +343,7 @@ sub sub_menu { #пїЅпїЅ_пїЅпїЅ_пїЅпїЅ_пїЅпїЅ_пїЅпїЅ_ пїЅпїЅ_пїЅпїЅ_пїЅпїЅ_пїЅпїЅ_
 
         my $parent=shift;
 	my $dbh=dbconnect();
-	my $sth=$dbh->prepare("select * from structure where parent='$parent' order by sort_id asc");
+	my $sth=$dbh->prepare("select * from structure where parent='$parent' and domain = '$ref_main->{host_name}' order by sort_id asc");
 	my $count=$sth->execute;
 
 	my @sub_menu=();
@@ -378,7 +379,7 @@ sub link_view {
        return \@ar_menu;
     }
     if ($ref->{user_db}->{data}->{$ref->{id}}->{link_view} eq 'child'){ #пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	my $sth=$dbh->prepare("select * from structure where parent='$ref->{id}' order by sort_id asc");
+	my $sth=$dbh->prepare("select * from structure where parent='$ref->{id}' and domain = '$ref->{host_name}' order by sort_id asc");
 	$sth->execute;
 	my @ar_menu=();
 	    #print qq[select * from structure where parent='$ref->{id}' order by sort_id asc<br>];
@@ -396,7 +397,7 @@ sub link_view {
     }
     if ($ref->{user_db}->{data}->{$ref->{id}}->{link_view} eq 'similary'){ #пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
        $key_for_select=$parent{$ref->{id}};
-	my $sth=$dbh->prepare("select * from structure where parent='$key_for_select' order by sort_id asc");
+	my $sth=$dbh->prepare("select * from structure where parent='$key_for_select' and domain = '$ref->{host_name}' order by sort_id asc");
 	$sth->execute;
 	my @ar_menu=();
 	while (my $ref_s=$sth->fetchrow_hashref)
@@ -414,7 +415,7 @@ sub link_view {
 
     if ($ref->{user_db}->{data}->{$ref->{id}}->{link_view} eq 'parent'){ #пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-	my $sth=$dbh->prepare("select * from structure where parent='$ref->{id}' order by sort_id asc");
+	my $sth=$dbh->prepare("select * from structure where parent='$ref->{id}' and domain = '$ref->{host_name}' order by sort_id asc");
 	$sth->execute;
 	my @ar_menu=();
 	while (my $ref_s=$sth->fetchrow_hashref)
@@ -646,7 +647,7 @@ sub include_gal {
  my $ref=shift;
  #переход по страницам
 # my $sel="select g.*, s.name as name_r from gallery_$ref->{prefix} as g, structure as s where g.idr=s.id order by date_reg desc, id desc limit 4";
- my $sel="select g.*, s.name as name_r from gallery_$ref->{prefix} as g, structure as s where g.idr=s.id order by RAND() limit 4";
+ my $sel="select g.*, s.name as name_r from gallery_$ref->{prefix} as g, structure as s where g.idr=s.id and s.domain = '$ref->{host_name}' order by RAND() limit 4";
  my $sth=$ref->{dbh}->prepare($sel);
     $sth->execute;
     my $inc=0; my $i=0;
