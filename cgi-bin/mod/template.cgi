@@ -400,7 +400,7 @@ my $ref=shift;
       my $def={  "main"=>"/constructor.html.$ref->{l}",
                  "text"=>"/constructor_define_editor.html.$ref->{l}",
              };
- my $title=slovo(29,$ref->{l}). "$ref->{name}"; #Редактор шаблона 
+ my $title=slovo(29,$ref->{l})."$ref->{name}"; #Редактор шаблона 
  $ref->{def}=$def;
  $ref->{title}=$title;
  my $tpl=tplb($ref);
@@ -460,11 +460,16 @@ print qq[
 }else{
 my $pr_mes='19';
  if($ref->{save} eq 'ok'){
- $ref->{text}=~s/\n\r|\r\n/\n/gi;
-   $ref->{text}=~s/\[/\</gi;
-   $ref->{text}=~s/\]/\>/gi;
-   $ref->{text}=~s/\<\%/\[\%/gi;
-   $ref->{text}=~s/\%\>/\%\]/gi;
+
+ $ref->{text}=~s/\n\r|\r\n/\n/gi;                                                                                 
+ $ref->{text}=~s/\[/\</gi;                                                                                      
+ $ref->{text}=~s/\]/\>/gi;                                                                                      
+ $ref->{text}=~s/\<\%/\[\%/gi;                                                                                  
+ $ref->{text}=~s/\%\>/\%\]/gi;                                                                                  
+                                                                                                                   
+ $ref->{text}=~s/--\<([^\>]+)\>/--\[$1\]/gi;        
+ $ref->{text}=~s/\<([^\<^\>]+)\>--/\[$1\]--/gi;                                                                 
+
  open A, "+>$ref->{path_template}/$ref->{name}";
  print A $ref->{text};
  close A;

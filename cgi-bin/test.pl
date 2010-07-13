@@ -5,6 +5,7 @@ use warnings;
 
 use DBI;
 use DBD::MySQL;
+use Image::Magick;
 
 my $dbh=DBI->connect(
   "DBI:mysql:database=mysql;host=localhost",
