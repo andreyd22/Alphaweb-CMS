@@ -15,7 +15,7 @@
    #$ref=get_structure($ref);
 
   #если есть верхн€€ часть выводим
-  if(-e $ref->{path_root}."/db/user_db.$ref->{id}.data"){
+  if(-e "$ref->{path_to_db}/user_db.$ref->{id}.data"){
 	 $ref->{tpl_}="$ref->{module_name}.tpl";
 	 $ref->{tpl_text}="user_db.$ref->{id}.data";
   }
