@@ -76,7 +76,7 @@ if(&ErrAuth()){
 			$GLOBALS{'UserFilesPath'} .= '/' ;
 		}
 	} else {
-		$GLOBALS{'UserFilesPath'} = '/base/';
+		$GLOBALS{'UserFilesPath'} = '';
 	}
 
 	# Map the "UserFiles" path to a local directory.

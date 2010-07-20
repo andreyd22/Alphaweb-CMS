@@ -39,7 +39,7 @@ use strict;
  open A, ">>$log";
  print A $message;
  close A;
- &send_mail($root_mail,$subject,$message);
+# &send_mail($root_mail,$subject,$message);
  exit;
  }
  if ($ref->{'a'} eq '') {&main($ref); } #Вывод папок пользователя

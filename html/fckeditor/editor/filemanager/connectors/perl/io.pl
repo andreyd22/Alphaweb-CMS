@@ -126,8 +126,14 @@ sub GetRootPath
 #	return($current_dir);
 use Cwd;
 
+use lib "$ENV{'DOCUMENT_ROOT'}/../cgi-bin";
+use lib "$ENV{'DOCUMENT_ROOT'}/cgi-bin";
+use Modules::Constructor qw(&Get_Param &check_auth);
+use Data::Dumper;
+ my $ref=&Get_Param;
+ 
 	if($ENV{'DOCUMENT_ROOT'}) {
-		$dir = $ENV{'DOCUMENT_ROOT'};
+		$dir = $ref->{path_host};
 	} else {
 		my $dir = getcwd;
 		$workdir =~ s/\/connector\.cgi//g;

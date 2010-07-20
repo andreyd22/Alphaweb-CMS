@@ -22,7 +22,8 @@
 #####
 sub ErrAuth {
 
-use lib "../../../../../cgi-bin/";
+use lib "$ENV{'DOCUMENT_ROOT'}/../cgi-bin";
+use lib "$ENV{'DOCUMENT_ROOT'}/cgi-bin";
 use Modules::Constructor qw(&Get_Param &check_auth);
 use Data::Dumper;
  my $ref=&Get_Param;
@@ -35,6 +36,8 @@ use Data::Dumper;
 
 sub GetFolders
 {
+
+
 	exit if &ErrAuth();
 
 	local($resourceType, $currentFolder) = @_;
