@@ -101,7 +101,7 @@ my $noproxy=shift;
     my $rnd_time_out=(1..3)[rand(3)];
     #print "rnd timeout: $rnd_time_out \n";
     sleep($rnd_time_out);
-  use LWP::UserAgent;
+  #use LWP::UserAgent;
 
     my $status="";
     my $it=0;
