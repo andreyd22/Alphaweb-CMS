@@ -77,7 +77,7 @@ sub save {
  my $ref=shift;
  my $pr_mes='19';
  if($ref->{save} eq 'ok'){
- open A, "+>$ref->{path_db}.$ref->{id}.data" or die $!;
+ open A, "+>$ref->{path_db}.$ref->{id}.data" or die "$ref->{path_db}.$ref->{id}.data".$!;
  print A $ref->{content};
  close A;
  }

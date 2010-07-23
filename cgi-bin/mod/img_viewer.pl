@@ -120,11 +120,11 @@ use strict;
                      if($ref->{type} ne 'old'){
                       if ($ref->{l} eq '1'){
                            if($file=~/([\w-_]+\.((?:gif|jpe?g)))$/ix){
-                            $action.=qq[<a href="javascript:" onclick="SelectImage('$user_file')"><img src="/img/icons/paste.gif" border=0 alt='Вставить картинку '></a>&nbsp;];
+                            $action.=qq[<a href="javascript:" onclick="OpenFile('$user_file')"><img src="/img/icons/paste.gif" border=0 alt='Вставить картинку '></a>&nbsp;];
                            }else{
                             $file=~/\.([a-z])$/ix;
                             my $ext=$1;
-                            $action.=qq[<a href="javascript:" onclick="SelectFile('$user_file','$size','$ext')"><img src="/img/icons/paste.gif" border=0 alt='Вставить файл'></a>&nbsp;];
+                            $action.=qq[<a href="javascript:" onclick="OpenFile('$user_file','$size','$ext')"><img src="/img/icons/paste.gif" border=0 alt='Вставить файл'></a>&nbsp;];
                            }
                            if($ref->{type} eq 'old'){
                             $action.=qq[<a href="javascript:" onclick="paste_img('$user_file','$name_form');"><img src="/img/icons/paste.gif" border=0 alt='Вставить картинку '></a>&nbsp;];

@@ -1,0 +1,4 @@
+<------>window.top.opener.SetUrl( encodeURI( fileUrl ).replace( '#', '%23' ) ) ;^M
+<------>window.top.close() ;^M
+<------>window.top.opener.focus() ;^M
+}

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php
+=======
+<?php
+>>>>>>> FCKeditor
 /*
  * ### CKFinder : Configuration File - Basic Instructions
  *
@@ -29,6 +33,7 @@ function CheckAuthentication()
 	// ... where $_SESSION['IsAuthorized'] is set to "true" as soon as the
 	// user logs in your system. To be able to use session variables don't
 	// forget to add session_start() at the top of this file.
+<<<<<<< HEAD
 	$path_to_config1 = $_SERVER['DOCUMENT_ROOT'].'/cgi-bin/Modules/PathDB.pm';
 	$path_to_config2 = $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/Modules/PathDB.pm';
 	$path_to_config = $path_to_config1;
@@ -36,6 +41,9 @@ function CheckAuthentication()
 	if (!file_exists($path_to_config){ exit("Not FOUND config file ". $path_to_config2 )}
 	
 	$conf_file = file_get_contents($path_to_config);
+=======
+
+>>>>>>> FCKeditor
 	return true;
 }
 
@@ -295,7 +303,11 @@ $config['ChmodFiles'] = 0777 ;
 See comments above.
 Used when creating folders that does not exist.
 */
+<<<<<<< HEAD
 //$config['ChmodFolders'] = 0755 ;
+=======
+$config['ChmodFolders'] = 0755 ;
+>>>>>>> FCKeditor
 
 /*
 Force ASCII names for files and folders.
