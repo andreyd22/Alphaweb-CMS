@@ -34,6 +34,12 @@ function SelectFile(FileName,size,ext) {
         window.opener.selectFile("$IMG_PATH" + FileName,size,ext);
         self.close();
 }
+function OpenFile( fileUrl )
+{
+ window.top.opener.SetUrl( "$IMG_PATH" + encodeURI( fileUrl ).replace( '#', '%23' ) ) ;
+ window.top.close() ;
+ window.top.opener.focus() ;
+}
 this.focus();
 
 </script>

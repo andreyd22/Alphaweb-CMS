@@ -47,36 +47,25 @@
 <input type="hidden" name="sid" value="${SID}" />
 <input type="hidden" name="id" value="${ID}" />
 <input type="hidden" name="l" value="${LANG}" />
-<tr><td align="center">Редактирование текста раздела: ${NAME_ST} </td>
+<tr><td align="center">Редактирование текста раздела: ${NAME_ST}</td>
 <tr><td>
-    <script type="text/javascript" src="/ckfinder/ckfinder.js"></script>
-    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="/ckeditor/_samples/sample.js"></script>
-<textarea name="content" id="content">${DATA}</textarea>  
-    <script type="text/javascript">
+  
+	<link href="/fckeditor/_samples/sample.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
 
-// This is a check for the CKEditor class. If not defined, the paths must be checked.
-if ( typeof CKEDITOR == 'undefined' )
-{
-    document.write(
-	'<strong><span style="color: #ff0000">Error</span>: CKEditor not found</strong>.' +
-	'This sample assumes that CKEditor (not included with CKFinder) is installed in' +
-	'the "/ckeditor/" path. If you have it installed in a different place, just edit' +
-	'this file, changing the wrong paths in the &lt;head&gt; (line 5) and the "BasePath"' +
-	'value (line 32).' ) ;
-}
-else
-{
-    var editor = CKEDITOR.replace( 'content' );
-    //editor.setData( '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' );
+<script type="text/javascript">
+<!--
+// Automatically calculates the editor base path based on the _samples directory.
+// This is usefull only for these samples. A real application should use something like this:
+// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+//var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
 
-    // Just call CKFinder.SetupCKEditor and pass the CKEditor instance as the first argument.
-    // The second parameter (optional), is the path for the CKFinder installation (default = "/ckfinder/").
-    CKFinder.setupCKEditor( editor, '/ckfinder/' ) ;
-
-    // It is also possible to pass an object with selected CKFinder properties as a second argument.
-    // CKFinder.SetupCKEditor( editor, { BasePath : '../../', RememberLastFolder : false } ) ;
-}
+var oFCKeditor2 = new FCKeditor( 'content' ) ;
+oFCKeditor2.BasePath	= /fckeditor/ ;
+oFCKeditor2.Height	= 500 ;
+oFCKeditor2.Value	= '${DATA}' ;
+oFCKeditor2.Create() ;
+//-->
 </script>
 
 <br><br>
