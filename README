@@ -6,3 +6,21 @@
 модули для Perl: ImageMagick, Template, CGI::Session
 
 Все настройки находятся в файле /cgi-bin/Modules/PathDB.pm
+
+          $domain_config = {
+            'site1.local' => {  'folder' => 'site1', #Подпапка домена (например: /base/site1, /db/site1, /templates/site1)
+                                'root_mail'=>'dmitrichev@gmail.com',
+                                'post_mail' => 'dmitrichev@gmail.com',
+                                'project' => 'Alphaweb CMS 1'
+                            },
+            'site2.local' => {  'folder' => 'site2',
+                                'root_mail'=>'dmitrichev@gmail.com',
+                                'post_mail' => 'dmitrichev@gmail.com',
+                                'project' => 'Alphaweb CMS 2'
+                            },
+            'site3.local' => {  'folder' => 'site3',
+                                'root_mail'=>'dmitrichev@gmail.com',
+                                'post_mail' => 'dmitrichev@gmail.com',
+                                'peoject' => 'AlphaWeb CMS 3'
+                            }
+          };
