@@ -26,7 +26,7 @@
 check_access($ref);
 #!!!Проверка уровня доступа end!!!
 
-if (!table_exists(qq[`reg_$ref->{id}`])){
+if (!table_exists(qq[`$ref->{db_prefix}_reg_$ref->{id}`])){
    &create_reg_tbl($ref);
 }
 
@@ -83,7 +83,7 @@ my $cell=join('',@ar_cell);
  if($#ar_name <=0){view_reg($ref); exit;}
         my $parse_cell='';
   my $dbh=dbconnect();
-  my $sql="select * from `reg_$ref->{id}` order by `rg_date` desc";
+  my $sql="select * from `$ref->{db_prefix}_reg_$ref->{id}` order by `rg_date` desc";
 #  print $sql;
   my $sth=$dbh->prepare($sql);
      $sth->execute;
@@ -237,7 +237,7 @@ sub save_reg { #Сохраняем информацию о рег форме (Вопросы)
 	if ($ref->{name_field_lat}&&$ref->{name_field})
 	{
 #	 eval {
-		my $add=$dbh->do(qq[ALTER TABLE `reg_$ref->{id}` ADD `rg_$ref->{name_field_lat}` VARCHAR( 250 )])
+		my $add=$dbh->do(qq[ALTER TABLE `$ref->{db_prefix}_reg_$ref->{id}` ADD `rg_$ref->{name_field_lat}` VARCHAR( 250 )])
 		#print qq[ALTER TABLE `reg_$ref->{id}` ADD `rg_$ref->{name_field_lat}` VARCHAR( 250 )  = $add ]; exit;
 
 #	 } 
@@ -295,9 +295,9 @@ sub edit_field
 	my $dbh = dbconnect();	
 	if ( defined($ref->{'pos'}) )
 	{
-			my $drop = $dbh->do(qq[ALTER TABLE `reg_$ref->{id}` CHANGE `rg_$ref->{name_lat_old}` `rg_$ref->{name_field_lat}` VARCHAR( 250 )] )
+			my $drop = $dbh->do(qq[ALTER TABLE `$ref->{db_prefix}_reg_$ref->{id}` CHANGE `rg_$ref->{name_lat_old}` `rg_$ref->{name_field_lat}` VARCHAR( 250 )] )
 		or 
-			my $add = $dbh->do(qq[ALTER TABLE `reg_$ref->{id}` ADD `rg_$ref->{name_field_lat}` VARCHAR( 250 )]);
+			my $add = $dbh->do(qq[ALTER TABLE `$ref->{db_prefix}_reg_$ref->{id}` ADD `rg_$ref->{name_field_lat}` VARCHAR( 250 )]);
 
 
 		 $ar_name[$ref->{'pos'}] = $ref->{name_field};
@@ -333,7 +333,7 @@ if ($ref->{a} eq 'del_all'){
 #
  my $dbh=dbconnect;
 # eval {
-	my $delete_all=$dbh->do(qq[delete from `reg_$ref->{id}`])
+	my $delete_all=$dbh->do(qq[delete from `$ref->{db_prefix}_reg_$ref->{id}`])
 # } 
 or out_err_($ref,$dbh->errstr);
 
@@ -343,7 +343,7 @@ or out_err_($ref,$dbh->errstr);
 #
  my $dbh=dbconnect;
 # eval {
-	my $delete_id=$dbh->do(qq[delete from `reg_$ref->{id}` where rg_id='$ref->{id_del}'])
+	my $delete_id=$dbh->do(qq[delete from `$ref->{db_prefix}_reg_$ref->{id}` where rg_id='$ref->{id_del}'])
 # } 
 or out_err_($ref,$dbh->errstr);
 
@@ -401,7 +401,7 @@ $ref->{referrer}=~s/\&mes=19|\&mes=20//gi;
 # eval {
 #print qq[ALTER TABLE `reg_$ref->{id}` DROP `rg_$ar_name_lat[$ref->{pos}]`]; exit;
 #print qq[ALTER TABLE `reg_$ref->{id}` DROP `rg_$ref->{name_field_lat}`]; exit;
-	my $del_fld=$dbh->do(qq[ALTER TABLE `reg_$ref->{id}` DROP `rg_$ref->{name_field_lat}`])
+	my $del_fld=$dbh->do(qq[ALTER TABLE `$ref->{db_prefix}_reg_$ref->{id}` DROP `rg_$ref->{name_field_lat}`])
 # };
 
 #or out_err_($ref,$dbh->errstr)
@@ -449,7 +449,7 @@ for (my $i=0;$i<=$#ar_name_lat;$i++){
   chop $tbl_fields;
   my $dbh=dbconnect;
   my $create_tbl=qq[
-CREATE TABLE `reg_$ref->{id}`(
+CREATE TABLE `$ref->{db_prefix}_reg_$ref->{id}`(
  rg_id int not null auto_increment primary key,
  rg_ip varchar(20) not null,
  rg_date datetime not null
@@ -488,7 +488,7 @@ close A;
                $insert.=qq[rg_date,];}
           }
           chop $insert; chop $values;
-          my $sql=qq[insert into `reg_$ref->{id}` ($insert) values($values)];
+          my $sql=qq[insert into `$ref->{db_prefix}_reg_$ref->{id}` ($insert) values($values)];
           my $ins=$dbh->do($sql);
   }
  unlink "$ref->{path_db}.$ref->{id}.info";

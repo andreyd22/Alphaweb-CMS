@@ -6,9 +6,7 @@
 # use strict;
  print "Content-type:text/html\r\n\r\n";
  my $ref=Get_Param;
-    $ref->{prefix}=$ref->{user_doman};
-    $ref->{prefix}=~s/\-|\./_/gi;
-    $ref->{prefix}='';
+    $ref->{prefix}=$ref->{db_prefix};
 #print qq[perf $ref->{prefix}];exit;
 #!!!Проверка sid пользователя!!!#
  my $p=1;

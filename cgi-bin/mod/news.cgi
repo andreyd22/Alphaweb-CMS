@@ -27,7 +27,7 @@
 check_access($ref);
 #!!!ѕроверка уровн€ доступа end!!!
  my $create_news=qq[
-CREATE TABLE `news` (
+CREATE TABLE `$ref->{db_prefix}_news` (
   `id` int(11) NOT NULL auto_increment,
   `idu` int(11) NULL default '0',
   `data_reg` datetime NULL default '0000-00-00 00:00:00',
@@ -45,7 +45,7 @@ CREATE TABLE `news` (
 ];      
 my $dbh=dbconnect;
 #my $col=$dbh->selectrow_array("select count(*) from $ref->{prefix}news");
-if(!table_exists(qq[`news`])){
+if(!table_exists(qq[`$ref->{db_prefix}_news`])){
  my $news=$dbh->do($create_news);
 }
 dbdisconnect($dbh);
@@ -154,12 +154,12 @@ sub list_news {
  my $PageIn=CGI::param('PageIn')||1;
  my $p_n=CGI::param('p_n')||0;
  my $off=$p_n*$CountPage;
- my $col="select count(*) from news where idu='$ref->{user}->{id}' and idr='$ref->{id}'";
+ my $col="select count(*) from $ref->{db_prefix}_news where idu='$ref->{user}->{id}' and idr='$ref->{id}'";
  my $count=$dbh->selectrow_array($col);
  my $kol;
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #переход по страницам
- my $sel="select id,idr,data_reg,zag,short,full_news from news where idu='$ref->{user}->{id}' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_news where idu='$ref->{user}->{id}' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
 
  my $sth=$dbh->prepare($sel);
     $sth->execute;
@@ -208,7 +208,7 @@ sub view_news {
 
 
  my $dbh=dbconnect;
- my $sel="select * from news where id='$ref->{id_news}' and idu='$ref->{user}->{id}' and idr='$ref->{idr}'";
+ my $sel="select * from $ref->{db_prefix}_news where id='$ref->{id_news}' and idu='$ref->{user}->{id}' and idr='$ref->{idr}'";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
  my $ref_news=$sth->fetchrow_hashref||{};
@@ -283,13 +283,13 @@ sub save {
  if($mod_razdel eq 'news'){
    my $dbh=dbconnect;
  if($ref->{id_news}){
-   my $sql="update news set title=?,keywords=?,description=?,zag=?,data_reg=?,short=?,full_news=? where id=? and idu=? and idr=?";
+   my $sql="update $ref->{db_prefix}_news set title=?,keywords=?,description=?,zag=?,data_reg=?,short=?,full_news=? where id=? and idu=? and idr=?";
    my $sth=$dbh->prepare($sql);
    my $ok=$sth->execute($ref->{title},$ref->{keywords},$ref->{description},$ref->{zag},"$ref->{year}-$ref->{month}-$ref->{day} $ref->{hour}:$ref->{min}:$ref->{sec}",$ref->{short},$ref->{full_news},$ref->{id_news},$ref->{user}->{id},$ref->{id});
    $sth->finish;
     #print qq[$ref->{title},$ref->{keywords},$ref->{description},$ref->{zag},"$ref->{year}-$ref->{month}-$ref->{day} $ref->{hour}:$ref->{min}:$ref->{sec}",$ref->{short},$ref->{full_news},$ref->{id_news},$ref->{user}->{id},$ref->{id}]; exit;
  }else{
-   my $sql="insert into news (title,keywords,description,zag,data_reg,short,full_news,idu,idr) values (?,?,?,?,?,?,?,?,?)";
+   my $sql="insert into $ref->{db_prefix}_news (title,keywords,description,zag,data_reg,short,full_news,idu,idr) values (?,?,?,?,?,?,?,?,?)";
    my $sth=$dbh->prepare($sql);
    my $ok = $sth->execute($ref->{title},$ref->{keywords},$ref->{description},$ref->{zag},"$ref->{year}-$ref->{month}-$ref->{day} $ref->{hour}:$ref->{min}:$ref->{sec}",$ref->{short},$ref->{full_news},$ref->{user}->{id},$ref->{id});
    $sth->finish;
@@ -332,7 +332,7 @@ location.href="$ref->{referrer}&mes=$pr_mes&$time"
 sub del {
  my $ref=shift;
  my $dbh=dbconnect;
- my $del=$dbh->do("delete from news where id='$ref->{id_news}' and idu='$ref->{user}->{id}' and idr='$ref->{idr}'");
+ my $del=$dbh->do("delete from $ref->{db_prefix}_news where id='$ref->{id_news}' and idu='$ref->{user}->{id}' and idr='$ref->{idr}'");
     dbdisconnect($dbh);
 my $pr_mes=19;
 $ref->{referrer}=~s/\&mes=19|\&mes=20//gi;

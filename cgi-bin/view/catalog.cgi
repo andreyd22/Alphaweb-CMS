@@ -103,14 +103,14 @@ sub list_catalog { #вывод элементов каталога (самих товаров)
  }
  my $dop_r="";
  if($ref->{id}){$dop_r="and idr='$ref->{id}'";}
- my $col="select count(*) from catalog_$ref->{prefix} where 1 $dop_r $dop";
+ my $col="select count(*) from $ref->{db_prefix}_catalog where 1 $dop_r $dop";
  my $count=$dbh->selectrow_array($col);
  my $kol;
  my $order='order by sort asc, id desc';
     $order='order by name' if $ref->{sort} eq 'name';
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #переход по страницам
- my $sel="select * from catalog_$ref->{prefix} where 1 $dop_r $dop $order limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_catalog where 1 $dop_r $dop $order limit $off,$CountPage";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
 #    use Apache::Util 'escape_uri';
@@ -237,7 +237,7 @@ if(!$ref->{id_cat}||!$ref->{col})
 else
    {
  my $dbh=dbconnect;
- my $sel="select * from catalog_$ref->{prefix} where id='$ref->{id_cat}' and idr='$ref->{id}'";
+ my $sel="select * from $ref->{db_prefix}_catalog where id='$ref->{id_cat}' and idr='$ref->{id}'";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
  my $ref_catalog=$sth->fetchrow_hashref||{};
@@ -294,7 +294,7 @@ sub form_order { #Форма заказа с выбором различных элементов
     $sth->execute();
  my @ar_r=(); my @ar_cat=();
  while(my $ref_st=$sth->fetchrow_hashref){
-     my $ref_cat=$dbh->selectall_arrayref("select * from catalog_$ref->{prefix} where idr='$ref_st->{id}' order by sort asc, id desc");
+     my $ref_cat=$dbh->selectall_arrayref("select * from $ref->{db_prefix}_catalog where idr='$ref_st->{id}' order by sort asc, id desc");
      my $cat_hash={name=>$ref_st->{name},data=>$ref_cat};
 	
      push @ar_r,$cat_hash;
@@ -303,11 +303,11 @@ sub form_order { #Форма заказа с выбором различных элементов
  $sth->finish;
 $ref->{ar_r}=\@ar_r;
 #$ref->{ar_cat}=\@ar_cat;
-# $ref->{ar_data_milk}=$dbh->selectall_arrayref("select * from catalog_$ref->{prefix} where idr='prod_milk' order by sort asc, id desc");
+# $ref->{ar_data_milk}=$dbh->selectall_arrayref("select * from $ref->{db_prefix}_catalog where idr='prod_milk' order by sort asc, id desc");
 
-# $ref->{ar_data_cheese}=$dbh->selectall_arrayref("select * from catalog_$ref->{prefix} where idr='prod_cheese' order by sort asc, id desc");
+# $ref->{ar_data_cheese}=$dbh->selectall_arrayref("select * from $ref->{db_prefix}_catalog where idr='prod_cheese' order by sort asc, id desc");
 
-# $ref->{ar_data_curd}=$dbh->selectall_arrayref("select * from catalog_$ref->{prefix} where idr='prod_curd' order by sort asc, id desc");
+# $ref->{ar_data_curd}=$dbh->selectall_arrayref("select * from $ref->{db_prefix}_catalog where idr='prod_curd' order by sort asc, id desc");
 
  dbdisconnect($dbh);
  return $ref;
@@ -319,7 +319,7 @@ my $ref=shift;
  my $dbh=dbconnect;
     my $all_send="";
   $ref->{zag}="Отправка заказа";
- my $sel="select * from catalog_$ref->{prefix} where idr='prod_milk' order by sort asc, id desc";
+ my $sel="select * from $ref->{db_prefix}_catalog where idr='prod_milk' order by sort asc, id desc";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my $str_milk=""; 
@@ -328,7 +328,7 @@ my $ref=shift;
 	if ($col){$str_milk.=qq[$ref_cat->{name}\t$col\n];}
     }
     $sth->finish;
- my $sel="select * from catalog_$ref->{prefix} where idr='prod_cheese' order by sort asc, id desc";
+ my $sel="select * from $ref->{db_prefix}_catalog where idr='prod_cheese' order by sort asc, id desc";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my $str_cheese=""; 
@@ -337,7 +337,7 @@ my $ref=shift;
 	if ($col){$str_cheese.=qq[$ref_cat->{name}\t$col\n];}
     }
     $sth->finish;
- my $sel="select * from catalog_$ref->{prefix} where idr='prod_curd' order by sort asc, id desc";
+ my $sel="select * from $ref->{db_prefix}_catalog where idr='prod_curd' order by sort asc, id desc";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my $str_curd=""; 
@@ -476,7 +476,7 @@ sub list_basket { #вывод каждой записи корзины
  }
  my $curency=$ref->{user_db}->{data}->{params}->{curency}||'$';
  my $dbh=dbconnect;
- my $sel="select * from catalog_$ref->{prefix} where 1 $dop order by name";
+ my $sel="select * from $ref->{db_prefix}_catalog where 1 $dop order by name";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my $all_cost=0;
@@ -1294,7 +1294,7 @@ if ($id_user && $strcook){
  }
     $number=$dbh->selectrow_array("select max(number) from basket_$ref->{prefix}");
     $number++;
- my $sel="select * from catalog_$ref->{prefix} where 1 $dop order by name";
+ my $sel="select * from $ref->{db_prefix}_catalog where 1 $dop order by name";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my $all_cost=0;
@@ -1474,7 +1474,7 @@ my $ref=shift;
  my $curency=$ref->{user_db}->{data}->{params}->{curency}||'$';
   $sth_b->execute;
  while(my $ref_basket=$sth_b->fetchrow_hashref){
-         my $sel="select * from catalog_$ref->{prefix} where id=$ref_basket->{id_cat}";
+         my $sel="select * from $ref->{db_prefix}_catalog where id=$ref_basket->{id_cat}";
          my $sth=$dbh->prepare($sel);
      $sth->execute;
      my $ref_catalog=$sth->fetchrow_hashref;

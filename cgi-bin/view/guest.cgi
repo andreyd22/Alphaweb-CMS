@@ -31,16 +31,16 @@ sub list_guest {
  #переход по страницам
  my $CountPage=$col_records;
  my $PageIn=CGI::param('PageIn')||1;
- my $p_n=CGI::param('p_n')||0;
+ my $p_n=CGI::param('p_n')||$ref->{p_n}||0;
  my $off=$p_n*$CountPage;
- my $col="select count(*) from guest where idu='$ref->{user}->{id}' and idr='$ref->{id}' and answer!=''";
+ my $col="select count(*) from $ref->{db_prefix}_guest where idu='$ref->{user}->{id}' and idr='$ref->{id}' and answer!=''";
  my $count=$dbh->selectrow_array($col);
  my $kol;
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #переход по страницам
          my $message='';
          $message=qq[Ваш вопрос был отправлен.] if $ref->{mess} eq 'ok';
- my $sel="select * from guest where idu='$ref->{user}->{id}' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_guest where idu='$ref->{user}->{id}' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
 
  my $sth=$dbh->prepare($sel);
     $sth->execute;
@@ -127,7 +127,7 @@ sub insert_record { #Добавляем запись в гостевую
   } 
   my $dbh=dbconnect;
     $ref->{subject}='' if !$ref->{subject};
-  my $ins="insert into guest (idu,idr,data_reg,name,subject,email,record,ip) values (?,?,now(),?,?,?,?,?)";
+  my $ins="insert into $ref->{db_prefix}_guest (idu,idr,data_reg,name,subject,email,record,ip) values (?,?,now(),?,?,?,?,?)";
   my $sth=$dbh->prepare($ins);
      $sth->execute($ref->{user}->{id},$ref->{id},$ref->{name},$ref->{subject},$ref->{email},$ref->{record},$ref->{ip});  
      $sth->finish;

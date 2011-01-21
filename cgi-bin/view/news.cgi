@@ -38,14 +38,14 @@ sub list_news {
  #переход по страницам
  my $CountPage=$col_records;
  my $PageIn=CGI::param('PageIn')||1;
- my $p_n=CGI::param('p_n')||0;
+ my $p_n=CGI::param('p_n')||$ref->{p_n}||0;
  my $off=$p_n*$CountPage;
- my $col="select count(*) from news where idu='$ref->{user}->{id}' and idr='$ref->{id}'";
+ my $col="select count(*) from $ref->{db_prefix}_news where idu='$ref->{user}->{id}' and idr='$ref->{id}'";
  my $count=$dbh->selectrow_array($col);
  my $kol;
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #переход по страницам
- my $sel="select * from news where idu='$ref->{user}->{id}' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_news where idu='$ref->{user}->{id}' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my @ar=();
@@ -84,7 +84,7 @@ sub full_news {
 
  #Выводим новость
  my $dbh=dbconnect;
- my $sel="select * from news where id='$ref->{data_id}' and idu='$ref->{user}->{id}' and idr='$ref->{id}'";
+ my $sel="select * from $ref->{db_prefix}_news where id='$ref->{data_id}' and idu='$ref->{user}->{id}' and idr='$ref->{id}'";
 #print qq[id_news $ref->{id_news}];
  my $sth=$dbh->prepare($sel);
     $sth->execute;

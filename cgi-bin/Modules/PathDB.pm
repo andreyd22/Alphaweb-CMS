@@ -45,7 +45,7 @@ require Exporter;
 	  $path_root	= "$ENV{'DOCUMENT_ROOT'}";
 	  $path_to_lib	= "$path_cgi/Modules" || "./" ;  # путь к модулям, если стоят в отдельной папке
 
-	  $db_host	= "localhost";
+	  $db_host	= "127.0.0.1";
 	  $db_name 	= "alphawebcms";
 	  $db_user 	= "root";
 	  $db_pass	= "";

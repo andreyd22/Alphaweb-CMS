@@ -24,9 +24,8 @@
 #!!!Проверка уровня доступа!!!
 check_access($ref);
 #!!!Проверка уровня доступа end!!!
- $ref->{prefix}=$ref->{prefix}."_" if $ref->{prefix};
  my $create_guest=qq[
-CREATE TABLE `$ref->{prefix}guest` (
+CREATE TABLE `$ref->{db_prefix}_guest` (
   `id` int(11) NOT NULL auto_increment,
   `idu` int(11) NOT NULL default '0',
   `id_article` int(11) NOT NULL default '0',
@@ -45,7 +44,7 @@ CREATE TABLE `$ref->{prefix}guest` (
 ];      
 my $dbh=dbconnect;
 
-if(!table_exists(qq[`$ref->{prefix}guest`])){
+if(!table_exists(qq[`$ref->{db_prefix}_guest`])){
  my $guest=$dbh->do($create_guest);
 }
 &dbdisconnect($dbh);
@@ -168,13 +167,13 @@ sub list_guest {
  my $PageIn=CGI::param('PageIn')||1;
  my $p_n=CGI::param('p_n')||0;
  my $off=$p_n*$CountPage;
- my $col="select count(*) from $ref->{prefix}guest where idu='7' and idr='$ref->{id}'";
+ my $col="select count(*) from $ref->{db_prefix}_guest where idu='7' and idr='$ref->{id}'";
  my $count=$dbh->selectrow_array($col);
  my $kol;
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #переход по страницам
 
- my $sel="select * from $ref->{prefix}guest where idu='7' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_guest where idu='7' and idr='$ref->{id}' order by data_reg desc limit $off,$CountPage";
 
  my $sth=$dbh->prepare($sel);
     $sth->execute;
@@ -223,10 +222,10 @@ sub del {
  my $ref=shift;
  my $dbh=dbconnect;
  if ($ref->{a} eq 'del_all'){
-   my $del=$dbh->do("delete from $ref->{prefix}guest");
+   my $del=$dbh->do("delete from $ref->{db_prefix}_guest");
 }
  else{
-	my $del=$dbh->do("delete from $ref->{prefix}guest where id='$ref->{id}' and idu='7' and idr='$ref->{idr}'");
+	my $del=$dbh->do("delete from $ref->{db_prefix}_guest where id='$ref->{id}' and idu='7' and idr='$ref->{idr}'");
 }
     dbdisconnect($dbh);
   #  use Storable;
@@ -334,7 +333,7 @@ sub answer {
  if($ref->{save} eq 'ok'){
    my $dbh=dbconnect;
    if($ref->{id}){
-    my $upd=$dbh->prepare("update guest set answer=? where id=? and idu=? and idr=?");
+    my $upd=$dbh->prepare("update $ref->{db_prefix}_guest set answer=? where id=? and idu=? and idr=?");
     $upd->execute($ref->{answer},$ref->{id},$ref->{user}->{id},$ref->{idr});
     $upd->finish;
    }

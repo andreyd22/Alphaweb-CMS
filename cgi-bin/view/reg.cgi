@@ -125,7 +125,7 @@ sub reg {
     $insert.=qq[rg_ip,rg_date];
     my $data=time;
     $values.=qq['$ref->{ip}',FROM_UNIXTIME('$data')];
-    my $sql=qq[insert into `reg_$ref->{id}` ($insert) values($values)];
+    my $sql=qq[insert into `$ref->{db_prefix}_reg_$ref->{id}` ($insert) values($values)];
     use Data::Dumper;
 #   print "<!--\nsql=".$sql."\n".Dumper(\@params)."\n-->";
    my $dbh=dbconnect();

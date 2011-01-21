@@ -130,8 +130,8 @@ sub auth { #Авторизация
                         -name => "admin_groups",
                         -value => \@ar,
 #                        -expires => $expires,
-#                        -path => "/",
-#                        -domain => "$host_name"
+                        -path => "/",
+                        -domain => "$host_name"
                         );
   print CGI::header(-cookie=>$c, -charset=> 'win-1251'); 
 #exit;

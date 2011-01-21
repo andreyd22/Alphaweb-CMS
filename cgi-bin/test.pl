@@ -1,14 +1,14 @@
-#! /usr/bin/perl
+#!/usr/bin/perl
 
 use strict;
 use warnings;
 
 use DBI;
 use DBD::MySQL;
-use Image::Magick;
+#use Image::Magick;
 
 my $dbh=DBI->connect(
-  "DBI:mysql:database=mysql;host=localhost",
+  "DBI:mysql:database=mysql;host=127.0.0.1",
     "root",
       ""
       ) || die "Error connecting to database: $!\n";

@@ -7,9 +7,7 @@
  use strict;
  print "Content-type:text/html\r\n\r\n";
  my $ref=Get_Param;
-    $ref->{prefix}=$ref->{user_doman};
-    $ref->{prefix}=~s/\-|\./_/gi;
-    $ref->{prefix}='';
+    $ref->{prefix}=$ref->{db_prefix};
 my $p=1;
 #print qq[perf $ref->{prefix}];exit;
 #!!!Проверка sid пользователя!!!#
@@ -31,7 +29,7 @@ check_access($ref);
 
 #Создаем таблицу 
 my $create_gallery=qq[
-CREATE TABLE `gallery_$ref->{prefix}` (
+CREATE TABLE `$ref->{db_prefix}_gallery` (
   `id` int(11) NOT NULL auto_increment,
   `idr` varchar(50) NOT NULL default '',
   `name` varchar(150) NOT NULL default '',
@@ -49,7 +47,7 @@ CREATE TABLE `gallery_$ref->{prefix}` (
 ];
 my $dbh=dbconnect;
 #my $col=$dbh->selectrow_array("select count(*) from gallery");
-if(!table_exists(qq[`gallery_$ref->{prefix}`])){
+if(!table_exists(qq[`$ref->{db_prefix}_gallery`])){
 my $gallery=$dbh->do($create_gallery);
 }
 dbdisconnect($dbh);
@@ -162,12 +160,12 @@ sub list_cat { #вывод галереи фотографий для редактирования / удаления
  my $p_n=CGI::param('p_n')||0;
  my $off=$p_n*$CountPage;
  my $dop=qq[and (upper(name) like upper('%$ref->{slovo}%') or upper(opis) like upper('%$ref->{slovo}%'))];
- my $col="select count(*) from gallery_$ref->{prefix} where idr='$ref->{id}' $dop";
+ my $col="select count(*) from $ref->{db_prefix}_gallery where idr='$ref->{id}' $dop";
  my $count=$dbh->selectrow_array($col);
  my $kol;
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #для перехода по страницам
- my $sel="select * from gallery_$ref->{prefix} where idr='$ref->{id}' $dop order by sort asc, id desc, name limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_gallery where idr='$ref->{id}' $dop order by sort asc, id desc, name limit $off,$CountPage";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
   $tpl->assign(
@@ -298,7 +296,7 @@ sub del_cat {
  $dop=qq[id in ($str_id_cat)];
  }
 #print qq[ok];
- my $del=$dbh->do("delete from gallery_$ref->{prefix} where idr='$ref->{id}' and $dop");
+ my $del=$dbh->do("delete from $ref->{db_prefix}_gallery where idr='$ref->{id}' and $dop");
  for (my $i=0;$i<=$#ar_id_cat;$i++){
   if (-e "$ref->{path_host}/gallery_image/$ar_id_cat[$i]-s.jpg"){
    unlink "$ref->{path_host}/gallery_image/$ar_id_cat[$i]-s.jpg";
@@ -318,8 +316,8 @@ elsif($ref->{upd}){
  for (my $i=0;$i<=$#ar_id_cat;$i++){
 #print qq[ok $ref->{user_db}->{data}->{$ar_idr[$i]}->{mod}]; exit;
         if($ref->{user_db}->{data}->{$ar_idr[$i]}->{mod} eq 'gallery' && $ar_idr[$i] ne '' && $ar_idr[$i] ne '0'){
-        my $upd=$dbh->do("update gallery_$ref->{prefix} set idr='$ar_idr[$i]' where id='$ar_id_cat[$i]'");
-#        print qq[update gallery_$ref->{prefix} set idr='$ar_idr[$i]' where id='$ar_id_cat[$i]';<br>];
+        my $upd=$dbh->do("update $ref->{db_prefix}_gallery set idr='$ar_idr[$i]' where id='$ar_id_cat[$i]'");
+#        print qq[update $ref->{db_prefix}_gallery set idr='$ar_idr[$i]' where id='$ar_id_cat[$i]';<br>];
         }
  }
 # exit;
@@ -329,7 +327,7 @@ elsif($ref->{sort}){
  my @ar_idr=CGI::param('idr_cat');
  my @ar_sort=CGI::param('id_sort');
  for (my $i=0;$i<=$#ar_id_cat;$i++){
-        my $upd=$dbh->do("update gallery_$ref->{prefix} set sort='$ar_sort[$i]' where id='$ar_id_cat[$i]'");
+        my $upd=$dbh->do("update $ref->{db_prefix}_gallery set sort='$ar_sort[$i]' where id='$ar_id_cat[$i]'");
  }
  }
  dbdisconnect($dbh);
@@ -353,7 +351,7 @@ sub add_cat {
  my $dbh=dbconnect;
  my $ref_cat=$ref;
  if ($ref->{id_cat}){
- my $sel="select * from gallery_$ref->{prefix} where idr='$ref->{id}' and id='$ref->{id_cat}'";
+ my $sel="select * from $ref->{db_prefix}_gallery where idr='$ref->{id}' and id='$ref->{id_cat}'";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     $ref_cat=$sth->fetchrow_hashref||{};

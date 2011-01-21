@@ -54,7 +54,7 @@ sub list_gal { #вывод элементов каталога (самих товаров)
  }
  my $dop_r="and idr='$ref->{id}'";
  $dop_r="and idr != 'portfolio'" if $ref->{id} eq 'template';
- my $col="select count(*) from gallery_$ref->{prefix} where 1 $dop_r $dop";
+ my $col="select count(*) from $ref->{db_prefix}_gallery where 1 $dop_r $dop";
 
  my $count=$dbh->selectrow_array($col);
  my $kol;
@@ -63,7 +63,7 @@ sub list_gal { #вывод элементов каталога (самих товаров)
     $order='order by name' if $ref->{sort} eq 'name';
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #переход по страницам
- my $sel="select * from gallery_$ref->{prefix} where 1 $dop_r $dop $order limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_gallery where 1 $dop_r $dop $order limit $off,$CountPage";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my $inc=0; my $i=0;
@@ -100,7 +100,7 @@ sub full_gal {
  my $ref=shift;
  #Выводим каталог товаров
  my $dbh=dbconnect();
- my $sel="select g.*,s.name as name_r from gallery_$ref->{prefix} as g, structure as s  where g.id='$ref->{data_id}' and g.idr=s.id";
+ my $sel="select g.*,s.name as name_r from $ref->{db_prefix}_gallery as g, structure as s  where g.id='$ref->{data_id}' and g.idr=s.id";
     #print qq[$sel];
  my $sth=$dbh->prepare($sel);
     $sth->execute();
@@ -118,8 +118,8 @@ sub full_gal {
 
  $ref->{title}=$ref->{ref_data}->{name};
  #переход по страницам
-# my $sel="select * from gallery_$ref->{prefix} where idr='$ref->{ref_data}->{idr}' and id!='$ref->{ref_data}->{id}' order by date_reg desc, id desc limit 6";
- my $sel="select * from gallery_$ref->{prefix} where idr='$ref->{ref_data}->{idr}' and id!='$ref->{ref_data}->{id}' order by RAND() limit 6";
+# my $sel="select * from $ref->{db_prefix}_gallery where idr='$ref->{ref_data}->{idr}' and id!='$ref->{ref_data}->{id}' order by date_reg desc, id desc limit 6";
+ my $sel="select * from $ref->{db_prefix}_gallery where idr='$ref->{ref_data}->{idr}' and id!='$ref->{ref_data}->{id}' order by RAND() limit 6";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     my $inc=0; my $i=0;

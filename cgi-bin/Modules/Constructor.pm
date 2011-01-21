@@ -348,6 +348,7 @@ sub  Get_Param {
 	$param_ref->{path_host}=$path_root."/base/$domain_config->{$host_name}->{'folder'}";
 	#путь пользователя для цмс (все файлы в папке base, выше залезть нельзя)
 	$param_ref->{user_doman}=$host_name."/base/$domain_config->{$host_name}->{'folder'}";
+	$param_ref->{db_prefix}="$domain_config->{$host_name}->{'folder'}";
 	#Истинный урл пользователя
 	$param_ref->{user_url}=$host_name;
 	#Путь к базе данных пользователя
