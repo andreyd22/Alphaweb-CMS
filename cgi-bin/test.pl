@@ -2,10 +2,10 @@
 
 use strict;
 use warnings;
-
+use lib '/opt/local/perl5';
 use DBI;
 use DBD::MySQL;
-#use Image::Magick;
+use Image::Magick;
 
 my $dbh=DBI->connect(
   "DBI:mysql:database=mysql;host=127.0.0.1",

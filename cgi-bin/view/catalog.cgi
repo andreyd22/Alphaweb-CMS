@@ -3,7 +3,7 @@
  $|=1;
  use lib "../";
  use Modules::Constructor qw (Get_Param dbconnect dbdisconnect page_down $host_name &size_img
-                              &check_auth &encoder &send_mail $root_mail
+                              &check_auth &encoder &send_mail
                                &slovo);
  my ($dostavka_rus,$dostavka_eng,$oplata_rus, $oplata_eng, $status_rus, $status_eng);
  use Modules::Constructor_view;
@@ -173,7 +173,7 @@ sub full_catalog {#Полная информация о товаре
 
  #Выводим информацию о товаре
  my $dbh=dbconnect;
- my $sel="select * from catalog_ where id='$ref->{id_cat}' and idr='$ref->{id}'";
+ my $sel="select * from $ref->{db_prefix}_catalog where id='$ref->{id_cat}' and idr='$ref->{id}'";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
  my $ref_catalog=$sth->fetchrow_hashref||{};
@@ -355,7 +355,7 @@ my $ref=shift;
     $sth->execute;
  $ref->{users_ref}=$sth->fetchrow_hashref||{};
 
-my $email=$root_mail;
+my $email=$ref->{root_mail};
 my $subject="Обобщенный заказ товаров";
 my $text=qq[
 Здравствуйте, администратор!

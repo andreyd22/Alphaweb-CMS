@@ -11,7 +11,7 @@
 #!!!Проверка sid пользователя!!!#
  my $p=1;
  my $create_catalog=qq[
-  CREATE TABLE catalog_$ref->{prefix} (
+  CREATE TABLE $ref->{db_prefix}_catalog (
   `id` int(11) NOT NULL auto_increment,
   `idr` varchar(255) collate cp1251_bin NULL default '',
   `name` varchar(255) collate cp1251_bin NULL default '',
@@ -89,8 +89,8 @@ CREATE TABLE users_cat_$ref->{prefix} (
 )
 ];      
 my $dbh=dbconnect;
-#my $col=$dbh->selectrow_array("select count(*) from catalog_$ref->{prefix}");
-if(!table_exists(qq[`catalog_$ref->{prefix}`])){
+#my $col=$dbh->selectrow_array("select count(*) from $ref->{db_prefix}_catalog");
+if(!table_exists(qq[`$ref->{db_prefix}_catalog`])){
  my $catalog=$dbh->do($create_catalog);
 # my $basket=$dbh->do($create_basket);
 # my $user_adres=$dbh->do($create_users_adres);
@@ -237,12 +237,12 @@ sub list_cat {
  if($ref->{slovo}){
  $dop=qq[and (upper(name) like upper('%$ref->{slovo}%') or upper(opis) like upper('%$ref->{slovo}%'))];
  }
- my $col="select count(*) from catalog_$ref->{prefix} where idr='$ref->{id}' $dop";
+ my $col="select count(*) from $ref->{db_prefix}_catalog where idr='$ref->{id}' $dop";
  my $count=$dbh->selectrow_array($col);
  my $kol;
  if($count%$CountPage==0){$kol=int($count/$CountPage);}else{$kol=int($count/$CountPage)+1;}
  #для перехода по страницам
- my $sel="select * from catalog_$ref->{prefix} where idr='$ref->{id}' $dop order by sort asc, id desc, name limit $off,$CountPage";
+ my $sel="select * from $ref->{db_prefix}_catalog where idr='$ref->{id}' $dop order by sort asc, id desc, name limit $off,$CountPage";
  #print $sel;
  my $sth=$dbh->prepare($sel);
     $sth->execute;
@@ -397,7 +397,7 @@ sub del_cat {
    unlink "$ref->{path_host}/cat_image/$ar_id_cat[$i].jpg";
   }
  }
- my $del=$dbh->do("delete from catalog_$ref->{prefix} where idr='$ref->{id}' and $dop");
+ my $del=$dbh->do("delete from $ref->{db_prefix}_catalog where idr='$ref->{id}' and $dop");
 
  }
 elsif($ref->{upd}){
@@ -408,7 +408,7 @@ elsif($ref->{upd}){
  my @ar_sort=CGI::param('sort_cat');
  for (my $i=0;$i<=$#ar_id_cat;$i++){
         #if($ref->{user_db}->{data}->{$ar_idr[$i]}->{mod} eq 'catalog'){
-        my $upd=$dbh->do("update catalog_$ref->{prefix} set idr='$ar_idr[$i]',sort='$ar_sort[$i]',shtrih_kod='$ar_shtrih_kod[$i]',gost='$ar_gost[$i]' where id='$ar_id_cat[$i]'");
+        my $upd=$dbh->do("update $ref->{db_prefix}_catalog set idr='$ar_idr[$i]',sort='$ar_sort[$i]',shtrih_kod='$ar_shtrih_kod[$i]',gost='$ar_gost[$i]' where id='$ar_id_cat[$i]'");
         #}
 
 	# увеличили пиктограмму до 200рх по ширине
@@ -425,7 +425,7 @@ elsif($ref->{upd_status}){
         my $status=0;
         my $value_status="$ar_id_cat[$i]_status";
            $status=1 if $ref->{$value_status};
-        my $upd=$dbh->do("update catalog_$ref->{prefix} set status='$status' where id='$ar_id_cat[$i]'");
+        my $upd=$dbh->do("update $ref->{db_prefix}_catalog set status='$status' where id='$ar_id_cat[$i]'");
  }
  }
  dbdisconnect($dbh);
@@ -468,7 +468,7 @@ sub add_cat {
  my $ref_cat=$ref;
  if ($ref->{id_cat}){
  my $dbh=dbconnect;
- my $sel="select * from catalog_$ref->{prefix} where idr='$ref->{id}' and id='$ref->{id_cat}'";
+ my $sel="select * from $ref->{db_prefix}_catalog where idr='$ref->{id}' and id='$ref->{id_cat}'";
  my $sth=$dbh->prepare($sel);
     $sth->execute;
     $ref_cat=$sth->fetchrow_hashref||{};
@@ -553,14 +553,14 @@ if($ref->{save} eq 'ok'){
  if(1==1){
   my $dbh=dbconnect;
  if($ref->{id_cat}){
-  # my $sql="update catalog_$ref->{prefix} set opis_r=?,shtrih_kod=?,gost=?,action=?,name=?,short=?,mera=?,cost=?,opis=?,articul=?,zhir=?,tara=?,srok=? where id=? and idr=?";
-   my $sql="update catalog_$ref->{prefix} set gost=?,action=?,name=?,short=?,mera=?,cost=?,opis=?,articul=?,zhir=?,tara=?,srok=? where id=? and idr=?";
+  # my $sql="update $ref->{db_prefix}_catalog set opis_r=?,shtrih_kod=?,gost=?,action=?,name=?,short=?,mera=?,cost=?,opis=?,articul=?,zhir=?,tara=?,srok=? where id=? and idr=?";
+   my $sql="update $ref->{db_prefix}_catalog set gost=?,action=?,name=?,short=?,mera=?,cost=?,opis=?,articul=?,zhir=?,tara=?,srok=? where id=? and idr=?";
    my $sth=$dbh->prepare($sql);
    $sth->execute($ref->{gost},$ref->{action},$ref->{name},$ref->{short},$ref->{mera},$ref->{cost},$ref->{opis},$ref->{articul},$ref->{zhir},$ref->{tara},$ref->{srok},$ref->{id_cat},$ref->{id});
    $sth->finish;
  }else{
-  # my $sql="insert into catalog_$ref->{prefix} (opis_r,shtrih_kod,gost,action,name,short,mera,cost,opis,idr,articul,zhir,tara,srok) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-   my $sql="insert into catalog_$ref->{prefix} (gost,action,name,short,mera,cost,opis,idr,articul,zhir,tara,srok) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+  # my $sql="insert into $ref->{db_prefix}_catalog (opis_r,shtrih_kod,gost,action,name,short,mera,cost,opis,idr,articul,zhir,tara,srok) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+   my $sql="insert into $ref->{db_prefix}_catalog (gost,action,name,short,mera,cost,opis,idr,articul,zhir,tara,srok) values (?,?,?,?,?,?,?,?,?,?,?,?)";
    my $sth=$dbh->prepare($sql);
    my $ins=$sth->execute($ref->{gost},$ref->{action},$ref->{name},$ref->{short},$ref->{mera},$ref->{cost},$ref->{opis},$ref->{id},$ref->{articul},$ref->{zhir},$ref->{tara},$ref->{srok});
    $sth->finish;
@@ -583,7 +583,7 @@ if($ref->{save} eq 'ok'){
       $file="$nmf.$typef";
 	#print qq[$file]; exit;
       # обновляем расширение картинки
-      my $upd=$dbh->do("update catalog_ set img_end='$typef' where id='$ref->{id_cat}'");
+      my $upd=$dbh->do("update $ref->{db_prefix}_catalog set img_end='$typef' where id='$ref->{id_cat}'");
      #print qq[update catalog_ set img_end='$typef' where id='$ref->{id_cat}']; exit;
                 if(!-d "$ref->{path_host}/cat_image"){
                   mkdir_("$ref->{path_host}/cat_image");
@@ -1030,7 +1030,7 @@ sub view_order { #Вывод заказа
              my ($data,$hour)=split / /,$ref_basket->{data_reg};
              my ($y,$m,$d)=split /\-/,$data;
                  my $data_pr="$d.$m.$y";
-                 my $ref_catalog=$dbh->selectrow_hashref("select * from catalog_$ref->{prefix} where id='$ref_basket->{id_cat}'")||{};
+                 my $ref_catalog=$dbh->selectrow_hashref("select * from $ref->{db_prefix}_catalog where id='$ref_basket->{id_cat}'")||{};
          my $cost=($ref_catalog->{cost}*$ref_basket->{col})-(($ref_catalog->{cost}*$ref_basket->{col})*$skidka/100);
          $tpl->assign(
                 DATA    => $data_pr,

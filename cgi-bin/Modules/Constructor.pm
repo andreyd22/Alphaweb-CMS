@@ -1231,6 +1231,7 @@ $new->Write("$path_root_new");
 }
 
 sub magick_width_only { #уменьшение картинки
+	return 0;
 #use Image::Magick;
 my $size=shift;
 my $path_root_i=shift;
